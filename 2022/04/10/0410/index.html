@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="WBANWBAN由若干个传感器节点和一个控制器组成。 其中传感器节点可以与控制器通信，控制器不仅可以与传感器节点通信，还可以和互联网通信。 ↓↓ 作用：由于WBAN收集的数据在医疗诊断和治疗中起着至关重要的作用，仅授权的用户才能获得这些数据。因此，设计一种能够授权、认证和撤销用户访问广域网的高效访问控制方案是非常重要的。 ↓↓ 如果没有这种访问控制，健康数据可能会被滥用，这可能会导致灾难性的后果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无线体网的高效无证书访问控制（I）">
+<meta property="og:url" content="http://example.com/2022/04/10/0410/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="WBANWBAN由若干个传感器节点和一个控制器组成。 其中传感器节点可以与控制器通信，控制器不仅可以与传感器节点通信，还可以和互联网通信。 ↓↓ 作用：由于WBAN收集的数据在医疗诊断和治疗中起着至关重要的作用，仅授权的用户才能获得这些数据。因此，设计一种能够授权、认证和撤销用户访问广域网的高效访问控制方案是非常重要的。 ↓↓ 如果没有这种访问控制，健康数据可能会被滥用，这可能会导致灾难性的后果">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/photos/2022/0410/1.png">
+<meta property="og:image" content="http://example.com/photos/2022/0410/0410.jpg">
+<meta property="article:published_time" content="2022-04-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T11:46:22.761Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="paper">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/photos/2022/0410/1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>无线体网的高效无证书访问控制（I）</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/04/23/0423/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/10/0410/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/10/0410/&text=无线体网的高效无证书访问控制（I）"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/10/0410/&is_video=false&description=无线体网的高效无证书访问控制（I）"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=无线体网的高效无证书访问控制（I）&body=Check out this article: http://example.com/2022/04/10/0410/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/10/0410/&name=无线体网的高效无证书访问控制（I）&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/10/0410/&t=无线体网的高效无证书访问控制（I）"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#WBAN"><span class="toc-number">1.</span> <span class="toc-text">WBAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-Model"><span class="toc-number">2.</span> <span class="toc-text">Network Model</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        无线体网的高效无证书访问控制（I）
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-09T16:00:00.000Z" itemprop="datePublished">2022-04-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/paper/" rel="tag">paper</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h3 id="WBAN"><a href="#WBAN" class="headerlink" title="WBAN"></a>WBAN</h3><p>WBAN由若干个传感器节点和一个控制器组成。</p>
+<p>其中传感器节点可以与控制器通信，控制器不仅可以与传感器节点通信，还可以和互联网通信。</p>
+<p>↓↓</p>
+<p>作用：由于WBAN收集的数据在医疗诊断和治疗中起着至关重要的作用，仅<strong>授权的用户</strong>才能获得这些数据。因此，设计一种能够授权、认证和撤销用户访问广域网的高效访问控制方案是非常重要的。</p>
+<p>↓↓</p>
+<p>如果没有这种访问控制，健康数据可能会被滥用，这可能会导致灾难性的后果。然而，由于<em><strong>传感器节点的资源非常有限</strong></em>，设计一个高效的访问控制方案并不是一件容易的事情。</p>
+<p>所以</p>
+<p>我们提出了一种高效的无证书签密方案，然后利用该签密方案设计了一种适用于广域网络的访问控制方案。该方案实现了机密性、完整性、认证性、不可否认性、公开可验证性和密文真实性。</p>
+<h3 id="Network-Model"><a href="#Network-Model" class="headerlink" title="Network Model"></a><em><strong>Network Model</strong></em></h3><p><img src="/photos/2022/0410/1.png"></p>
+<p>图1显示了主要由患者的无线体域网络（WBAN）、服务提供商(SP)和用户(例如护士、医生、政府机构或保险公司)三个实体组成的网络模型的概述。</p>
+<p>SP部署WBAN，监测患者的生命体征和环境参数。如果用户希望访问WBAN，则必须获得SP的授权。SP负责用户和WBAN的注册，并产生用户的部分私钥和WBAN的私钥。 	</p>
+<p>当用户希望访问WBAN的监控数据时，它首先向WBAN发送查询消息。然后，控制器检查用户是否已被授权访问WBAN。如果是，则控制器以安全的方式将收集的数据发送给用户。否则，控制器拒绝该查询请求。</p>
+<hr>
+<p><strong>END</strong></p>
+<hr>
+<p><span style="color:GreenYellow;">单词速记</span></p>
+<p>ex（出）+pel（驱动，推）——驱逐</p>
+<p>imper(命令)+ial&#x3D;帝国的</p>
+<p>re反，pel推－反推－击退；反感</p>
+<p>crit(判断)+erion&#x3D;判断的依据&#x3D;标准，准则</p>
+<p>pro前，pa趴，gate门－向前趴在门上，上宿舍推销的人员－传播－一个传播一个－繁殖</p>
+<p>mutual 两者之间 common 三者以上的之间</p>
+<p>star+k ：星星上是“荒凉的”“光秃秃的”“朴实无装饰的”“显而易见的”，而明星都是很开(k)放的，二者“完全”不同！</p>
+<p>in’hibit &#x3D; prohibit &#x3D; refrain v.禁止，抑制    inhabit(居住于）区分。 如，The fish inhabit the sea.</p>
+<p>surg（升起）+e→急剧上升，猛增</p>
+<p>rebel against反抗; rebel at 反感</p>
+<p>bel 打，re 反复–》反复打，反抗–》反对者，反叛，反对 rebel</p>
+<p>trail vt. 追踪；拖；蔓延；落后于   trait多指人的性格、心情的特征</p>
+<p>s+pine 松树 –》脊柱</p>
+<p>re反，pel推－反推－击退；反感</p>
+<p>hier（神圣）+archy（统治）→统治神圣不容侵犯→等级制度</p>
+<p>ob(否定) + sc(看) + ure(后缀)–&gt;a. 1) 不清楚的；2) 难以理解的; 3) 不出名的</p>
+<p>e+lapse（流逝）→消逝 流逝</p>
+<p>slash prices 杀价  </p>
+<p>imper（命令）+ative→紧急的，命令的</p>
+<p>compliment: com一起+pli填满&#x3D;填满对方的虚荣心&#x3D;称赞，恭维</p>
+<p>vain vein</p>
+<p>fat（胖）+igue——胖的人容易累——疲劳</p>
+<p>碰撞（crash）后被碾碎（crush）</p>
+<p>patrol:巡逻 petrol：汽油 patriot:爱国者 patron：赞助者</p>
+<p>de(向下)+plore(喊)          悲悼，哀叹；谴责</p>
+<p>intrigue in+trig(&#x3D;tric复杂)+ue—在复杂阴谋中—密谋；ant：pall v. 使平淡无味</p>
+<hr>
+<p><img src="/photos/2022/0410/0410.jpg"></p>
+<p>Always bear in mind that your own resolution to succeed is more important than any one thing.</p>
+<p><span style="color:orange;">时刻牢记，渴望成功的决心比任何事情都重要。</span></p>
+<p>————Abraham Lincoln</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#WBAN"><span class="toc-number">1.</span> <span class="toc-text">WBAN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-Model"><span class="toc-number">2.</span> <span class="toc-text">Network Model</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/10/0410/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/10/0410/&text=无线体网的高效无证书访问控制（I）"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/10/0410/&is_video=false&description=无线体网的高效无证书访问控制（I）"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=无线体网的高效无证书访问控制（I）&body=Check out this article: http://example.com/2022/04/10/0410/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/10/0410/&title=无线体网的高效无证书访问控制（I）"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/10/0410/&name=无线体网的高效无证书访问控制（I）&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/10/0410/&t=无线体网的高效无证书访问控制（I）"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

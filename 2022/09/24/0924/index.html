@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="T原域名www.qqning.top     只用于个人测试，博客只在此发布。  听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~    拿到一个待测站，应该怎么做？ 1.信息收集tip1:123456781.获取域名的whois信息,获取注册者邮箱姓名电话等。2.通过站长之家、明小子、k8等查询服务器旁站以及子域名站点，因为主站一般比较难，所以先看看旁站有没有通用性的cms或者其他漏洞。3、通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渗透测试总结&amp;&amp;域名迁移">
+<meta property="og:url" content="http://example.com/2022/09/24/0924/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="T原域名www.qqning.top     只用于个人测试，博客只在此发布。  听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~    拿到一个待测站，应该怎么做？ 1.信息收集tip1:123456781.获取域名的whois信息,获取注册者邮箱姓名电话等。2.通过站长之家、明小子、k8等查询服务器旁站以及子域名站点，因为主站一般比较难，所以先看看旁站有没有通用性的cms或者其他漏洞。3、通">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://picx.zhimg.com/v2-b2822d3b26e20d4fddd505c22bca76f4_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://picx.zhimg.com/v2-e950acfafa042ffacdbc674777009e41_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/v2-162cb89d2446102dc9f05f1839a738a2_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/v2-9dd44025ed937b50793a0343da0407b3_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-768fa8ff27c45df721a14609a365b575_720w.png?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/v2-768fa8ff27c45df721a14609a365b575_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/v2-b4abcba1e042ccf421ce25035d97bba6_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-0507e18cfa1e621576f44901787c11f2_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-0507e18cfa1e621576f44901787c11f2_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pic4.zhimg.com/v2-7208a3d8b3b20044c367d75960d9ed9f_720w.jpg?source=d16d100b">
+<meta property="og:image" content="https://pica.zhimg.com/v2-cc1cfb4296004c70f97d0fef39fc406c_720w.jpg?source=d16d100b">
+<meta property="og:image" content="http://example.com/photos/2022/0924/0924.jpg">
+<meta property="article:published_time" content="2022-09-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T11:49:09.364Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="渗透Q">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picx.zhimg.com/v2-b2822d3b26e20d4fddd505c22bca76f4_720w.jpg?source=d16d100b">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>渗透测试总结&amp;&amp;域名迁移</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/09/30/0930/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/04/23/0423/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/09/24/0924/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/09/24/0924/&text=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/09/24/0924/&is_video=false&description=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=渗透测试总结&amp;&amp;域名迁移&body=Check out this article: http://example.com/2022/09/24/0924/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/09/24/0924/&name=渗透测试总结&amp;&amp;域名迁移&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/09/24/0924/&t=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T"><span class="toc-number">1.</span> <span class="toc-text">T</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0%E4%B8%80%E4%B8%AA%E5%BE%85%E6%B5%8B%E7%AB%99%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">拿到一个待测站，应该怎么做？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1.信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tip1"><span class="toc-number">1.1.</span> <span class="toc-text">tip1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tip2%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">tip2：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%A7%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、开始信息收集——端口扫描与分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%8C%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AF%86%E5%88%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、信息收集——中间件，脚本语言，数据库的识别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E6%9F%A5%E7%9C%8BWeb%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">三、信息收集——查看Web应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%92%88%E5%AF%B9CMS%E5%BB%BA%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.4.</span> <span class="toc-text">四、针对CMS建站的渗透思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%A4%E5%88%AB%E6%98%AF%E5%90%A6%E4%B8%BA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E5%BB%BA%E7%AB%99"><span class="toc-number">1.2.5.</span> <span class="toc-text">五、判别是否为开发框架建站</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%92%88%E5%AF%B9%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.6.</span> <span class="toc-text">六、针对开发框架的渗透思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%92%88%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.7.</span> <span class="toc-text">七、针对个人开发网站的渗透思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F"><span class="toc-number">2.</span> <span class="toc-text">2.漏洞扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.</span> <span class="toc-text">4.权限提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5.日志清理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A%E5%8F%8A%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">6.</span> <span class="toc-text">6.总结报告及修复方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">7.</span> <span class="toc-text">7.常用技术</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        渗透测试总结&amp;&amp;域名迁移
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-09-23T16:00:00.000Z" itemprop="datePublished">2022-09-24</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B8%97%E9%80%8FQ/" rel="tag">渗透Q</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h3 id="T"><a href="#T" class="headerlink" title="T"></a>T</h3><p>原域名<a target="_blank" rel="noopener" href="http://www.qqning.top/">www.qqning.top</a>     只用于个人测试，博客只在此发布。</p>
+<hr>
+<p><strong>听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~</strong></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=441491828&auto=1&height=66"></iframe>
+
+<hr>
+<h2 id="拿到一个待测站，应该怎么做？"><a href="#拿到一个待测站，应该怎么做？" class="headerlink" title="拿到一个待测站，应该怎么做？"></a><strong>拿到一个待测站，应该怎么做？</strong></h2><hr>
+<h3 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h3><h4 id="tip1"><a href="#tip1" class="headerlink" title="tip1:"></a>tip1:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>获取域名的whois信息,获取注册者邮箱姓名电话等。</span><br><span class="line"><span class="number">2.</span>通过站长之家、明小子、k8等查询服务器旁站以及子域名站点，因为主站一般比较难，所以先看看旁站有没有通用性的cms或者其他漏洞。</span><br><span class="line"><span class="number">3</span>、通过DNS域传送漏洞、备份号查询、SSl证书、APP、微信公众号、暴力破解、DNS历史记录、K8 C段查询、Jsfinder、<span class="number">360</span>或华为威胁情报、证书序列号获取企业域名与ip。</span><br><span class="line"><span class="number">4.</span>通过Nmap、Wappalyzer、御剑等查看服务器操作系统版本，web中间件，看看是否存在已知的漏洞，比如IIS，APACHE,NGINX的解析漏洞</span><br><span class="line"><span class="number">5.</span>通过7KB、破壳扫描网站目录结构，看看是否可以遍历目录，或者敏感文件泄漏，比如php探针、管理员备份文件。</span><br><span class="line"><span class="number">6.</span>google hack 进一步探测网站的信息，后台，敏感文件</span><br><span class="line"><span class="number">7</span>、敏感信息收集，如github源码、用7kb、破壳扫源代码泄露（.hg、.git、cvs、svn、.DS_store源代码泄露）、google hack、接口信息泄露、社工信息泄露、邮箱地址信息收集、网盘搜索、钟馗之眼、天眼查、威胁情报、微步在线等</span><br><span class="line"><span class="number">8</span>、通过Wappalyzer、御剑工具对网站指纹识别（包括，cms，cdn，证书等），dns记录</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="tip2："><a href="#tip2：" class="headerlink" title="tip2："></a>tip2：</h4><h5 id="一、开始信息收集——端口扫描与分析"><a href="#一、开始信息收集——端口扫描与分析" class="headerlink" title="一、开始信息收集——端口扫描与分析"></a><strong>一、开始信息收集——端口扫描与分析</strong></h5><p>1.得到域名后查IP—站长工具，选择whois查询和IP反查询，通过ping该域名查看IP。</p>
+<p>DNS历史解析记录 （可能是看服务器是否开启了域间传送策略）</p>
+<p>2.子域名域名挖掘机—只需要将二级域名输入进去即可，然后默认扫描的是80端口(Web服务)，443端口(https服务)</p>
+<p>我们只需要注意的是如果我们拿到的域名中带有edu(教育)、gov(政府)等后缀、在进行子域名爆破的时候，<strong>请将edu、gov等后缀原封不动的带上。</strong></p>
+<p>3.爆破出所有相关子域名后，我们将存活的子域名的IP过滤出来</p>
+<p>然后使用Nmap扫描这些主机上开放了哪些端口。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">nmapm命令</span><br><span class="line">nmap -Pn -<span class="built_in">open</span> -A -n -v -iL filename</span><br><span class="line">-Pn：跳过主机发现，直接进行下面的操作</span><br><span class="line">-n:不做DNS解析</span><br><span class="line">-<span class="built_in">open</span>：只显示开启的端口</span><br><span class="line">-A：扫描过程中，输入回车，可以查看扫描进度</span><br><span class="line">-v：显示详细信息</span><br><span class="line">-F：快速扫描<span class="number">100</span>个常见端口</span><br><span class="line">-p:选择要扫描的端口  例：-p1-<span class="number">65535</span> （全端口扫描，中间没有空格）</span><br><span class="line">-iL：为程序指定一个要扫描的IP列表</span><br><span class="line">-sV：探测开放端口的服务和版本信息</span><br><span class="line">-T可以选择扫描等级，默认T3，但想快点话，可以输入  -T4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>扫描完端口之后，将这些存活主机的端口记录下来</p>
+<p>并分别标注这些端口号代表什么服务</p>
+<p>如果有条件的话再将服务器版本号记录上去</p>
+<p><em>我们也可以打开命令行，使用telnet 远程连接服务器，查看服务器是否开启Telnet服务（默认23端口）,提示正在连接说明端口开放，无法连接表示端口关闭。</em></p>
+<p>常见的几种端口有：</p>
+<blockquote>
+<p>21：FTP远程文件传输端口<br>22：SSH，远程连接端口<br>3389端口：远程桌面连接</p>
+</blockquote>
+<p>在发现这些端口只会我们可以尝试弱口令的爆破</p>
+<p>这里推荐（hydra弱口令爆破工具）下载地址：</p>
+<p><a href="http://link.zhihu.com/?target=https://github.com/vanhauser-thc/thc-hydra">https://github.com/vanhauser-thc/thc-hydra</a></p>
+<p>6379端口：redis未授权访问GetShell</p>
+<p>（<a href="http://link.zhihu.com/?target=http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/">http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/</a>）</p>
+<p>该链接就是关于6379未授权访问的介绍</p>
+<p><strong>总结下来就是</strong></p>
+<p>hacker利用redis自带的config命令，可以进行写文件操作</p>
+<p>然后攻击者将自己的公钥成功写入到目标服务器的&#x2F;root&#x2F;.ssh文件夹中的authotrized_keys文件中</p>
+<p>然后攻击者就可以用自己对应的私钥登陆目标服务器。</p>
+<p>这里可参考博客<br><a href="http://link.zhihu.com/?target=https://blog.csdn.net/sdb5858874/article/details/80484010">https://blog.csdn.net/sdb5858874/article/details/80484010</a></p>
+<p><strong>27017端口</strong>：mongodb默认未授权访问，直接控制数据库。</p>
+<p><a href="http://link.zhihu.com/?target=https://blog.csdn.net/u014153701/article/details/46762627">https://blog.csdn.net/u014153701/article/details/46762627</a></p>
+<p><strong>总结下就是</strong></p>
+<p>mongodb在刚刚安装完成时，默认数据库admin中一个用户都没有，在没有向该数据库中添加用户之前，</p>
+<p>Hacker可以通过默认端口无需密码登陆对数据库任意操作而且可以远程访问数据库！</p>
+<p><strong>9200&#x2F;9300端口</strong>：elasticsearch远程命令执行</p>
+<p>初学者对这个东西认识不深，感觉就是通过java映射的方法达到攻击目的</p>
+<p>你们可以看看下面链接的分析</p>
+<p><a href="http://link.zhihu.com/?target=https://www.secpulse.com/archives/5047.html">https://www.secpulse.com/archives/5047.html</a></p>
+<p><strong>80&#x2F;8080&#x2F;443端口</strong>：常见的Web服务漏洞，这里应该就是我们使用看家本领的地方了</p>
+<p>基于常见的web漏洞进行扫描检测，或者对管理后台进行一次弱口令爆破</p>
+<p><strong>443端口</strong>：心脏出血漏洞（open ssl 1.0.1g 以前的版本）（老师说现在基本没有了。。）</p>
+<p><strong>自己的理解</strong>：攻击者不需要经过身份验证或者其他操作，就可以轻易的从目标机内存中偷来最多64kb的数据</p>
+<p>这其中可能包含我们用来登陆的用户名密码,电子邮件密码，或重要的商务消息</p>
+<p>下面是大牛的漏洞介绍</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/19722263?columnSlug=drops">https://zhuanlan.zhihu.com/p/19722263?columnSlug=drops</a></p>
+<p>还有一些</p>
+<p>jboss弱口令</p>
+<p>weblogic 天生SSRF漏洞</p>
+<p>resin任意文件读取</p>
+<p>这些东西暂时不看吧，等日后知识储备更多了再了解（后续更细） 附上这些漏洞的分析博文</p>
+<p><a href="http://link.zhihu.com/?target=http://www.hack80.com/thread-22662-1-1.html">http://www.hack80.com/thread-22662</a></p>
+<h5 id="二、信息收集——中间件，脚本语言，数据库的识别"><a href="#二、信息收集——中间件，脚本语言，数据库的识别" class="headerlink" title="二、信息收集——中间件，脚本语言，数据库的识别"></a><strong>二、信息收集——中间件，脚本语言，数据库的识别</strong></h5><p>经验 ：</p>
+<p>常见的服务器搭配</p>
+<blockquote>
+<p>linux + apache +php +mysql<br>linux +nginx +php +mysql<br>linux + tomcat +jsp + mysql&#x2F;oracle<br>windows + iis + asp(x) +mysql<br>windows +iis + php +mysql<br>windows +apache +php +mysql</p>
+</blockquote>
+<p>我们收集完这些信息之后可以去测试或者搜索对应的</p>
+<p>中间件解析漏洞，404页面返回信息，http返回包</p>
+<p>知道确切的数据库后，我们还可以去搜索该版本数据库存在哪些已知漏洞</p>
+<p>要是觉得还不太清楚的话，我上面推荐的三天直播课，里面也有关于如何进行信息搜集的教学，可以免费看</p>
+<h5 id="三、信息收集——查看Web应用"><a href="#三、信息收集——查看Web应用" class="headerlink" title="三、信息收集——查看Web应用"></a><strong>三、信息收集——查看Web应用</strong></h5><p>1.首先识别下网站是否是CMS编写的</p>
+<p>几种常见的CMS判别方法：</p>
+<p><strong>1.robots.txt文件</strong></p>
+<p>该文件的作用是告诉爬虫哪些目录是禁止爬取的。</p>
+<p>在做CMS建站辨别时，我们可以通过robots.txt文件来判断出CMS的类型</p>
+<p>由于还没有充分的实战经验，这里我就先引用其他技术人员的博客了</p>
+<p><a href="http://link.zhihu.com/?target=https://blog.csdn.net/qq1124794084/article/details/79218596">https://blog.csdn.net/qq1124794084/article/details/79218596</a></p>
+<p><img src="https://picx.zhimg.com/v2-b2822d3b26e20d4fddd505c22bca76f4_720w.jpg?source=d16d100b" alt="img"></p>
+<p>可以看到 robots.txt文件中 &#x2F;wp-admin&#x2F; 路径可以看出该网站是WordPress的CMS建站</p>
+<p><img src="https://picx.zhimg.com/v2-e950acfafa042ffacdbc674777009e41_720w.jpg?source=d16d100b" alt="img"></p>
+<p>还有像这样，直接在注释中告诉我们， 这是一个 PageAdmin的CMS建站</p>
+<p>当然有些robots.txt文件中的路径书写不是那么好辨认，这个时候我们可以直接把一些路径复制到百度去查询</p>
+<p><img src="https://pica.zhimg.com/v2-162cb89d2446102dc9f05f1839a738a2_720w.jpg?source=d16d100b" alt="img"></p>
+<p><img src="https://pica.zhimg.com/v2-9dd44025ed937b50793a0343da0407b3_720w.jpg?source=d16d100b" alt="img"></p>
+<p><strong>2.通过版权信息进行查询</strong></p>
+<p>查看办法：在网页的最底部</p>
+<p><img src="https://pic3.zhimg.com/v2-768fa8ff27c45df721a14609a365b575_720w.png?source=d16d100b" alt="img"><img src="https://pica.zhimg.com/v2-768fa8ff27c45df721a14609a365b575_720w.jpg?source=d16d100b" alt="img"></p>
+<p>类似于这样，这些版权信息可能会告诉你，该网站是否为CMS建站</p>
+<p><img src="https://pica.zhimg.com/v2-b4abcba1e042ccf421ce25035d97bba6_720w.jpg?source=d16d100b" alt="img"></p>
+<p><strong>3.查看网页源代码</strong></p>
+<p>有些站点没有robot.txt，并且也把版本信息改了。</p>
+<p>我们可以通过右键点开查看网页源码 <!-- -->是html里的注释</p>
+<p>在其中的注释信息里找找看有没有作者遗漏的信息例如：</p>
+<p><img src="https://pic3.zhimg.com/v2-0507e18cfa1e621576f44901787c11f2_720w.jpg?source=d16d100b" alt="img"><img src="https://pic3.zhimg.com/v2-0507e18cfa1e621576f44901787c11f2_720w.jpg?source=d16d100b" alt="img"></p>
+<p><strong>4.通过比较网站的MD5值</strong></p>
+<p>有些cms的扫描器就是用这个原理的，先收集某个cms的某个路径的文件的md5值，要求这个文件一般不会被使用者修改的。</p>
+<p>然后访问这个网站同样的路径下是否存在这个文件，存在的话比较md5值。</p>
+<p>相同能报出cms类型。这个比较考验字典的能力。</p>
+<p>（没试过，有能力的可以自己尝试下）</p>
+<p>5.查看后台管理页面上标</p>
+<p>6.使用云悉指纹识别</p>
+<p><a href="http://link.zhihu.com/?target=http://www.yunsee.cn/">http://www.yunsee.cn/</a></p>
+<p>直接输入域名即可</p>
+<p>7.还可以使用工具：whatweb (这个主要是识别外国的CMS，国内CMS识别不是很叼)</p>
+<h5 id="四、针对CMS建站的渗透思路"><a href="#四、针对CMS建站的渗透思路" class="headerlink" title="四、针对CMS建站的渗透思路"></a><strong>四、针对CMS建站的渗透思路</strong></h5><p><strong>1.如果是开源的CMS</strong></p>
+<p>直接百度,cms漏洞 在CMS漏洞库中寻求对应版本的漏洞</p>
+<p><a href="http://link.zhihu.com/?target=https://www.seebug.org/">https://www.seebug.org/</a></p>
+<p><strong>2.如果该版本的CMS不存在漏洞，我们就对它进行敏感目录扫描</strong>，使用工具：御剑（御剑下载及使用）、weakfilescan、DirBuster等</p>
+<p>附上weakfilescan的下载地址</p>
+<p><a href="http://link.zhihu.com/?target=https://github.com/ring04h/weakfilescan">https://github.com/ring04h/weakfilescan</a></p>
+<p>还有lijiejie的，BBSCAN的下载地址</p>
+<p><a href="http://link.zhihu.com/?target=https://github.com/lijiejie/BBScan">https://github.com/lijiejie/BBScan</a></p>
+<h5 id="五、判别是否为开发框架建站"><a href="#五、判别是否为开发框架建站" class="headerlink" title="五、判别是否为开发框架建站"></a><strong>五、判别是否为开发框架建站</strong></h5><p><strong>1.通过访问一个该不存在的页面</strong></p>
+<p>观察他的报错页面，比如404页面</p>
+<p><img src="https://pic4.zhimg.com/v2-7208a3d8b3b20044c367d75960d9ed9f_720w.jpg?source=d16d100b" alt="img"></p>
+<p>当你看到该哭脸时，证明这是一个thinkphp开发框架建立的站点。</p>
+<p><img src="https://pica.zhimg.com/v2-cc1cfb4296004c70f97d0fef39fc406c_720w.jpg?source=d16d100b" alt="img"></p>
+<p>这个跟笔一样的图标就是stryct 2 开发框架特有的404返回标志</p>
+<h5 id="六、针对开发框架的渗透思路"><a href="#六、针对开发框架的渗透思路" class="headerlink" title="六、针对开发框架的渗透思路"></a><strong>六、针对开发框架的渗透思路</strong></h5><p>1.针对thinkphp 有些版本可能存在远程代码执行，sql注入等漏洞</p>
+<p>2.如果是stryct 2 开发框架，某别版本可能存在任意命令执行漏洞</p>
+<p>网上有 struct 2 命令执行漏洞利用工具</p>
+<p>3.如果该开发框架不存在漏洞，则进行敏感目录文件扫描。</p>
+<p>这里还是使用像刚刚提到的御剑等工具</p>
+<h5 id="七、针对个人开发网站的渗透思路"><a href="#七、针对个人开发网站的渗透思路" class="headerlink" title="七、针对个人开发网站的渗透思路"></a><strong>七、针对个人开发网站的渗透思路</strong></h5><p>1.因为个人开发的网站也许有更大的可能存在各种漏洞，所以我们可以直接用扫描器去扫描漏洞</p>
+<p>这里推荐使用：awvs、appscan等工具，然后查看扫描结果</p>
+<p>2.手动测试，观察网站是否存在SQL注入、XSS盲打后台、上传漏洞、然后根据业务功能特点去测试</p>
+<p>3.如果不存在漏洞，和之前的步骤一样，扫描目录、扫描敏感信息文件、爆破后台</p>
+<hr>
+<h3 id="2-漏洞扫描"><a href="#2-漏洞扫描" class="headerlink" title="2.漏洞扫描"></a>2.漏洞扫描</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">tip1:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span>根据第一步收集的信息,测试是否出现漏洞，确定注入点，</span><br><span class="line"><span class="number">2.</span>有漏洞的服务和开放的可爆破端口，查看网页上有没有SQL</span><br><span class="line"><span class="number">3.</span>注入或者XSS注入点配合burp进行测试。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tip2:</span><br><span class="line">    </span><br><span class="line"><span class="number">1</span>)用AWVS、APPSCAN、长亭科技的Xray等扫描器检测Web漏洞，如XSS,XSRF,sql注入，代码执行，命令执行，越权访问，目录读取，任意文件读取，下载，文件包含， 远程命令执行，弱口令，上传，编辑器漏洞，暴力破解等</span><br><span class="line"><span class="number">2</span>)用namp、天镜、Nessus、极光等扫描系统ip，对扫描出来的高危漏洞进行测试，如ms08-067、ms17-<span class="number">0</span>10、ms12-020、ms15-035、ms19-0708、永恒之蓝<span class="number">2</span>代、cve-<span class="number">2017</span>-<span class="number">7494</span>（samba）、cve-<span class="number">2014</span>-<span class="number">6271</span>(破壳)、php cgi等相关漏洞验证。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">漏洞扫描工具</span><br><span class="line">AWVS</span><br><span class="line">Xary</span><br><span class="line">ALLIN</span><br><span class="line">AppSan</span><br><span class="line">Nessus</span><br><span class="line">Goby</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="3-漏洞利用"><a href="#3-漏洞利用" class="headerlink" title="3.漏洞利用"></a>3.漏洞利用</h3><p>根据前的测试出的漏洞，尝试获取webshell，上传小马&#x2F;大马。尝试提权，扫描内网主机是否有漏洞 </p>
+<h3 id="4-权限提升"><a href="#4-权限提升" class="headerlink" title="4.权限提升"></a>4.权限提升</h3><p>提权服务器，比如windows下mysql的udf提权，serv-u提权，windows低版本的漏洞，如iis6,pr,巴西烤肉，linux脏牛漏洞，linux内核版本漏洞提权，linux下的mysql system提权以及oracle低权限提权</p>
+<h3 id="5-日志清理"><a href="#5-日志清理" class="headerlink" title="5.日志清理"></a>5.日志清理</h3><p>操作系统、中间件、数据库等日志进行清除</p>
+<p><strong>Windows系统</strong></p>
+<p>1：如果是windows系统，可用MSF中的 clearev 命令清除痕迹</p>
+<p>2：如果3389远程登录过，需要清除mstsc痕迹</p>
+<p>3：执行命令清除日志：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> %WINDR%* .log /a/s/q/f</span><br></pre></td></tr></table></figure>
+
+<p>4：如果是web应用，找到web日志文件，删除 </p>
+<p><strong>Linux系统</strong></p>
+<p>1：如果是Linux系统，在获取权限后，执行以下命令，不会记录输入过的命令</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HISTFILE=/dev/null export HISTSIZE=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>2：删除 &#x2F;var&#x2F;log 目录下的日志文件</p>
+<p>3：如果是web应用，找到web日志文件，删除 </p>
+<h3 id="6-总结报告及修复方案"><a href="#6-总结报告及修复方案" class="headerlink" title="6.总结报告及修复方案"></a>6.总结报告及修复方案</h3><ul>
+<li><p>确定网站漏洞后，再进行详细的归总 ，看是否能拿下网站的管理权限，是否可以上传脚本木马进行控制网站，以及能否渗透拿到服务器的管理权限。制定详细的渗透 测试计划来达到攻击的目的。</p>
+</li>
+<li><p>对漏洞进行代码分析，包括检测出来的 漏洞是在哪里，通过这个漏洞可以获取那些机密信息，对于代码的逻辑漏洞也进行分析和详细的测试。接下来就是进行渗透攻击 ，对网站进行实战的攻击测试，通过利用工具来入侵网站，整个网站渗透测试过程总结到一个 安全报告，对于渗透测试出来的漏洞进行详细的记录，是什么代码导致什么的漏洞，以及修复 建议都要写到报告当中。</p>
+</li>
+</ul>
+<h3 id="7-常用技术"><a href="#7-常用技术" class="headerlink" title="7.常用技术"></a><strong>7.常用技术</strong></h3><p><strong>sqlmap，怎么对一个注入点注入？</strong></p>
+<p>　　1）如果是get型号，直接，sqlmap -u “诸如点网址”.</p>
+<p>　　2) 如果是post型诸如点，可以sqlmap -u “注入点网址” –data&#x3D;”post的参数”</p>
+<p>　　3）如果是cookie，X-Forwarded-For等，可以访问的时候，用burpsuite抓包，注入处用*号替换，放到文件里，然后sqlmap -r “文件地址”</p>
+<p>　　nmap，扫描的几种方式</p>
+<p>sql注入的几种类型？</p>
+<p>　　1）报错注入</p>
+<p>　　2）bool型注入</p>
+<p>　　3）延时注入</p>
+<p>　　4）宽字节注入</p>
+<p>　　报错注入的函数有哪些？</p>
+<p>　　1）and extractvalue(1, concat(0x7e,(<a target="_blank" rel="noopener" href="https://cn-sec.com/archives/tag/select">select</a> @@version),0x7e))】】】—————-</p>
+<p>　　2）通过floor报错 向下取整</p>
+<p>　　3）+and updatexml(1, concat(0x7e,(secect @@version),0x7e),1)</p>
+<p>　　4）.geometrycollection()select * from test where id&#x3D;1 and geometrycollection((select * from(select * from(select user())a)b));</p>
+<p>　　5）.multipoint()select * from test where id&#x3D;1 and multipoint((select * from(select * from(select user())a)b));</p>
+<p>　　6）.polygon()select * from test where id&#x3D;1 and polygon((select * from(select * from(select user())a)b));</p>
+<p>　　7）.multipolygon()select * from test where id&#x3D;1 and multipolygon((select * from(select * from(select user())a)b));</p>
+<p>　　8）.linestring()select * from test where id&#x3D;1 and linestring((select * from(select * from(select user())a)b));</p>
+<p>　　9）.multilinestring()select * from test where id&#x3D;1 and multilinestring((select * from(select * from(select user())a)b));</p>
+<p>　　10）.exp()select * from test where id&#x3D;1 and exp(~(select * from(select user())a));</p>
+<p>　　延时注入如何来判断？</p>
+<p>　　if(ascii(substr(“hello”, 1, 1))&#x3D;104, sleep(5), 1)</p>
+<p>　　盲注和延时注入的共同点？</p>
+<p>　　都是一个字符一个字符的判断</p>
+<p>　　如何拿一个网站的webshell？</p>
+<p>　　上传，后台编辑模板，sql注入写文件，命令执行，代码执行，</p>
+<p>　　一些已经爆出的cms漏洞，比如dedecms后台可以直接建立脚本文件，wordpress上传插件包含脚本文件zip压缩包等</p>
+<p>　　sql注入写文件都有哪些函数？</p>
+<p>　　select ‘一句话’ into outfile ‘路径’<br>　　select ‘一句话’ into dumpfile ‘路径’<br>　　select ‘<?php eval($_POST[1]) ?>‘ into dumpfile ‘d:\wwwrootbaidu.comnvhack.php’;</p>
+<p>　　<strong>如何防止CSRF?</strong></p>
+<p>　　1,验证referer</p>
+<p>　　2，验证token</p>
+<p>　　详细：浅谈cnode社区如何防止csrf攻击 - CNode技术社区</p>
+<p>　　owasp 漏洞都有哪些？</p>
+<p>　　1、SQL注入防护方法：</p>
+<p>　　2、失效的身份认证和会话管理</p>
+<p>　　3、跨站脚本攻击XSS</p>
+<p>　　4、直接引用不安全的对象</p>
+<p>　　5、安全配置错误</p>
+<p>　　6、敏感信息泄露</p>
+<p>　　7、缺少功能级的访问控制</p>
+<p>　　8、跨站请求伪造CSRF</p>
+<p>　　9、使用含有已知漏洞的组件</p>
+<p>　　10、未验证的重定向和转发</p>
+<p>　　<strong>SQL注入防护方法？</strong></p>
+<p>　　1、使用安全的API</p>
+<p>　　2、对输入的特殊字符进行Escape转义处理</p>
+<p>　　3、使用白名单来规范化输入验证方法</p>
+<p>　　4、对客户端输入进行控制，不允许输入SQL注入相关的特殊字符</p>
+<p>　　5、服务器端在提交数据库进行SQL查询之前，对特殊字符进行过滤、转义、替换、删除。</p>
+<p>　　代码执行，文件读取，命令执行的函数都有哪些？</p>
+<p>　　1，代码执行：eval,preg_replace+&#x2F;e,assert,call_user_func,call_user_func_array,create_function<br>　　2，文件读取：file_get_contents(),highlight_file(),fopen(),read file(),fread(),fgetss(), fgets(),parse_ini_file(),show_source(),file()等<br>　　3，命令执行：system(), exec(), shell_exec(), passthru() ,pcntl_exec(), popen(),proc_open()</p>
+<p>　　img标签除了onerror属性外，还有其他获取管理员路径的办法吗？</p>
+<p>　　src指定一个远程的脚本文件，获取referer</p>
+<p>　　img标签除了onerror属性外，并且src属性的后缀名，必须以.jpg结尾，怎么获取管理员路径。</p>
+<p>　　1,远程服务器修改apache配置文件，配置.jpg文件以php方式来解析</p>
+<p>　　会以php方式来解析</p>
+<p>　　<strong>代码审计</strong></p>
+<p>　　eval,preg_replace+&#x2F;e,assert,call_user_func,call_user_func_array,create_function</p>
+<p>　　文件读取：file_get_contents(),highlight_file(),fopen(),read file(),fread(),fgetss(), fgets(),parse_ini_file(),show_source(),file()等</p>
+<p>　　命令执行：system(), exec(), shell_exec(), passthru() ,pcntl_exec(), popen(),proc_open()</p>
+<p>　　<strong>绕过walf</strong></p>
+<p>　　1、关键字可以用%（只限IIS系列）。比如select，可以sel%e%ct。原理：网络层waf对SEL%E%CT进行url解码后变成SEL%E%CT，匹配select失败，而进入asp.dll对SEL%E%CT进行url解码却变成select。IIS下的asp.dll文件在对asp文件后参数串进行url解码时，会直接过滤掉09-0d（09是tab键,0d是回车）、20（空格）、%(后两个字符有一个不是十六进制)字符。xss也是同理。</p>
+<p>　　2、通杀的，内联注释。安全狗不拦截，但是安全宝、加速乐、D盾等，看到&#x2F;!&#x2F;就Fack了，所以只限于安全狗。比如：&#x2F;!select*&#x2F;</p>
+<p>　　3、编码。这个方法对waf很有效果，因为一般waf会解码，但是我们利用这个特点，进行两次编码，他解了第一次但不会解第二次，就bypass了。腾讯waf、百度waf等等都可以这样bypass的。</p>
+<p>　　4，绕过策略一：伪造搜索引擎</p>
+<p>　　早些版本的安全狗是有这个漏洞的，就是把User-Agent修改为搜索引擎</p>
+<p>　　5，360webscan脚本存在这个问题，就是判断是否为admin dede install等目录，如果是则不做拦截</p>
+<p>　　GET &#x2F;pen&#x2F;news.php?id&#x3D;1 union select user,password from mysql.user</p>
+<p>　　GET &#x2F;pen&#x2F;news.php&#x2F;admin?id&#x3D;1 union select user,password from mysql.user</p>
+<p>　　GET &#x2F;pen&#x2F;admin&#x2F;..news.php?id&#x3D;1 union select user,password from mysql.user</p>
+<p>　　6，multipart请求绕过，在POST请求中添加一个上传文件，绕过了绝大多数WAF。</p>
+<p>　　7，参数绕过，复制参数，id&#x3D;1&amp;id&#x3D;1</p>
+<p>　　用一些特殊字符代替空格，比如在mysql中%0a是换行，可以代替空格，这个方法也可以部分绕过最新版本的安全狗，在sqlserver中可以用&#x2F;**&#x2F;代替空格</p>
+<p>　　8,内联注释，</p>
+<p>　　文件上传，复制文件包一份再加一份</p>
+<p>　　在 form-data;后面增加一定的字符</p>
+<p>　　宽字符注入</p>
+<p>　　宽字符：解 决方法：就是在初始化连接和字符集之后，使用SET character_set_client&#x3D;binary来设定客户端的字符集是二进制的。修改Windows下的MySQL配置文件一般是 my.ini，Linux下的MySQL配置文件一般是my.cnf，比如：mysql_query(“SETcharacter_set_client&#x3D;binary”);。character_set_client指定的是SQL语句的编码，如果设置为 binary，MySQL就以二进制来执行，这样宽字节编码问题就没有用武之地了。</p>
+<hr>
+<p><strong>参考</strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/372317132">针对单个网站的渗透思路（精） - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cn-sec.com/archives/499879.html">给你一个网站如何做渗透测试？（流程全） | CN-SEC 中文网</a></p>
+<p><strong>END</strong></p>
+<hr>
+<p><span style="color:GreenYellow;">单词速记</span></p>
+<hr>
+<p><img src="/photos/2022/0924/0924.jpg"></p>
+<p><span style="color:red;">秋是第二个春，此时，每一片叶子都是一朵鲜花。</span></p>
+<p>————加缪</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#T"><span class="toc-number">1.</span> <span class="toc-text">T</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0%E4%B8%80%E4%B8%AA%E5%BE%85%E6%B5%8B%E7%AB%99%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="toc-number"></span> <span class="toc-text">拿到一个待测站，应该怎么做？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">1.信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tip1"><span class="toc-number">1.1.</span> <span class="toc-text">tip1:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tip2%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">tip2：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%A7%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">1.2.1.</span> <span class="toc-text">一、开始信息收集——端口扫描与分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%8C%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AF%86%E5%88%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">二、信息收集——中间件，脚本语言，数据库的识别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E2%80%94%E2%80%94%E6%9F%A5%E7%9C%8BWeb%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">三、信息收集——查看Web应用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%92%88%E5%AF%B9CMS%E5%BB%BA%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.4.</span> <span class="toc-text">四、针对CMS建站的渗透思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%88%A4%E5%88%AB%E6%98%AF%E5%90%A6%E4%B8%BA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E5%BB%BA%E7%AB%99"><span class="toc-number">1.2.5.</span> <span class="toc-text">五、判别是否为开发框架建站</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%92%88%E5%AF%B9%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.6.</span> <span class="toc-text">六、针对开发框架的渗透思路</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%92%88%E5%AF%B9%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.7.</span> <span class="toc-text">七、针对个人开发网站的渗透思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F"><span class="toc-number">2.</span> <span class="toc-text">2.漏洞扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.漏洞利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.</span> <span class="toc-text">4.权限提升</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5.日志清理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A%E5%8F%8A%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">6.</span> <span class="toc-text">6.总结报告及修复方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B8%B8%E7%94%A8%E6%8A%80%E6%9C%AF"><span class="toc-number">7.</span> <span class="toc-text">7.常用技术</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/09/24/0924/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/09/24/0924/&text=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/09/24/0924/&is_video=false&description=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=渗透测试总结&amp;&amp;域名迁移&body=Check out this article: http://example.com/2022/09/24/0924/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/09/24/0924/&title=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/09/24/0924/&name=渗透测试总结&amp;&amp;域名迁移&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/09/24/0924/&t=渗透测试总结&amp;&amp;域名迁移"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

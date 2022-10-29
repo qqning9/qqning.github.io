@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络摘要虽然深度学习在各种智能任务中表现出卓越的性能，但在资源有限的边缘设备上部署复杂的模型仍然是一个具有挑战性的问题。过滤器修剪执行与系统无关的优化，将神经网络模型缩小为更薄的模型，为高效的设备推理提供有吸引力的解决方案。流行的方法通常对整个神经网络模型使用固定的剪枝率，以减少过滤器剪枝的优化空间。然而，不同层的过滤器可能对模型推理具有不同的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络">
+<meta property="og:url" content="http://example.com/2022/04/23/0423/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络摘要虽然深度学习在各种智能任务中表现出卓越的性能，但在资源有限的边缘设备上部署复杂的模型仍然是一个具有挑战性的问题。过滤器修剪执行与系统无关的优化，将神经网络模型缩小为更薄的模型，为高效的设备推理提供有吸引力的解决方案。流行的方法通常对整个神经网络模型使用固定的剪枝率，以减少过滤器剪枝的优化空间。然而，不同层的过滤器可能对模型推理具有不同的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/photos/2022/0423/5.jpg">
+<meta property="og:image" content="http://example.com/photos/2022/0423/4.jpg">
+<meta property="og:image" content="http://example.com/photos/2022/0423/3.jpg">
+<meta property="og:image" content="http://example.com/photos/2022/0423/2.jpg">
+<meta property="og:image" content="http://example.com/photos/2022/0423/1.jpg">
+<meta property="og:image" content="http://example.com/photos/2022/0423/0423.jpg">
+<meta property="article:published_time" content="2022-04-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T11:48:49.901Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="CNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/photos/2022/0423/5.jpg">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/09/24/0924/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/04/10/0410/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/23/0423/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/23/0423/&text=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/23/0423/&is_video=false&description=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络&body=Check out this article: http://example.com/2022/04/23/0423/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/23/0423/&name=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/23/0423/&t=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E7%81%B5%E6%B4%BB%E6%AF%94%E7%8E%87%E8%BF%87%E6%BB%A4%E5%99%A8%E4%BF%AE%E5%89%AA%E4%BC%98%E5%8C%96%E6%99%BA%E8%83%BD%E8%BE%B9%E7%BC%98%E5%8A%A0%E9%80%9F%E5%99%A8%E4%B8%8A%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">一、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Proposed-approach"><span class="toc-number">1.3.</span> <span class="toc-text">*3. Proposed approach*</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BB%93%E8%AE%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">6. *结论*</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-04-22T16:00:00.000Z" itemprop="datePublished">2022-04-23</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/CNN/" rel="tag">CNN</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h2 id="通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><a href="#通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络" class="headerlink" title="通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"></a>通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络</h2><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a><em><strong>摘要</strong></em></h3><p>虽然深度学习在各种智能任务中表现出卓越的性能，但在资源有限的边缘设备上部署复杂的模型仍然是一个具有挑战性的问题。过滤器修剪执行与系统无关的优化，将神经网络模型缩小为更薄的模型，为高效的设备推理提供有吸引力的解决方案。流行的方法通常对整个神经网络模型使用固定的剪枝率，以减少过滤器剪枝的优化空间。然而，不同层的过滤器可能对模型推理具有不同的敏感性，因此灵活的剪枝比率设置可以进一步提高压缩模型的准确性。在本文中，我们提出了 FlexPruner，这是一种通过灵活比率过滤器修剪来压缩和加速神经网络模型的新方法。我们的方法遵循基于贪心的策略来选择要修剪的过滤器并执行迭代的损失感知修剪过程，从而在修剪大量过滤器时实现对现有方法的显着准确性改进。在六个具有代表性的智能边缘加速器上使用最先进的残差神经网络进行评估证明了 FlexPruner 的有效性，它通过利用灵活的修剪率来降低修剪模型的精度下降，并实现设备上推理的实际加速。</p>
+<h3 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h3><p>深度卷积神经网络 (CNN) 在各种智能任务中取得了显着进步，例如图像分析 [1]、语音识别 [2] 和自然语言处理 [3]。然而，由于这些模型的计算成本、存储空间、内存占用和能源消耗非常昂贵，因此在资源受限的边缘设备上部署复杂的神经网络很困难。例如，常用的 ResNet-152 模型 [4] 涉及超过 6000 万个参数和超过 110 亿次 FLOP（浮点运算）来对单个图像进行分类。虽然我们可以将推理过程从边缘设备卸载到云服务器，但这种解决方案受到互联网环境和隐私问题的限制，无法在许多现实场景中应用。</p>
+<p>为了实现有效的设备上推理，模型压缩 [5] 经常发挥作用，因为它简化了深度神经网络模型，具有可容忍的精度损失。随着对边缘智能的需求不断增加，企业纷纷发布智能边缘加速器，集成专用硬件、包括英特尔的神经计算棒、Google 的边缘张量处理单元 (TPU) [8] 和 NVIDIA 的 Jetson Nano [9] 等。然而，在这些专用智能设备上优化深度神经网络比通用设备更具挑战性，因为运行时系统和推理框架通常由硬件供应商提供，这意味着智能边缘加速器的软件环境通常是封闭源代码和很难修改。在这种情况下，与系统相关的压缩技术（如量化 [10] 和二值化 [11]）的适用性受到限制。此外，这些优化方法可能需要额外的计算开销，例如数据量化和去量化。因此，在智能边缘加速器上优化深度神经网络时，更提倡独立于特定系统的过滤级剪枝技术。</p>
+<p>先前对细粒度神经网络剪枝的一些努力，重点是直接在过滤器中去除一些权重，可以实现剪枝模型的高度非结构化稀疏性 [12-14]。但是，现成的库无法支持非结构化稀疏模型。因此，需要专门设计的软件和硬件技术 [15]，这对于大多数现实世界的应用来说都是昂贵的或无法实现的。相比之下，过滤器级别的剪枝方法 [16-18] 可以通过减少一些不重要的卷积过滤器将神经网络缩小为更小的神经网络，从而实现更实际的加速。然而，大多数现有的剪枝方法对整个神经网络使用固定的剪枝率（即，对不同的层使用相同的剪枝率），如图 1（a）所示，当剪枝大量过滤器时，预测精度不可避免地会降低。先前的几项研究[19,20]表明，不同层的过滤器具有不同的数据分布并发挥不同的作用。例如，前几层提取低级特征（例如，点和线），而最后几层提取高级特征（例如，整个对象）。不同层的过滤器对神经网络推理的影响可能不同，在优化时需要区别对待。因此，如图 1(b) 所示的灵活比率过滤器剪枝方法更有可能有效地压缩繁琐的神经网络。因此，本文重点解决以下具有挑战性的问题：如何使用灵活的过滤器修剪率修剪神经网络模型，从而在满足压缩要求的同时达到更高的精度？</p>
+<p><img src="/photos/2022/0423/5.jpg"></p>
+<p>图1.比较固定比率过滤器修剪方法与灵活比率过滤器修剪方法。每个圆角矩形代表神经网络模型中的一个层，每个框代表相应层中的一个过滤器。要删除的过滤器以红色标记为“×”。</p>
+<p>在本文中，我们提出了 FlexPruner，一种用于优化神经网络的新型灵活比率过滤器剪枝方法，旨在通过使用更灵活的剪枝比率来减少剪枝模型的精度下降，同时满足智能边缘加速器的压缩要求。我们的方法执行迭代损失感知修剪过程，该过程遵循基于贪婪的策略来选择要修剪的神经网络过滤器。对于每一个剪枝步骤，FlexPruner 都会根据试探性压缩模型的准确度损失来构建整个神经网络中各层的优先级。所选层的过滤器会导致从当前模型到候选修剪模型的最小精度损失，将执行仔细的微调过程以重建权重参数。我们将我们的方法与其他最先进的过滤器修剪方法进行比较。实验结果表明，在对大部分过滤器进行剪枝时，FlexPruner 对神经网络模型进行剪枝后的精度损失明显小于现有方法，同时将剪枝后的过滤器数量和压缩模型的计算复杂度保持在相似水平。</p>
+<p>虽然一些研究 [21,22] 试图为神经网络中的不同层分配不同的比率，例如，将较大的比率分配给较浅的层，但基于规则的修剪比率分配方法需要精心设计并仔细执行超参数调优，算法开发难度大。我们需要的是一种机制，可以自动选择要修剪的过滤器数量，以便为任何给定模型实现更灵活的比率设置。据我们所知，这项工作是首次尝试研究用于过滤器修剪的自动灵活比率设置方案，以优化智能边缘加速器上的深度神经网络。</p>
+<p>我们将本文的贡献总结如下：</p>
+<p>• 我们提出了一种新颖的过滤器修剪方法，即 FlexPruner，通过利用灵活的修剪率设置有效地压缩神经网络模型，同时满足资源有限的边缘加速器的压缩要求； </p>
+<p>• 我们评估最先进的深度神经网络在 CIFAR-10 和 ImageNet 上的性能，以证明我们方法的有效性。 FlexPruner 成功降低了修剪模型的精度下降，在修剪大量过滤器时实现了对现有固定比率修剪方法的显着改进； </p>
+<p>• 我们将压缩模型部署在六个具有代表性的商业智能边缘加速器上，这些加速器集成了专门的加速模块，包括 Edge TPU、NCS2 和 Jetson 系列边缘设备。实验结果表明，FlexPruner 在实践中不仅可以减小模型大小，还可以加速模型推理。</p>
+<p><em><strong>神经网络修剪。</strong></em> 在非结构化方案中细粒度权重修剪压缩深度神经网络的先前努力 [12,14,23] 导致高稀疏性和理论加速。在剪枝过程中对权重的结构没有限制，因此模型中任何不重要的参数都可以被剪枝。然而，具有不规则稀疏权重的修剪模型很难利用现成的高效深度学习库，因此在实践中无法达到预期的加速。为了支持这些非结构化稀疏模型，需要特定的软件和硬件 [15]，从而导致开发成本高昂。近年来，已经探索了许多过滤器级别的剪枝方法[16,17,21,24,25]，它们减少了神经网络的冗余过滤器或通道，实现了神经网络权重的结构化去除，从而使模型更薄。现有库可以完美地支持这种结构化稀疏模型，以实现真实的加速，因为它的结构没有损坏。更重要的是，修剪后的模型具有更少的存储使用量以及设备上的内存占用。例如，他等人。 [16,17] 提出了一种软剪枝方法，可以在训练过程中动态地将不重要的过滤器归零。他等人。 [21] 通过利用基于 LASSO 的通道选择策略和最小二乘重建算法来压缩神经网络模型。罗等人。 [26] 根据从下一层计算的统计信息修剪神经网络层中的过滤器。加马纳亚克等人。 [27] 提出了一种贪婪剪枝方法，它同时考虑了过滤器的重要性和硬件平台特性。吴等人。 [28] 提出了一种功率跟踪感知和退出引导的神经网络压缩方法，以支持对能量收集供电设备的间歇性推理。Wang等人[29]开发了一种轻量级的运行时压缩算法，用于在资源受限的微控制器单元上实现神经网络推理，该算法动态修剪中间特征映射以适应可用内存。林等人。 [24] 提出了一种过滤器修剪方法，该方法通过观察特征图的等级来确定过滤器的相对重要性。李等人。 [25] 提出了一种融合催化剪枝方法来同时剪枝参数和非参数算子。然而，以前的工作通常为神经网络的层设置固定的剪枝率，这可能会错过进一步降低精度损失的优化机会。不同层的过滤器可能有不同的敏感度，需要区别对待。据我们所知，现有的研究很少在修剪过程中系统地考虑这一因素。</p>
+<p><em><strong>*神经网络加速器。*</strong></em> 最近，研究人员研究了神经网络加速器，它集成了特定领域的硬件并提供比通用处理器更高的性能，以满足日益增长的智能计算需求。例如，陈等人。 [30] 提出了 DianNao 系列机器学习加速器，包括 DianNao [31]、DaDianNao [32]、ShiDianNao [33] 和 PuDianNao [34]。莫罗等人。 [35] 提出了多功能张量加速器（VTA），提供了一个可编程架构模板来设计特定领域的加速器。针对边缘计算场景，公司发布了边缘智能设备，如谷歌Edge TPU [8]、英特尔NCS [6,7]、NVIDIA Jetson TX2 [36]、NVIDIA Xavier NX [37]、NVIDIA Jetson Nano [9] .虽然神经网络加速器显示出显着的性能提升，但在特定领域的智能设备上优化深度神经网络比通用设备更具挑战性。一般来说，运行时系统和推理框架都是由硬件供应商提供的，这意味着神经网络加速器的软件环境通常是闭源的，难以修改。因此，在神经网络加速器上优化深度神经网络时，提倡使用与系统无关的优化方法，例如过滤器级别的剪枝。</p>
+<p><em><strong>*超参数调整。*</strong></em> 配置细粒度的过滤器修剪率也可以被认为是一个经典的超参数优化问题。为了合理地为要压缩的神经网络中的不同层分配修剪率，自动机器学习 (AutoML) 通常会发挥作用。 AutoML [38-41] 通过精心设计的策略（例如进化方法和强化学习）执行详尽的超参数搜索，这既耗时又耗费资源。例如，他等人。 [38] 提出了一种基于强化学习的模型压缩 AutoML 框架，以及 Lin 等人。 [39]提出了一种基于人工蜂群算法的通道修剪自动结构搜索方法。王等人。 [40] 提出了一种设计方法，以联合方式优化神经网络架构、修剪和量化策略。董等人。 [41] 提出了一种用于网络修剪的可微变换架构搜索方法。这些 AutoML 方法与我们的方法之间的主要区别在于，我们提出的方法不需要详尽的搜索过程来找到优化的修剪率设置。我们提出了一种基于贪心的过滤器剪枝方法，该方法在优化过程中执行灵活的比率设置，从而实现对要剪枝的层的更好控制，并实现比基于 AutoML 的方法更快的神经网络压缩。将我们的剪枝方法与自动机器学习技术相结合是一个很有前途的研究方向，我们将在未来的工作中对其进行探索。</p>
+<p><em><strong>*其他优化技术。*</strong></em> 量化 [10,42,43] 代表了另一种有吸引力的压缩技术，它使用低精度整数代码表示原始浮点值，通过低精度计算压缩和加速神经网络。例如，雅各布等人。 [10] 设计了一种量化方案，将原始模型压缩为 8 位模型，实现高效的整数算术推理。周等人。 [42] 提出了一种增量网络量化方法，可有效地将全精度模型转换为低精度版本。公园等人。 [43]提出了一种基于加权熵的非线性神经网络量化方法，以满足更严格的精度损失约束。此外，一些研究侧重于神经网络二值化 [11,44–47]，它用 1 位值表示全精度模型。例如， Hubara 等人。 [46] 提出了一种用二进制权重和激活来训练神经网络的方法。拉斯特加里等人。 [47] 提出了 XNOR-Net，它使用位运算来近似卷积计算。尽管量化模型具有加速潜力，但高效的低精度计算通常需要对运行时系统进行修改，这在智能边缘加速器上几乎无法实现，因为它们的工具链是闭源的。此外，在自适应和可配置推理方面存在一些努力 [48-53]，实现了设备上深度学习的资源感知动态执行。李等人。 [48] 设计了一种早期退出神经网络推理方法，该方法利用不同的退出选项来适应边缘设备上的能量约束。马可等人。 [49] 设计了一种动态神经网络选择方法，该方法在嵌入式系统上具有离线训练的预测模型。熊猫等人。 [50,51] 提出了一种通过根据输入数据的难度监控输出来有条件地激活网络层的方法。贾亚科迪等人。 [52,53] 提出了具有越来越复杂的分类器的输入特定自适应推理，从而在能量和准确性之间进行权衡。本文的工作本质上是通过过滤剪枝技术优化神经网络。其他加速方法与我们的正交，可能会进一步提高性能。</p>
+<h3 id="3-Proposed-approach"><a href="#3-Proposed-approach" class="headerlink" title="*3. Proposed approach*"></a><em><strong>*3. Proposed approach*</strong></em></h3><p>在本节中，我们将全面介绍我们提出的方法。图 2 描述了 FlexPruner 的概述。与固定比率过滤器修剪方法不同，它以固定比率修剪所有层，然后执行微调过程，我们的方法由一系列损失感知修剪时期组成，并根据每个时期修剪一定数量的过滤器一个预定义的参数。在每个修剪时期结束时，将重建模型的权重以恢复准确性。迭代执行修剪过程，直到满足压缩要求。</p>
+<p> <img src="/photos/2022/0423/4.jpg"></p>
+<p>在剪枝之前，我们准备采样数据集D’并计算所需的压缩要求（1 2）</p>
+<p><img src="/photos/2022/0423/3.jpg"> </p>
+<p>压缩要求<img src="/photos/2022/0423/2.jpg">;  Ra期望的剪枝率 ;  Kl l层的过滤器数量</p>
+<p>将修剪后的第 l层过滤器表示为Wl’，将Wl’的未修剪过滤器的数量表示为Kl’</p>
+<p>探索步骤Es</p>
+<p>修剪过程将迭代执行，直到满足压缩要求（第 3-4 行）。</p>
+<p>对于每个修剪时期（第 5-11 行），如果满足条件（第 6 行），我们会暂时修剪Wl’层</p>
+<p>我们根据它们的第2范数修剪过滤器，修剪后的过滤器被零矩阵掩盖（第 7-9 行）。</p>
+<p>然后，选择具有最小精度损失的候选修剪模型（第 10 行）。</p>
+<p>我们微调修剪后的模型以重建权重，从而恢复模型的准确性（第 11 行）。</p>
+<p>在满足压缩要求后，执行微调过程直到收敛（第 12 行）。</p>
+<p>最后，去除掩蔽过滤器并获得最终的压缩模型W′（第 13-14 行）。</p>
+<p> <img src="/photos/2022/0423/1.jpg"></p>
+<p>图4使用不同期望修剪率的神经网络的准确性。橙色线代表原始模型，蓝色线代表修剪后的模型。 （有关此图例中颜色参考的解释，请读者参考本文的网络版本。）</p>
+<p>ResNet-20 模型、ResNet-32 模型</p>
+<h4 id="6-结论"><a href="#6-结论" class="headerlink" title="6. *结论*"></a><strong>6.</strong> <em><strong>*结论*</strong></em></h4><p>在本文中，我们提出了一种过滤器级别的修剪方法，即FlexPruner，它可以自动选择要修剪的过滤器数量，以实现更灵活的速率设置，从而有效压缩和加速智能边缘加速器上的深度学习模型。我们利用残差神经网络在六个具有代表性的智能边缘加速器上评估了我们的方法。实验结果验证了 FlexPruner 的有效性，它可以减少剪枝模型的精度下降，实现模型推理的真实加速。在未来的工作中，我们计划将我们提出的过滤器级修剪方法与其他模型优化技术（例如可配置架构）相结合，以进一步提高设备上神经网络推理的性能。</p>
+<hr>
+<p><strong>END</strong></p>
+<hr>
+<p><span style="color:GreenYellow;">单词速记</span></p>
+<p>re ( 重新) +trieve ( &#x3D;find 找到) -&gt; 重新找到 -&gt; 寻回</p>
+<p>fracture:fract+ure→断的状态→骨折</p>
+<p>sheep羊+herd羊群–牧羊人–牧师</p>
+<p>醉汉（lush）遭到鞭打（lash）</p>
+<p>brew【酝酿】与breed【产生，繁殖】同源</p>
+<p>mingle（v. 使混合）和single（a.单个的）一起记</p>
+<p>vain vein</p>
+<p>caut(看作cat猫)+ion——像猫一样——谨慎的caution</p>
+<p>clash and fusion 冲突与融合</p>
+<p>solid（固定的）+ arity &#x3D; 成一块固体 &#x3D; 团结一致的</p>
+<p>subordinate  ordinate</p>
+<p>intrigue in+trig(&#x3D;tric复杂)+ue—在复杂阴谋中—密谋；ant：pall v. 使平淡无味</p>
+<p>ice（冰）+berg（山）&#x3D;iceberg （冰山, 冷若冰山的人）</p>
+<p>p+act(行为)–》签订”条约”是为了约束行为</p>
+<hr>
+<p><img src="/photos/2022/0423/0423.jpg"></p>
+<p>Don’t watch the clock. Do what it does. Keep going.</p>
+<p><span style="color:orange;">不要只看时钟，要效仿时钟，一直前行。</span></p>
+<p>————Sam Levenson</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E7%81%B5%E6%B4%BB%E6%AF%94%E7%8E%87%E8%BF%87%E6%BB%A4%E5%99%A8%E4%BF%AE%E5%89%AA%E4%BC%98%E5%8C%96%E6%99%BA%E8%83%BD%E8%BE%B9%E7%BC%98%E5%8A%A0%E9%80%9F%E5%99%A8%E4%B8%8A%E7%9A%84%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">一、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Proposed-approach"><span class="toc-number">1.3.</span> <span class="toc-text">*3. Proposed approach*</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%BB%93%E8%AE%BA"><span class="toc-number">1.3.1.</span> <span class="toc-text">6. *结论*</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/04/23/0423/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/04/23/0423/&text=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/04/23/0423/&is_video=false&description=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络&body=Check out this article: http://example.com/2022/04/23/0423/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/04/23/0423/&title=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/04/23/0423/&name=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/04/23/0423/&t=通过灵活比率过滤器修剪优化智能边缘加速器上的深度神经网络"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

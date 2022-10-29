@@ -1,0 +1,3223 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="【转载】Sec-Interview-4-2023应届毕业生在毕业前持续更新、收集的安全岗面试题及面试经验分享~ 写在更前面 去年年底找到实习后到现在也实习了半年整了，终于轮到我秋招了。。。十分焦虑，互联网行业今年本就不景气，再加上安全这块不是互联网公司（指甲方）中赚钱的业务，缩招甚至不招是难免的，今年只能说夹缝中生存了。。。祝各位hxd都能拿到理想的offer去做想做的事吧！  隔了好久更新，主">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sec-Interview">
+<meta property="og:url" content="http://example.com/2022/10/01/1001/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="【转载】Sec-Interview-4-2023应届毕业生在毕业前持续更新、收集的安全岗面试题及面试经验分享~ 写在更前面 去年年底找到实习后到现在也实习了半年整了，终于轮到我秋招了。。。十分焦虑，互联网行业今年本就不景气，再加上安全这块不是互联网公司（指甲方）中赚钱的业务，缩招甚至不招是难免的，今年只能说夹缝中生存了。。。祝各位hxd都能拿到理想的offer去做想做的事吧！  隔了好久更新，主">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-30T13:21:35.037Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="渗透Q">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Sec-Interview</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/10/03/1003/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/09/30/0930/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/10/01/1001/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/10/01/1001/&text=Sec-Interview"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/10/01/1001/&is_video=false&description=Sec-Interview"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sec-Interview&body=Check out this article: http://example.com/2022/10/01/1001/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/10/01/1001/&name=Sec-Interview&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/10/01/1001/&t=Sec-Interview"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Sec-Interview-4-2023"><span class="toc-number">1.</span> <span class="toc-text">【转载】Sec-Interview-4-2023</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9B%B4%E5%89%8D%E9%9D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">写在更前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">写在前面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%8B%E6%8B%9B%E7%9B%AE%E5%BD%95%EF%BC%88%E9%9A%8F%E6%97%B6%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">秋招目录（随时更新）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%BD%E6%96%87%E5%88%86%E4%BA%AB"><span class="toc-number">3.</span> <span class="toc-text">好文分享</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">4.</span> <span class="toc-text">0x00 字节跳动-渗透测试实习生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0"><span class="toc-number">5.</span> <span class="toc-text">0x01 阿里云安全实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%BC%8F%E6%B4%9E%E7%A0%94%E7%A9%B6%E5%91%98%E5%AE%9E%E4%B9%A0"><span class="toc-number">6.</span> <span class="toc-text">0x02 深信服-漏洞研究员实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03"><span class="toc-number">7.</span> <span class="toc-text">0x03</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">8.</span> <span class="toc-text">0x04 字节跳动-安全研究实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2"><span class="toc-number">8.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2plus-%E5%AE%89%E5%85%A8%E7%A0%94%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">8.2.</span> <span class="toc-text">一面plus-安全研发实习生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2"><span class="toc-number">8.3.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">9.</span> <span class="toc-text">0x05 长亭科技-安全服务工程师</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-1"><span class="toc-number">9.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-1"><span class="toc-number">9.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x06-%E5%A4%A9%E8%9E%8D%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">10.</span> <span class="toc-text">0x06 天融信面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x07-%E8%85%BE%E8%AE%AF-%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">11.</span> <span class="toc-text">0x07 腾讯-安全技术实习生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x08-%E5%B0%8F%E9%B9%8F%E6%B1%BD%E8%BD%A6-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">12.</span> <span class="toc-text">0x08 小鹏汽车-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x09-%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8"><span class="toc-number">13.</span> <span class="toc-text">0x09 阿里巴巴-阿里云安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-2"><span class="toc-number">13.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-2"><span class="toc-number">13.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2%EF%BC%88%E4%BA%A4%E5%8F%89%E9%9D%A2%EF%BC%89"><span class="toc-number">13.3.</span> <span class="toc-text">三面（交叉面）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0A"><span class="toc-number">14.</span> <span class="toc-text">0x0A</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0B-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%97%A0%E6%81%92%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">15.</span> <span class="toc-text">0x0B 字节跳动-无恒实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0C-58%E5%90%8C%E5%9F%8E-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">16.</span> <span class="toc-text">0x0C 58同城-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0D-%E8%85%BE%E8%AE%AF-%E7%8E%84%E6%AD%A6%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">17.</span> <span class="toc-text">0x0D 腾讯-玄武实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0E-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">18.</span> <span class="toc-text">0x0E 360-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0F-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">19.</span> <span class="toc-text">0x0F 快手-安全实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-3"><span class="toc-number">19.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-3"><span class="toc-number">19.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x10-%E5%8D%8E%E9%A1%BA%E4%BF%A1%E5%AE%89-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">20.</span> <span class="toc-text">0x10 华顺信安-安全服务工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x11-%E5%A5%87%E5%AE%89%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">21.</span> <span class="toc-text">0x11 奇安信面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x12-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E5%8F%91"><span class="toc-number">22.</span> <span class="toc-text">0x12 京东-安全研发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x13-%E5%AE%89%E6%81%92%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">23.</span> <span class="toc-text">0x13 安恒面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x14-%E6%B5%99%E6%B1%9F%E4%B8%9C%E5%B2%B8%E6%A3%80%E6%B5%8B"><span class="toc-number">24.</span> <span class="toc-text">0x14 浙江东岸检测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x15-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">25.</span> <span class="toc-text">0x15 360-安全工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x16-%E6%9F%90%E4%B8%80%E7%BA%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">26.</span> <span class="toc-text">0x16 某一线实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%9D%A2"><span class="toc-number">26.1.</span> <span class="toc-text">技术面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hr%E9%9D%A2"><span class="toc-number">26.2.</span> <span class="toc-text">hr面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x17-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">27.</span> <span class="toc-text">0x17 腾讯-科恩实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-4"><span class="toc-number">27.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-4"><span class="toc-number">27.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x18-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">28.</span> <span class="toc-text">0x18 某四字大厂面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-5"><span class="toc-number">28.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-5"><span class="toc-number">28.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2"><span class="toc-number">28.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x19-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">29.</span> <span class="toc-text">0x19 某四字大厂实习面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-6"><span class="toc-number">29.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-6"><span class="toc-number">29.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-1"><span class="toc-number">29.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2%EF%BC%88HR%EF%BC%89"><span class="toc-number">29.4.</span> <span class="toc-text">四面（HR）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1A-%E6%9F%90%E4%B8%A4%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">30.</span> <span class="toc-text">0x1A 某两字大厂面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-7"><span class="toc-number">30.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-7"><span class="toc-number">30.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-2"><span class="toc-number">30.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2"><span class="toc-number">30.4.</span> <span class="toc-text">四面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1B-%E6%9F%90%E5%AE%89%E5%85%A8%E5%85%AC%E5%8F%B8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98"><span class="toc-number">31.</span> <span class="toc-text">0x1B 某安全公司-安全研究员</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-8"><span class="toc-number">31.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-8"><span class="toc-number">31.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1C-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">32.</span> <span class="toc-text">0x1C 腾讯-科恩实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-9"><span class="toc-number">32.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-9"><span class="toc-number">32.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1D-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">33.</span> <span class="toc-text">0x1D 长亭科技 安全服务工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1E-PingCAP-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">34.</span> <span class="toc-text">0x1E PingCAP 安全工程师</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-10"><span class="toc-number">34.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-10"><span class="toc-number">34.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-3"><span class="toc-number">34.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2-1"><span class="toc-number">34.4.</span> <span class="toc-text">四面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1F-shopee"><span class="toc-number">35.</span> <span class="toc-text">0x1F shopee</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x20-%E6%B7%B1%E4%BF%A1%E6%9C%8D"><span class="toc-number">36.</span> <span class="toc-text">0x20 深信服</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x21-%E5%8D%8E%E4%B8%BA"><span class="toc-number">37.</span> <span class="toc-text">0x21 华为</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x22-360"><span class="toc-number">38.</span> <span class="toc-text">0x22 360</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x23-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%B7%B1%E8%93%9D%E6%94%BB%E9%98%B2%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">39.</span> <span class="toc-text">0x23 深信服-深蓝攻防实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x24-B%E7%AB%99"><span class="toc-number">40.</span> <span class="toc-text">0x24 B站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x25-shopee-%E7%BA%A2%E9%98%9F-Singapore"><span class="toc-number">41.</span> <span class="toc-text">0x25 shopee-红队-Singapore</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x26-%E9%95%BF%E4%BA%AD"><span class="toc-number">42.</span> <span class="toc-text">0x26 长亭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x27-%E5%A5%87%E5%AE%89%E4%BF%A1-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98-%E5%AE%9E%E4%B9%A0"><span class="toc-number">43.</span> <span class="toc-text">0x27 奇安信 安全研究员 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-5-17"><span class="toc-number">43.1.</span> <span class="toc-text">一面 5.17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-5-18"><span class="toc-number">43.2.</span> <span class="toc-text">二面 5.18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-5-24"><span class="toc-number">43.3.</span> <span class="toc-text">三面 5.24</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x28-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B2%97%E5%AE%9E%E4%B9%A0"><span class="toc-number">44.</span> <span class="toc-text">0x28 美团 安全岗实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x29-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">45.</span> <span class="toc-text">0x29 美团 安全工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2A-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6"><span class="toc-number">46.</span> <span class="toc-text">0x2A 京东 安全研究</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2B-%E7%99%BE%E5%BA%A6"><span class="toc-number">47.</span> <span class="toc-text">0x2B 百度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-11"><span class="toc-number">47.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-11"><span class="toc-number">47.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-4"><span class="toc-number">47.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2C-%E8%85%BE%E8%AE%AF"><span class="toc-number">48.</span> <span class="toc-text">0x2C 腾讯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-12"><span class="toc-number">48.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-12"><span class="toc-number">48.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2D-%E5%A5%87%E5%AE%89%E4%BF%A1-A-TEAM"><span class="toc-number">49.</span> <span class="toc-text">0x2D 奇安信 A-TEAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-13"><span class="toc-number">49.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-13"><span class="toc-number">49.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-5"><span class="toc-number">49.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2E-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">50.</span> <span class="toc-text">0x2E 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2F-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">51.</span> <span class="toc-text">0x2F 快手 安全实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-14"><span class="toc-number">51.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-14"><span class="toc-number">51.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x30-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">52.</span> <span class="toc-text">0x30 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x31-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">53.</span> <span class="toc-text">0x31 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x32-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0"><span class="toc-number">54.</span> <span class="toc-text">0x32 蚂蚁 安全工程师 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8E%86%E9%9D%A2"><span class="toc-number">54.1.</span> <span class="toc-text">简历面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-15"><span class="toc-number">54.2.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-15"><span class="toc-number">54.3.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hr%E9%9D%A2-1"><span class="toc-number">54.4.</span> <span class="toc-text">hr面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x33-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0"><span class="toc-number">55.</span> <span class="toc-text">0x33 蚂蚁 安全工程师 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-16"><span class="toc-number">55.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-16"><span class="toc-number">55.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-6"><span class="toc-number">55.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HR%E9%9D%A2"><span class="toc-number">55.4.</span> <span class="toc-text">HR面</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Sec-Interview
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-09-30T16:00:00.000Z" itemprop="datePublished">2022-10-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B8%97%E9%80%8FQ/" rel="tag">渗透Q</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h1 id="【转载】Sec-Interview-4-2023"><a href="#【转载】Sec-Interview-4-2023" class="headerlink" title="【转载】Sec-Interview-4-2023"></a>【转载】Sec-Interview-4-2023</h1><p>应届毕业生在毕业前持续更新、收集的安全岗面试题及面试经验分享~</p>
+<h2 id="写在更前面"><a href="#写在更前面" class="headerlink" title="写在更前面"></a>写在更前面</h2><blockquote>
+<p>去年年底找到实习后到现在也实习了半年整了，终于轮到我秋招了。。。十分焦虑，互联网行业今年本就不景气，再加上安全这块不是互联网公司（指甲方）中赚钱的业务，缩招甚至不招是难免的，今年只能说夹缝中生存了。。。祝各位hxd都能拿到理想的offer去做想做的事吧！</p>
+</blockquote>
+<p>隔了好久更新，主要是我也得开始准备秋招了，又四处搜刮了一些面经（有不方便转载或公开的记得联系我！）然后和铺天盖地的研发、产品等校招宣讲和内推通知不同，安全岗位虽然在大多数公司中都属于“研发”下的一个分类，但是宣讲时很少会提到。。这就不得不我们自己去挖掘了，同时我也希望能有更多的招聘人员（或者有了解的直接发issue）能介绍一下自己公司的安全部门、部门平时的业务（对外攻防项目？企业安全？SRC？安全运营？安全研究等），对于学生来说也更容易找到适合自己技术特点或者自己感兴趣的部门。</p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><ol>
+<li>个人强烈感觉面试因人而异，对于简历上有具体项目经历的同学，个人感觉面试官会着重让你介绍自己的项目，包括但不限于介绍一次真实攻防&#x2F;渗透&#x2F;挖洞&#x2F;CTF&#x2F;代码审计的经历 &#x3D;&gt; 因此对于自己的项目，面试前建议做一次复盘，最好能用文字描述出细节，在面试时才不会磕磕绊绊、或者忘了一些自己很得意的细节</li>
+<li>面试题会一直更新（大概，直到我毕业或者躺平为止吧…）包括一些身边同学（若他们同意的话）和牛客上扒拉下来的（若有，会贴出链接）还有自己的一些经历</li>
+<li>还有一点很想说的，就是面试题&#x2F;面经，本质上只是一种“见识”，他并不能实质上提升自己的水平，还是希望大家（包括我自己）不要太局限于面经，可以查缺补漏但没必要面经问什么自己就一定要学什么，按自己的节奏学就行了，毕竟每人的技术特点不一样，面试的过程和问题也会不一样</li>
+</ol>
+<p><strong>最后欢迎大家fork项目！xdm自己有面试经验的话也欢迎发pr！有分享就有收获！</strong></p>
+<p><strong>若有不方便公开的内容请联系本人第一时间删除！</strong></p>
+<h1 id="秋招目录（随时更新）"><a href="#秋招目录（随时更新）" class="headerlink" title="秋招目录（随时更新）"></a>秋招目录（随时更新）</h1><p>有最新的公司校招信息可以随时issue，我会第一时间更新</p>
+<p>以安全为主业的公司我就不放了（360、深信服、奇安信等），主要放不以安全为主业但有安全业务的公司</p>
+<table>
+<thead>
+<tr>
+<th>公司及投递链接</th>
+<th>base</th>
+<th>岗位</th>
+<th>部门</th>
+<th>投递时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://jobs.bytedance.com/campus/position?&category=6704216109274368264&type=2&current=1&limit=10">字节跳动提前批</a></td>
+<td>北京、深圳、杭州</td>
+<td>渗透测试工程师<br />安全研究工程师<br />安全工程师</td>
+<td>安全与风控<br />无恒实验室</td>
+<td>7.7~7.31</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://career.huawei.com/reccampportal/portal5/campus-recruitment-detail.html?jobId=235728">华为提前批</a></td>
+<td>基本全覆盖</td>
+<td>网络安全与隐私保护工程师</td>
+<td>基本覆盖<br />漏洞挖掘可关注：<br />2012实验室-Root实验室<br />华为云-星云实验室<br />集团IT-网络安全实验室（ICSL）<br />CBG-奇点实验室<br />终端BG-终端云服务部（冰蝎作者在那）</td>
+<td>7.31之前</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/shein/2932#/job/ae220d63-46e9-4893-9423-12ba9f4f7472">SHEIN提前批</a></td>
+<td>南京</td>
+<td>安全工程师</td>
+<td>无</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://we.dji.com/zh-CN/campus/position?from=home_page&top_cta=undefined&project=recruitment&page=1&category=109_110">大疆</a></td>
+<td>上海、深圳</td>
+<td>嵌入式系统安全工程师<br />功能安全工程师<br />安全技术开发工程师</td>
+<td>研发团队<br />车载团队<br />信息管理团队</td>
+<td>7.6~8.10</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://talent.lenovo.com.cn/joblist?apply_to=campus">联想</a></td>
+<td>北京、天津、厦门</td>
+<td>安全工程师</td>
+<td><a target="_blank" rel="noopener" href="https://talent.lenovo.com.cn/resume/jdlist/2225">IDG</a><br /><a target="_blank" rel="noopener" href="https://talent.lenovo.com.cn/resume/jdlist/2227">Lenovo Research</a></td>
+<td>7.15开始</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://careers.oppo.com/campus/post/detail?id=421&privacyVal">oppo提前批</a></td>
+<td>深圳、成都</td>
+<td>终端安全工程师（二进制、安卓、逆向类）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.163.com/app/detail/index?id=1953&projectId=45">网易雷火</a></td>
+<td>杭州</td>
+<td>游戏安全工程师（游戏、安全、二进制）</td>
+<td>雷火事业群</td>
+<td>7.5~9.28</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://nio.jobs.feishu.cn/campus/?keywords=%E5%AE%89%E5%85%A8&category=6937213309162752293&location=&project=&type=&job_hot_flag=&current=1&limit=10&functionCategory=">蔚来</a></td>
+<td>上海、北京、合肥</td>
+<td>岗位较多，覆盖面大</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.iflytek.com/official-pc/jobDetail?id=330&projectId=4">科大讯飞</a></td>
+<td>合肥</td>
+<td>安全工程师</td>
+<td></td>
+<td>7.11</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.mihoyo.com/#/campus/position">米哈游</a></td>
+<td>上海</td>
+<td><a target="_blank" rel="noopener" href="https://campus.mihoyo.com/#/campus/position/47">信息安全工程师（客户端）</a><br /><a target="_blank" rel="noopener" href="https://campus.mihoyo.com/#/campus/position/13">安全运营</a></td>
+<td></td>
+<td>7.4</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/shopee/2962#/job/6399612b-8821-42f9-955f-fb3b9be6012c">Shopee</a></td>
+<td>深圳（Sg暂未上线hc）</td>
+<td>安全工程师</td>
+<td>研发中心</td>
+<td>7.18~10.14</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://talent.baidu.com/jobs/list?search=%E5%AE%89%E5%85%A8">百度</a></td>
+<td>北京、成都</td>
+<td>安全工程师<br />数据安全研究员<br />人工智能安全算法研发工程师</td>
+<td></td>
+<td>提前批：7.14~8.26<br />常规批：8.27~10.16</td>
+</tr>
+<tr>
+<td><a href="">网易</a></td>
+<td>杭州</td>
+<td><a target="_blank" rel="noopener" href="https://campus.163.com/app/detail/index?id=2112&projectId=46">IOS安全开发</a><br /><a target="_blank" rel="noopener" href="https://campus.163.com/app/detail/index?id=2111&projectId=46">Android安全开发</a><br /><a target="_blank" rel="noopener" href="https://campus.163.com/app/detail/index?id=2066&projectId=46">安全运营专员（产品岗）</a></td>
+<td></td>
+<td>8.2~9.2</td>
+</tr>
+<tr>
+<td>网易游戏（互娱）</td>
+<td>广州</td>
+<td><a target="_blank" rel="noopener" href="https://game.campus.163.com/position-detail/704">安全工程师</a></td>
+<td></td>
+<td>7.26~9月中下旬</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campushr.hikvision.com/school.html">海康威视</a></td>
+<td>杭州</td>
+<td><a target="_blank" rel="noopener" href="https://campushr.hikvision.com/JobDetails.html?id=1fc64fd9523b49b8b062cb3402202aa3&type=0">网络安全工程师</a><br /><a target="_blank" rel="noopener" href="https://campushr.hikvision.com/JobDetails.html?id=9f16bee4baf14cba94b8cc1033991b9d&type=0">安全开发工程师</a><br /><br /><a target="_blank" rel="noopener" href="https://campushr.hikvision.com/JobDetails.html?id=cf4ff46e1b8b40639e188206af78a2fa&type=0">安全研究员（博士学历）</a><br />安全方案工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://web.4399.com/campus/yjsgw/jishulei/#1157023">4399</a></td>
+<td>广州</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.meituan.com/jobs?jobFamily=1&jobId=4961&jobName=%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88&jobType=1&pageNo=3">美团</a></td>
+<td></td>
+<td>安全工程师（简历稀缺）</td>
+<td></td>
+<td>8.1~10.31（招满即止）</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/garena/38200#/jobs?keyword=%E5%AE%89%E5%85%A8">Garena</a></td>
+<td>上海、杭州</td>
+<td>信息安全工程师<br />安全逆向工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/autox/6313#/jobs?keyword=%E5%AE%89%E5%85%A8">AutoX</a></td>
+<td>北上广深</td>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/autox/6313#/job/2da57366-8bc2-41d3-9c83-8e5e0082fb80">信息安全合规工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/autox/6313#/job/276fa91d-e3f1-4409-937b-3af11be36ac2">安全开发运维工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/autox/6313#/job/ded0b8c3-1034-4a81-b85e-cfc49a44b7b6">嵌入式开发-安全工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/autox/6313#/job/ba93e27f-9323-4410-b214-8b831971d1bb">后台开发工程师-安全服务</a></td>
+<td><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/AM9aAq3okhWjaJwhnxwoWQ">网络安全团队</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.kuaishou.cn/#/campus/job-info/2947">快手</a></td>
+<td>北京</td>
+<td>安全工程师</td>
+<td>工程类-安全</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://jobs.bytedance.com/campus/position?keywords=%E5%AE%89%E5%85%A8&category=&location=&project=7111884057764448548&type=2&job_hot_flag=&current=1&limit=10&functionCategory=">字节跳动正式批</a></td>
+<td>北京、深圳、杭州</td>
+<td>安全研究工程师<br />安全工程师<br />隐私计算研究员<br />渗透测试工程师<br /></td>
+<td>安全与风控<br />无恒实验室</td>
+<td>8.10~10.31</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://recruit.games.wanmei.com/campus-recruitment/pwrd/45131/#/jobs?keyword=%E5%AE%89%E5%85%A8">完美世界</a></td>
+<td>北京-朝阳区</td>
+<td><a target="_blank" rel="noopener" href="https://recruit.games.wanmei.com/campus-recruitment/pwrd/45131/#/job/c5c0e2e5-d457-4707-9b9a-1cec3d2ead0e">安全分析工程师（提前批）</a><br /><a target="_blank" rel="noopener" href="https://recruit.games.wanmei.com/campus-recruitment/pwrd/45131/#/job/1ae1e5e3-675d-4434-996e-78e4fecd2866">安全分析工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.jd.com/#/details?id=3770">京东</a></td>
+<td>北京</td>
+<td>安全工程师</td>
+<td></td>
+<td>8.1~10.28</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://wecruit.hotjob.cn/SU62b2ae672f9d24458d72f9cc/pb/school.html?postName=%E5%AE%89%E5%85%A8">中国电信天翼云</a></td>
+<td>北京、成都、厦门、广州</td>
+<td>信息安全工程师（北京要求硕士及以上）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://careers.pinduoduo.com/campus/recent/detail?guid=ad8cb3ac-267b-4b35-ab45-ec46de791741&from=home&scrolltop=700">拼多多</a></td>
+<td></td>
+<td>安全工程师</td>
+<td>仅开放内推</td>
+<td>8.15~10.14</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://talent.alibaba.com/campus/position-list?campusType=freshman">阿里巴巴</a></td>
+<td>杭州、北京、上海</td>
+<td>安全工程师</td>
+<td>菜鸟<br />阿里星Lab</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nowcoder.com/careers/zoom/102351?type=neitui&source=08D65A1F3FCEF22E11D216B0D92CCECC477A4E945DEDE621">Zoom</a></td>
+<td>苏州、杭州、合肥</td>
+<td>应用安全工程师</td>
+<td></td>
+<td>9.28之前</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/envisiongroup/43123?sourceToken=e4614e2db76faa2afde1f6698825d29b#/job/6600c287-372b-4f54-ab8a-86a2e809dd06">远景科技</a></td>
+<td>上海</td>
+<td>信息安全工程师</td>
+<td>远景能源</td>
+<td>10.31之前</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://campus.ke.com/adcrecru.aspx">贝壳找房</a></td>
+<td>北京</td>
+<td>安全研发工程师<br />安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.jj.cn/#/chooseJob">竞技世界</a></td>
+<td>北京</td>
+<td>安全工程师</td>
+<td></td>
+<td>8.22开始</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://wecruit.hotjob.cn/SU62d914f10dcad43c775ec125/pb/school.html?postName=%E5%AE%89%E5%85%A8">地平线</a></td>
+<td>上海</td>
+<td><a target="_blank" rel="noopener" href="https://wecruit.hotjob.cn/SU62d914f10dcad43c775ec125/pb/posDetail.html?postId=62f4dc5e2f9d241d028a008d&postType=campus&recruitType=1">安全工程师（信息&#x2F;功能方向)-Auto</a></td>
+<td>适合车载安全（iot、二进制）、ai安全、芯片安全</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://job.xiaohongshu.com/campus">小红书REDstar</a></td>
+<td>上海</td>
+<td><a target="_blank" rel="noopener" href="https://job.xiaohongshu.com/jobs/6708/campus">java开发工程师-安全</a><br /><a target="_blank" rel="noopener" href="https://job.xiaohongshu.com/jobs/6709/campus">机器学习算法工程师-安全技术</a></td>
+<td>一个是开发一个是算法，安全只能叫沾边吧。。<br />REDstar无需笔试</td>
+<td>9.30之前</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/duxiaoman/74050#/">度小满</a></td>
+<td>北京</td>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/duxiaoman/74050?sourceToken=5c372cd2d6c9fd5e1f173ade6b28fe9a#/job/6e183800-6109-4fbd-b0f6-72951a862309">信息安全工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nowcoder.com/careers/cibfintech/104324?ncsr=EYzuBA">兴业数金</a></td>
+<td>上海、福州、成都</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://careers.oppo.com/campus/post/home">oppo</a></td>
+<td>深圳、成都</td>
+<td>终端安全工程师<br />互联网安全工程师<br />信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hr.xiaomi.com/campus">小米</a></td>
+<td>北京、南京</td>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaomi/47097#/job/86505662-20d2-4eb8-8943-d0d3e1cc21e7">安全研发工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaomi/47097#/job/e0fa3f01-7380-4c40-9e0e-32a1dfecf082">安全工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaomi/47097#/job/3c92b9ec-abea-467b-b083-00bf5128be2c">安全操作系统工程师</a></td>
+<td></td>
+<td>9.7之前免笔试</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hr.vivo.com/wt/vivo/web/templet1000/index/corpwebPosition1000vivo!gotoPostInfoForAjax?postId=145934&recruitType=1&brandCode=1">vivo</a></td>
+<td>深圳、东莞</td>
+<td>安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaopeng/22#/">小鹏</a></td>
+<td>广州、上海</td>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaopeng/22#/job/ea87d1bc-2d28-4385-9357-0b5fcf0f3aba">信息安全培训生</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/xiaopeng/22#/job/00b172ec-9b85-48a9-b228-2c5b0331e932">系统安全软件工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://momenta.jobs.feishu.cn/campus/position/7132723277702121742/detail?spread=YMAY754">Momenta</a></td>
+<td>深圳</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://campus.tcl.com/post/details.html?post_code=all">TCL</a></td>
+<td>深圳</td>
+<td>软件开发工程师（安全方向）<br />信息安全工程师</td>
+<td>鸿鹄实验室（提前批）<br />软件工程中心</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.geely.com/hcm-web/#/jobs/school">吉利</a></td>
+<td>杭州、宁波</td>
+<td>信息安全工程师<br />功能安全工程师<br /><a target="_blank" rel="noopener" href="https://campus.geely.com/hcm-web/#/job-detail/school/10979">氪学家-信息安全&#x2F;攻防方向</a><br />信息安全开发工程师<br /><a target="_blank" rel="noopener" href="https://campus.geely.com/hcm-web/#/job-detail/school/10978">氪学家-车联网安全研究员</a></td>
+<td>多个下属组织分开收</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus-recruitment/zte/46903#/job/7b9efee8-799e-4c69-b34b-7d5cc9fb5797">中兴</a></td>
+<td>南京、长沙、西安、深圳</td>
+<td>网络安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.didiglobal.com/campus_apply/didiglobal/6223#/jobs?keyword=%E5%AE%89%E5%85%A8">滴滴</a></td>
+<td>北京</td>
+<td>安全工程师（密码开发、容器开发、接口安全、反入侵、移动安全）<br />安全算法工程师</td>
+<td>CTO线<br />国际化事业部</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://campus.sf-express.com/#/postDetail/1054">顺丰科技</a></td>
+<td>深圳</td>
+<td>信息安全工程师（顺丰科技）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.webank.com/campus-recruitment/webankhr/18005/#/jobs?keyword=%E5%AE%89%E5%85%A8">微众银行</a></td>
+<td>深圳、武汉</td>
+<td>信息安全工程师（应用安全、信息安全管理、后端开发C++、反欺诈、安全攻防）</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://join.tencentmusic.com/campus/post-details/?id=11740">腾讯音乐</a></td>
+<td>深圳</td>
+<td>安全策略</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hr.tp-link.com.cn/jobList">TP-Link</a></td>
+<td>深圳</td>
+<td><a target="_blank" rel="noopener" href="https://hr.tp-link.com.cn/jobDetail/5415">网络安全算法工程师</a><br /><a target="_blank" rel="noopener" href="https://hr.tp-link.com.cn/jobDetail/5467">信息安全工程师（深圳）</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.ctrip.com/campus-recruitment/trip/37757#/job/ff4bdaf8-3c0a-45f6-a46e-1e2d8c2910e7">携程</a></td>
+<td>上海</td>
+<td>基础安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://vta.maker.haier.net/client/campus/deliverfirst/id/19/fid/7/rid/105.html">海尔</a></td>
+<td>青岛</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://career.hihonor.com/SU60eea919bef57c1023f6fe78/pb/posDetail.html?postId=62b3b9f70dcad406d138ee41&postType=campus&recruitType=1">荣耀</a></td>
+<td>北京、南京、深圳</td>
+<td>网络安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://chinalife.hotjob.cn/wt/chinalife/web/templet1000/index/corpwebPosition1000chinalife!gotoPostListForAjax?brandCode=1&recruitType=1">中国人寿</a></td>
+<td>很多</td>
+<td>很多</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://gree.zhiye.com/zpdetail/620670720?r=-1&p=&c=&d=&k=%E5%AE%89%E5%85%A8">格力</a></td>
+<td>珠海</td>
+<td>信息安全</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://transsion.zhiye.com/campus?r=-1&p=&c=&d=&k=%E5%AE%89%E5%85%A8#jlt">传音控股</a></td>
+<td>上海、重庆</td>
+<td>系统安全工程师（web、安卓、安全开发）<br />安全合规<br />安卓隐私安全开发</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="">美的</a></td>
+<td>深圳、佛山、武汉</td>
+<td><a target="_blank" rel="noopener" href="https://careers.midea.com/schoolOut/post/details?projectRuleId=cf176940-20cc-4651-a0d7-b64b8c452399&positionId=8a928eae826e11800182a9f8fe970610&recruitCategoryId=85ed0569354a46578240983830fe0c5b">信息安全技术研发工程师</a><br /><a target="_blank" rel="noopener" href="https://careers.midea.com/schoolOut/post/details?projectRuleId=cf176940-20cc-4651-a0d7-b64b8c452399&positionId=8a928eae826e11800182ab773dbe0b64&recruitCategoryId=85ed0569354a46578240983830fe0c5b">信息安全工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/nwcdcloud/4047?sourceToken=199bbc29da2b6aaa73f3c074f362b75f#/job/3920a99a-364e-4a38-8dec-8272d108125a">西云数据</a></td>
+<td>北京</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://job.icbc.com.cn/pc/index.html#/main/school/home/post?pti=D00001">工商银行</a></td>
+<td>北京、广州、杭州、珠海</td>
+<td>科技菁英-安全技术</td>
+<td></td>
+<td>8.29~9.30</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jobs/school/detail?jobId=118712&activityId=17&activitySuffix=2023szhzc&channel=sq_sqdoc">欧科云链</a></td>
+<td>北京</td>
+<td>安全开发工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jobs/school/detail?jobId=146456&activityId=16&activitySuffix=2023jrzc&channel=sq_sqdoc">建信金科</a></td>
+<td>北京</td>
+<td>信息安全工程师（实施管理中心）</td>
+<td></td>
+<td>8.27~9.30</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.nowcoder.com/jobs/school/detail?jobId=140521&activityId=16&activitySuffix=2023jrzc&channel=sq_sqdoc">阳光保险</a></td>
+<td>北京</td>
+<td>信息安全工程师（安全运维&#x2F;安全开发）</td>
+<td></td>
+<td>8.27~9.30</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.eswincomputing.com/campusxq?jobId=310620216&c=&c2=&p=1%5E-1,3%5E-1&ky=&d=&PageIndex=3#zw">奕斯伟</a></td>
+<td>北京</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://campus.58.com/xzxq?jobId=150515131">58同城</a></td>
+<td>北京</td>
+<td>安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://kingfa.zhiye.com/zpdetail/560681834">金发科技</a></td>
+<td>广州</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://zhaopin.eastmoney.com/campus-recruitment/eastmoney/57971#/jobs?keyword=%E5%AE%89%E5%85%A8">东方财富</a></td>
+<td>上海</td>
+<td>信息安全岗位<br />信息安全开发工程师<br />信息安全咨询师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://cffexit.zhiye.com/zpdetail/390501584">中金所</a></td>
+<td>上海</td>
+<td>运维工程师-网络安全技术方向</td>
+<td>硕士+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://wecruit.hotjob.cn/SU62b2ae672f9d24458d72f9cc/pb/school.html?postName=%E5%AE%89%E5%85%A8">中国电信天翼云</a></td>
+<td>北京、成都、厦门、广州</td>
+<td>信息安全工程师</td>
+<td>北京需要硕士+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://iwhalecloud.zhiye.com/form?fromPage=job&jobAdId=fec6b63f-abc8-4f1d-9057-b0d867c9bc4e">浩鲸科技</a></td>
+<td>南京</td>
+<td>安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hr.sensetime.com/SU604c56f9bef57c3d1a752c60/pb/school.html?postName=%E5%AE%89%E5%85%A8">商汤科技</a></td>
+<td>北京、深圳</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://sanycampus.zhiye.com/campus?k=%E5%AE%89%E5%85%A8">三一重工</a></td>
+<td>长沙</td>
+<td>信息安全工程师</td>
+<td>硕士+</td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://wecruit.hotjob.cn/SU62a93e760dcad45229a827cc/pb/school.html?postName=%E5%AE%89%E5%85%A8">经纬恒润</a></td>
+<td>较多</td>
+<td>较多</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://li.jobs.feishu.cn/referral/campus/position/?keywords=%E5%AE%89%E5%85%A8&category=&location=&project=7095664339228051720&type=&job_hot_flag=&current=1&limit=10&functionCategory=&token=NTsxNjYwNTQwMjE4NDgzOzcxMTQ4MzEzNTczMDIwMTM5ODA7NzExOTQyNjMxOTE0NjIwNzUwMQ">理想</a></td>
+<td>北京、杭州</td>
+<td>安全研发工程师<br />安全运营工程师<br />安全测试工程师<br />信息安全合规专员</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://faw-zhaopin.hotjob.cn/positionList?recruitType=1&projectId=202301">中国一汽</a></td>
+<td>长春</td>
+<td><a target="_blank" rel="noopener" href="https://faw-zhaopin.hotjob.cn/SU603374380dcad4635b836531/pb/posDetail.html?postId=63049c732f9d2453a5e2e2ce&postType=campus">车联网安全工程师</a><br /><a target="_blank" rel="noopener" href="https://faw-zhaopin.hotjob.cn/SU603374380dcad4635b836531/pb/posDetail.html?postId=62f0e07ebef57c29eacf940f&postType=campus">信息安全工程师</a><br /><a target="_blank" rel="noopener" href="https://faw-zhaopin.hotjob.cn/SU603374380dcad4635b836531/pb/posDetail.html?postId=62e2870f2f9d24381014f7a2&postType=campus">电子电气网络及安全软件工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/cestc/7509#/jobs?keyword=%E5%AE%89%E5%85%A8">中国系统</a></td>
+<td>北京、武汉</td>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/cestc/7509#/job/85f40df5-1170-423c-be4c-96c21bff5582">安全工程师</a><br /><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/cestc/7509#/job/bb142f8a-c334-4d41-978e-caa20b134099">数据安全工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://talent.antgroup.com/campus-list?type=freshman">蚂蚁集团</a></td>
+<td>北京、上海、杭州、重庆、成都</td>
+<td><a target="_blank" rel="noopener" href="https://talent.antgroup.com/campus-position?positionId=1102001303">安全工程师</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hr.linklogis.com/#/jobDetail/08e50ef2-ec61-4b98-93f3-4c8501aa60d6/390509430?WorkingPlace=%E6%B7%B1%E5%9C%B3%E5%B8%82">联易融</a></td>
+<td>深圳</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://hisense.zhiye.com/jihui?k=%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8">海信集团</a></td>
+<td>佛山、青岛</td>
+<td>网络安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://picc.zhiye.com/xzlist3?k=%E5%AE%89%E5%85%A8&d=-1&c=&p=1%5E-1,3%5E-1&PageIndex=1">人保寿险</a></td>
+<td>福州、上海、佛山、南京</td>
+<td>信息安全、基础安全、应用安全、数据安全</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://app.mokahr.com/campus_apply/tuhu/28398?sourceToken=c403a200011f884f58ed33626baef087#/job/46ecffba-8698-4735-ab4d-6fe54261c277">途虎养车</a></td>
+<td>上海</td>
+<td>信息安全工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leapmotor.zhiye.com/search?r=2&p=&c=&d=&k=%E5%AE%89%E5%85%A8#jlt">零跑科技</a></td>
+<td>杭州</td>
+<td>信息安全工程师<br />信息安全开发工程师</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://join.qq.com/post_detail.html?pid=1&id=112&tid=2">腾讯</a></td>
+<td>深圳、北京</td>
+<td>安全技术</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="好文分享"><a href="#好文分享" class="headerlink" title="好文分享"></a>好文分享</h1><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/972050">作为安全工程师，都有哪些可选择的公司？</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/search?type=paper&query=%E5%AE%89%E5%85%A8+%E7%AC%94%E8%AF%95">安全岗笔试题</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/250116?type=all&order=recall&pos=&page=2&ncTraceId=&channel=-1&source_id=search_all_nctrack&gio_id=C644A4A66482D41AB59A3DF3F860459E-1662134259514">部分安全岗汇总（牛客）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/751095?type=post&order=recall&pos=&page=1&ncTraceId=&channel=-1&source_id=search_post_nctrack&gio_id=C644A4A66482D41AB59A3DF3F860459E-1662134563061">部分牛客安全岗面经</a></p>
+<p>下午听说字节和快手校招官网hc泄露，看了下应该是去年的数据，毕竟去年总计8k+hc对的上，今年剩3khc了（指字节，快手我不清楚）</p>
+<p>不过还是有点参考性的，看看也行（下图是字节的）</p>
+<table>
+<thead>
+<tr>
+<th>岗位</th>
+<th>部门</th>
+<th>hc</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>渗透测试工程师</td>
+<td>无恒实验室</td>
+<td>1</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>渗透测试工程师</td>
+<td>无恒实验室</td>
+<td>1</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>渗透测试工程师</td>
+<td>无恒实验室</td>
+<td>4</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>无恒实验室</td>
+<td>1</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>无恒实验室</td>
+<td>1</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>无恒实验室</td>
+<td>4</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>渗透测试工程师</td>
+<td>安全与风控</td>
+<td>10</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>渗透测试工程师</td>
+<td>安全与风控</td>
+<td>10</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>渗透测试工程师</td>
+<td>安全与风控</td>
+<td>10</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>安全与风控</td>
+<td>15</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>安全与风控</td>
+<td>15</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>安全工程师</td>
+<td>安全与风控</td>
+<td>15</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>隐私计算研究员</td>
+<td>安全与风控</td>
+<td>2</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>安全研究工程师</td>
+<td>安全与风控</td>
+<td>1</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>安全产品运营</td>
+<td>飞书</td>
+<td>2</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>安全策略产品经理</td>
+<td>番茄小说</td>
+<td>1</td>
+<td>北京</td>
+</tr>
+</tbody></table>
+<p><strong><big>目录</big></strong></p>
+<ul>
+<li><a href="#0x00-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%B9%A0%E7%94%9F">0x00 字节跳动-渗透测试实习生</a></li>
+<li><a href="#0x01-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0">0x01 阿里云安全实习</a></li>
+<li><a href="#0x02-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%BC%8F%E6%B4%9E%E7%A0%94%E7%A9%B6%E5%91%98%E5%AE%9E%E4%B9%A0">0x02 深信服-漏洞研究员实习</a></li>
+<li><a href="#0x04-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%AE%9E%E4%B9%A0%E7%94%9F">0x04 字节跳动-安全研究实习生</a></li>
+<li><a href="#0x05-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88">0x05 长亭科技-安全服务工程师</a></li>
+<li><a href="#0x06-%E5%A4%A9%E8%9E%8D%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x06 天融信面试复盘</a></li>
+<li><a href="#0x07-%E8%85%BE%E8%AE%AF-%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%B9%A0%E7%94%9F">0x07 腾讯-安全技术实习生</a></li>
+<li><a href="#0x08-%E5%B0%8F%E9%B9%8F%E6%B1%BD%E8%BD%A6-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x08 小鹏汽车-安全工程师</a></li>
+<li><a href="#0x09-%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8">0x09 阿里巴巴-阿里云安全</a></li>
+<li><a href="#0x0b-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%97%A0%E6%81%92%E5%AE%9E%E9%AA%8C%E5%AE%A4">0x0B 字节跳动-无恒实验室</a></li>
+<li><a href="#0x0c-58%E5%90%8C%E5%9F%8E-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x0C 58同城-安全工程师</a></li>
+<li><a href="#0x0d-%E8%85%BE%E8%AE%AF-%E7%8E%84%E6%AD%A6%E5%AE%9E%E9%AA%8C%E5%AE%A4">0x0D 腾讯-玄武实验室</a></li>
+<li><a href="#0x0e-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x0E 360-安全工程师</a></li>
+<li><a href="#0x0f-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F">0x0F 快手-安全实习生</a></li>
+<li><a href="#0x10-%E5%8D%8E%E9%A1%BA%E4%BF%A1%E5%AE%89-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88">0x10 华顺信安-安全服务工程师</a></li>
+<li><a href="#0x11-%E5%A5%87%E5%AE%89%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x11 奇安信面试复盘</a></li>
+<li><a href="#0x12-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E5%8F%91">0x12 京东-安全研发</a></li>
+<li><a href="#0x13-%E5%AE%89%E6%81%92%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x13 安恒面试复盘</a></li>
+<li><a href="#0x14-%E6%B5%99%E6%B1%9F%E4%B8%9C%E5%B2%B8%E6%A3%80%E6%B5%8B">0x14 浙江东岸检测</a></li>
+<li><a href="#0x15-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0">0x15 360-安全工程师实习</a></li>
+<li><a href="#0x16-%E6%9F%90%E4%B8%80%E7%BA%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0">0x16 某一线实验室实习</a></li>
+<li><a href="#0x17-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0">0x17 腾讯-科恩实验室实习</a></li>
+<li><a href="#0x18-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x18 某四字大厂面试复盘</a></li>
+<li><a href="#0x19-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x19 某四字大厂实习面试复盘</a></li>
+<li><a href="#0x1a-%E6%9F%90%E4%B8%A4%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98">0x1A 某两字大厂面试复盘</a></li>
+<li><a href="#0x1b-%E6%9F%90%E5%AE%89%E5%85%A8%E5%85%AC%E5%8F%B8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98">0x1B 某安全公司-安全研究员</a></li>
+<li><a href="#0x1c-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0">0x1C 腾讯-科恩实验室实习</a></li>
+<li><a href="#0x1d-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0">0x1D 长亭科技 安全服务工程师实习</a></li>
+<li><a href="#0x1e-pingcap-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x1E PingCAP 安全工程师</a></li>
+<li><a href="#0x1f-shopee">0x1F shopee</a></li>
+<li><a href="#0x20-%E6%B7%B1%E4%BF%A1%E6%9C%8D">0x20 深信服</a></li>
+<li><a href="#0x21-%E5%8D%8E%E4%B8%BA">0x21 华为</a></li>
+<li><a href="#0x22-360">0x22 360</a></li>
+<li><a href="#0x23-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%B7%B1%E8%93%9D%E6%94%BB%E9%98%B2%E5%AE%9E%E9%AA%8C%E5%AE%A4">0x23 深信服-深蓝攻防实验室</a></li>
+<li><a href="#0x24-b%E7%AB%99">0x24 B站</a></li>
+<li><a href="#0x25-shopee-%E7%BA%A2%E9%98%9F-singapore">0x25 shopee-红队-Singapore</a></li>
+<li><a href="#0x26-%E9%95%BF%E4%BA%AD">0x26 长亭</a></li>
+<li><a href="#0x27-%E5%A5%87%E5%AE%89%E4%BF%A1-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98-%E5%AE%9E%E4%B9%A0">0x27 奇安信 安全研究员 实习</a></li>
+<li><a href="#0x28-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B2%97%E5%AE%9E%E4%B9%A0">0x28 美团 安全岗实习</a></li>
+<li><a href="#0x29-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0">0x29 美团 安全工程师实习</a></li>
+<li><a href="#0x2a-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6">0x2A 京东 安全研究</a></li>
+<li><a href="#0x2b-%E7%99%BE%E5%BA%A6">0x2B 百度</a></li>
+<li><a href="#0x2c-%E8%85%BE%E8%AE%AF">0x2C 腾讯</a></li>
+<li><a href="#0x2d-%E5%A5%87%E5%AE%89%E4%BF%A1-a-team">0x2D 奇安信 A-TEAM</a></li>
+<li><a href="#0x2E-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x2E 快手 安全工程师</a></li>
+<li><a href="#0x2F-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F">0x2F 快手 安全实习生</a></li>
+<li><a href="#0x30-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x30 快手 安全工程师</a></li>
+<li><a href="#0x31-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88">0x31 快手 安全工程师</a></li>
+<li><a href="#0x32-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0">0x32 蚂蚁 安全工程师 实习</a></li>
+<li><a href="#0x33-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0">0x33 蚂蚁 安全工程师 实习</a></li>
+</ul>
+<h1 id="0x00-字节跳动-渗透测试实习生"><a href="#0x00-字节跳动-渗透测试实习生" class="headerlink" title="0x00 字节跳动-渗透测试实习生"></a>0x00 字节跳动-渗透测试实习生</h1><blockquote>
+<p>字节直接找朋友内推的效率很高，当天上午投简历，下午就约了面试，裸面挺痛苦的建议复习一下再去</p>
+</blockquote>
+<ol>
+<li>自我介绍</li>
+<li>渗透的流程</li>
+<li>信息收集如何处理子域名爆破的泛解析问题</li>
+<li>如何绕过CDN查找真实ip</li>
+<li>phpinfo你会关注哪些信息</li>
+<li>有没有了解过权限维持</li>
+<li>说一个你感觉不错的漏洞，展开讲讲</li>
+<li>输出到href的XSS如何防御</li>
+<li>samesite防御CSRF的原理</li>
+<li>CSRF防御</li>
+<li>json格式的CSRF如何防御</li>
+<li>浏览器解析顺序和解码顺序</li>
+<li>过滤逗号的SQL注入如何绕过</li>
+<li>过滤limit后的逗号如何绕过</li>
+<li>fastjson相关漏洞</li>
+<li>说一个你知道的python相关的漏洞（SSTI原理，利用过程,payload相关的东西）开放性问答</li>
+</ol>
+<h1 id="0x01-阿里云安全实习"><a href="#0x01-阿里云安全实习" class="headerlink" title="0x01 阿里云安全实习"></a>0x01 阿里云安全实习</h1><p>时长：20分钟</p>
+<ol>
+<li>自我介绍</li>
+<li>看你简历上说擅长java、php代码审计，也没有类似的经历能够分享一下，比如说独自审的一套代码或者开源项目，从中发现的一些比较高危的问题</li>
+<li>在审项目的时候，比如一个web网站，简单说说思路</li>
+<li>简单描述一下什么是水平越权，什么是垂直越权，我要发现这两类漏洞，那我代码审计要注意什么地方</li>
+<li>解释一下ssrf</li>
+<li>怎么防御ssrf，场景：<code>http://ip/?url=image.jpg</code></li>
+<li>常见的内网段有哪些，他们的掩码是什么</li>
+<li>教育系统攻防演练，分享一个渗透的例子</li>
+<li>除了学校，有没有试过渗透别的系统</li>
+<li>像这样的场景（给内网靶标），渗透内网系统的思路</li>
+<li>反问环节（问了工作内容）<ul>
+<li>岗位做的是阿里云云平台安全，内部安全保障，保障阿里云自身的安全不出问题，整个系统的上线前中后过程，每个方向都有人</li>
+</ul>
+</li>
+</ol>
+<h1 id="0x02-深信服-漏洞研究员实习"><a href="#0x02-深信服-漏洞研究员实习" class="headerlink" title="0x02 深信服-漏洞研究员实习"></a>0x02 深信服-漏洞研究员实习</h1><p>时长：15分钟</p>
+<ol>
+<li>自我介绍</li>
+<li>在xx实习的时候做什么东西</li>
+<li>渗透测试的思路简单说一下</li>
+<li>护网在里面担当一个什么样的角色</li>
+<li>红队的一些思路</li>
+<li>拿下系统后有没有做横向</li>
+<li>前段时间那个log4j有研究吗，可以简单说一下吗</li>
+<li>（继上一个问题）有哪些混淆绕过的方法</li>
+<li>内存马有没有了解过</li>
+<li>冰蝎、哥斯拉这些工具有没有了解过</li>
+<li>做攻击队的时候有没有研究过什么攻击，比如研究一些工具还是魔改什么的</li>
+<li>那么多漏洞和攻击，比较擅长哪一个</li>
+<li>说一下shiro反序列化的形成原因、利用链</li>
+<li>对一些bypass的方法有没有了解过，有什么姿势可以简单介绍一下</li>
+<li>反问</li>
+</ol>
+<h1 id="0x03"><a href="#0x03" class="headerlink" title="0x03"></a>0x03</h1><h1 id="0x04-字节跳动-安全研究实习生"><a href="#0x04-字节跳动-安全研究实习生" class="headerlink" title="0x04 字节跳动-安全研究实习生"></a>0x04 字节跳动-安全研究实习生</h1><h2 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h2><p>时长：50分钟</p>
+<ol>
+<li>你投的岗位是安全研究实习生，你了解我们这边主要是做什么的吗</li>
+<li>自我介绍</li>
+<li>现在有什么比较想做的方向吗，比如你写的代码审计、攻防演练、你在学校的研究方向（密码学）其实是三个大方向，现在有什么比较想做的吗<ul>
+<li>说了代码审计、安全研究</li>
+</ul>
+</li>
+<li>有没有审过开源框架、cms、中间件之类的</li>
+<li>面试官介绍了工作内容</li>
+<li>我看你简历上有几段实习经历和项目经历，先聊一下实习经历吧，在A主要做什么的</li>
+<li>详细聊聊入侵检测主要在做什么，遇到的问题</li>
+<li>关于入侵检测产生大量误报的原因，有没有分析过，有没有比较好的解决方法</li>
+<li>和A比起来，B的应该就比较偏攻击方对吧，有打仗（雾，面试官好像确实是这么说的）有代码审计，聊一下在B主要做了些什么</li>
+<li>审表达式引擎的步骤和思路</li>
+<li>刚刚你说的审计听起来好像和普通开发的审计差不多，都是通过程序流、文档去做，有没有从安全方面入手审计一些项目</li>
+<li>xxe是怎么造成的，从代码层面来看</li>
+<li>我看你简历有很多攻防演练经历对吧，这几段攻防演练经历有没有哪一次印象比较深刻的，挑一个聊一聊</li>
+<li>你的这次攻击好像更多的是利用弱口令，有没有一些更有技巧的方法</li>
+<li>这个头像上传的webshell是怎么上传的</li>
+<li>还有什么其他的检验方式？要怎么绕过？</li>
+<li>这两天log4j漏洞很火，有没有去了解一下</li>
+<li>面试官最后介绍业务</li>
+<li>反问环节</li>
+</ol>
+<h2 id="一面plus-安全研发实习生"><a href="#一面plus-安全研发实习生" class="headerlink" title="一面plus-安全研发实习生"></a>一面plus-安全研发实习生</h2><blockquote>
+<p>很奇葩的剧情，一面面试官面完告诉我有base北京base深圳问我是不是想要深圳的，我说是，结果过了一个多星期hr告诉我因为我一面面试官是北京的，然后我选了深圳，所以一面不作数，重新约了一面</p>
+<p>接着一面这天中午又收到了感谢信，然后看官网状态是流程已终止，本以为没得面了没想到还是正常进行….</p>
+</blockquote>
+<blockquote>
+<p>等到二面才发现原来已经变成安全研发了，本来我投的是安全研究的…</p>
+</blockquote>
+<p>时长：45分钟</p>
+<ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>A护网做了什么</p>
+</li>
+<li><p>做哪一层的处置，waf？ids？</p>
+</li>
+<li><p>遇到的问题是什么，有什么印象深刻的处置</p>
+</li>
+<li><p>怎么解决误报过多的情况，有做过什么规则能解决这个情况的</p>
+</li>
+<li><p>他的内网误报是在办公网还是生产网</p>
+</li>
+<li><p>比如mysql也会执行powershell，怎么做防护（前面说了很多内网误报是因为有人写了ps脚本触发的）</p>
+</li>
+<li><p>有没有挖过src</p>
+</li>
+<li><p>在做攻防的时候，资产收集这块有没有什么经验介绍的</p>
+</li>
+<li><p>一个单位的一级域名可能不止一个，怎么收集某个单位的所有域名，注意不是子域名</p>
+</li>
+<li><p>还有没有其他的资产收集的经验</p>
+</li>
+<li><p>除了信息收集，有没有什么漏洞方面的攻击案例</p>
+</li>
+<li><p>聊一下sql注入</p>
+</li>
+<li><p>怎么防御</p>
+</li>
+<li><p>遇到order by时怎么防御</p>
+</li>
+<li><p>用转义字符防御时，如果遇到数据库的列名或是表名本身就带着特殊字符，应该怎么做</p>
+</li>
+<li><p>宽字节注入</p>
+</li>
+<li><p>ssrf了解吗</p>
+</li>
+<li><p>怎么修复</p>
+</li>
+<li><p>基于黑白名单的修复，现在的生产基本都是用的docker，ip是随时变的，而且docker重启后可能什么都不一样了，怎么做一个修复</p>
+</li>
+<li><p>fastjson反序列化</p>
+</li>
+<li><p>redis的漏洞</p>
+</li>
+<li><p>mysql的提权</p>
+</li>
+<li><p>shiro反序列化</p>
+</li>
+<li><p>最近很火的log4j，聊一下原理</p>
+</li>
+<li><p>jndi的解析流程和原理</p>
+</li>
+<li><p>有没有什么你做的比较好的地方我没有问到的，可以聊一聊</p>
+</li>
+<li><p>惯例介绍部门的主要业务</p>
+</li>
+<li><p>惯例反问</p>
+</li>
+</ol>
+<h2 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h2><blockquote>
+<p>紧接在一面plus后，就隔了10分钟，一面复盘写一半就开始二面了</p>
+</blockquote>
+<p>时长：25分钟</p>
+<ol>
+<li>聊攻防演练中比较得意、印象深刻的一次经历</li>
+<li>安全领域比较擅长什么</li>
+<li>审的一般是什么，java？python？</li>
+<li>csrf了解吗，怎么做一个修复</li>
+<li>在拿到java系统的代码时，审计的流程是怎样的</li>
+<li>java系统中的sql注入怎么做一个防御和修复</li>
+<li>在浏览器中输入一个域名去访问时，浏览器做了什么</li>
+<li>一个系统的登录页，通常可能出现什么漏洞</li>
+<li>云安全了解吗</li>
+<li>有做过安全工具的开发吗，比如waf或者扫描器之类的</li>
+<li>惯例介绍业务</li>
+<li>惯例反问</li>
+</ol>
+<h1 id="0x05-长亭科技-安全服务工程师"><a href="#0x05-长亭科技-安全服务工程师" class="headerlink" title="0x05 长亭科技-安全服务工程师"></a>0x05 长亭科技-安全服务工程师</h1><h2 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h2><p>时长：30分钟</p>
+<ol>
+<li>自我介绍</li>
+<li>web渗透测试有没有过实战</li>
+<li>讲一下sql注入原理</li>
+<li>有没有从代码层面了解过sql注入的成因（反问代码层面指的是不是sql语句，答是）</li>
+<li>了不了解xss，有没有从代码层面了解xss的原理</li>
+<li>对owasp top10漏洞哪个比较了解</li>
+<li>讲一讲怎么防御sql注入</li>
+<li>sql注入怎么绕过过滤</li>
+<li>问了护网时xx有没有成为靶标，有没有对攻击队行为做过研判</li>
+<li>在xx护网时的工作内容，有没有做过流量包、数据包的研判</li>
+<li>学校攻防演练时担任的角色，主要工作内容，渗透测试的思路，有什么成果（这个问的还是挺细的，具体到分配的任务、有没有拿下主机或者域控、攻防演练的形式和持续时间等都聊了）</li>
+<li>平时ctf打的多不多，有什么成绩</li>
+<li>平时会不会关注一些新颖的漏洞，会不会做代码审计，比如shiro漏洞等有没有做过漏洞复现</li>
+<li>对钓鱼邮件这些有没有什么了解（因为上面聊xx护网时说了钓鱼邮件和微信钓鱼的事）</li>
+<li>目前学习的方向是什么</li>
+<li>最后介绍人才需求</li>
+<li>反问环节</li>
+</ol>
+<h2 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h2><p>时长：34min</p>
+<ol>
+<li>自我介绍</li>
+<li>学代码审计偏哪个语言？擅长哪个语言</li>
+<li>拿到一份php代码做审计，审计的流程大概是怎样的</li>
+<li>对php开发框架熟吗？比如ThinkPHP这些</li>
+<li>给的源码是ThinkPHP框架的话，审计起来和没有使用框架的有什么不同，从流程上或者从关注的点上有什么不同</li>
+<li>php原生的敏感函数有哪些，比如搜关键字的话会搜哪些</li>
+<li>反序列化漏洞了解吗</li>
+<li>反序列的时候，unserialize()反序列一个字符串的时候，对象会有一些魔术方法会被自动调用到，在找反序列化的链时，有哪些魔术方法是可以作为一个入手点去找的</li>
+<li>有没有审计过实际的项目，比如github上一些开源cms</li>
+<li>java审计可以聊一下吗</li>
+<li>之前做渗透时有没有做过完整的项目，除了ctf</li>
+<li>能不能说一些找到的漏洞，怎么找到的</li>
+<li>ssrf这类的漏洞熟悉吗，说一下原理和利用方式</li>
+<li>我们利用ssrf可以做什么，达到什么效果</li>
+<li>在php环境下，怎么最大程度的利用ssrf，拿到shell或者进内网</li>
+<li>怎么利用内网的机器请求内网中的服务</li>
+<li>ssrf漏洞的修复建议，修复的时候需要注意哪些细节</li>
+<li>如果用白名单策略修复ssrf，从用户输入的变量里拿出要访问的目标，这个要注意哪些，因为一些url会通过特殊的字符做白名单绕过，对取变量这个操作有哪些要注意的细节？</li>
+<li>php中三个等号和两个等号有什么区别</li>
+<li>php代码常见入口函数怎么找</li>
+<li>有一些php的开发框架可以帮我们做一些url路由，对这些路由的方法熟悉吗</li>
+<li>介绍下PHP的变量覆盖</li>
+<li>有一个php的程序，本身就允许文件包含的操作，同时想要避免文件包含漏洞，写代码的时候要注意哪些</li>
+<li>远程文件包含和本地文件包含，这两种涉及的php设置有什么</li>
+<li>本地文件包含能不能通过php配置限制文件包含的路径（不通过代码直接通过配置项来解决）</li>
+<li>php、java代码审计对哪个漏洞特别熟悉</li>
+<li>php在做sql注入防御时有哪些方法</li>
+<li>java做sql注入的防御</li>
+<li>sql的二次注入了解吗，能介绍一下吗</li>
+<li>写代码的时候怎么防止二次注入</li>
+</ol>
+<h1 id="0x06-天融信面试复盘"><a href="#0x06-天融信面试复盘" class="headerlink" title="0x06 天融信面试复盘"></a>0x06 天融信面试复盘</h1><p>时长：15~20分钟</p>
+<ol>
+<li>有没有做过现实环境的渗透测试？有没有提交过src？</li>
+<li>对免杀技术了解多少，制作的木马能不能过360</li>
+<li>ctf的成绩？擅长什么方向的题？</li>
+<li>攻防演练有什么成果？</li>
+<li>shiro漏洞了解吗，讲一下原理</li>
+<li>在linux下，现在有一个拥有大量ip地址的txt文本文档，但是里面有很多重复的，如何快速去重？</li>
+<li>在内网渗透中，通过钓鱼邮件获取到主机权限，但是发现内网拦截了tcp的出网流量，聊一下这个时候应该怎么进行通信？</li>
+<li>代码能力怎样，平时有没有做过代码审计？</li>
+<li>目前对什么方向感兴趣？</li>
+</ol>
+<h1 id="0x07-腾讯-安全技术实习生"><a href="#0x07-腾讯-安全技术实习生" class="headerlink" title="0x07 腾讯-安全技术实习生"></a>0x07 腾讯-安全技术实习生</h1><p>时长：15分钟</p>
+<ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>sql注入了解吗，讲一讲二次注入的原理</p>
+</li>
+<li><p>二次注入要怎么修复</p>
+</li>
+<li><p>sql注入过waf了解吗，若一个sql注入过滤了information关键词，怎么绕过</p>
+</li>
+<li><p>Redis未授权访问</p>
+</li>
+<li><p>渗透测试的一个完整流程</p>
+</li>
+<li><p>打ctf的时候有没有遇到什么印象特别深的题目</p>
+</li>
+<li><p>文件下载漏洞有没有什么比较好的利用方式</p>
+</li>
+<li><p>利用文件下载漏洞找文件名具体是找什么文件名（读取文件一般会读取哪些文件）（ctf中？实战中？）</p>
+</li>
+<li><p>命令执行漏洞，http不出网有什么比较好的处理方法（发散一点说）</p>
+</li>
+<li><p>接上一题，通过隧道通信，详细讲讲通过什么类型的隧道，讲讲具体操作</p>
+</li>
+<li><p>漏洞预警</p>
+</li>
+<li><p>有没有复现过中间件类型的漏洞（有没有完整的复现过漏洞）</p>
+</li>
+<li><p>在学校的攻防演练中扮演的角色的主要职责是什么</p>
+</li>
+</ol>
+<h1 id="0x08-小鹏汽车-安全工程师"><a href="#0x08-小鹏汽车-安全工程师" class="headerlink" title="0x08 小鹏汽车-安全工程师"></a>0x08 小鹏汽车-安全工程师</h1><p>时长：37分钟</p>
+<ol>
+<li>自我介绍</li>
+<li>有没有挖过src？</li>
+<li>平时web渗透怎么学的，有实战吗？有过成功发现漏洞的经历吗？</li>
+<li>做web渗透时接触过哪些工具</li>
+<li>xxe漏洞是什么？ssrf是什么？</li>
+<li>打ctf的时候负责什么方向的题</li>
+<li>为什么要搞信息安全，对安全这一块有多大的兴趣，以后会不会转行，还是打算一直从事安全方面工作</li>
+<li>自己平时怎么学安全的，如果让你做一个新的方向（app安全），会投入多少时间去学习，还是说有自己想做的方向</li>
+<li>聊一聊代码审计的流程</li>
+<li>平时是怎么做代码审计的</li>
+<li>有没有审计过开源框架、CMS？</li>
+<li>怎么判断一个数据库是mysql还是oracle的？</li>
+<li>sql注入的种类，利用方式？</li>
+<li>聊一聊sql注入的原理及防御思路</li>
+<li>做开发的时候用的是什么语言</li>
+<li>做java开发的时候用过什么框架，能不能做java安全开发</li>
+<li>有没有做过安卓开发</li>
+<li>有没有用python写过工具？</li>
+<li>msf利用的是哪个漏洞，有没有成功反弹？</li>
+<li>护网的时候主要做了些什么，聊一聊对安全产品的理解</li>
+<li>公司现在需要做app安全的人，现在要你做的话，你会去学吗，或者说感兴趣吗，还是说有别的想做的，不想做app安全，能投入多少时间去学</li>
+<li>内网渗透了解吗？聊一聊内网渗透的思路</li>
+</ol>
+<hr>
+<blockquote>
+<p>接下来从0x09~0x0B都是同一位博主的面经，发在牛客上，看了下感觉很不错就转过来了，再附上这个博主的一些面试题&#x2F;学习笔记的链接，个人觉得挺好的</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lady_killer9/article/details/120075430">CSDN 网络安全-常见面试题</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lady_killer9/article/details/106791542">CSDN 网络安全-自学笔记</a></p>
+</blockquote>
+<h1 id="0x09-阿里巴巴-阿里云安全"><a href="#0x09-阿里巴巴-阿里云安全" class="headerlink" title="0x09 阿里巴巴-阿里云安全"></a>0x09 阿里巴巴-阿里云安全</h1><p>作者：宠你＆我的天性</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/642461?source_id=profile_create_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/642461?source_id=profile_create_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<h2 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h2><ol>
+<li><p>自我介绍一下，讲一下课题和课外实践？ </p>
+</li>
+<li><p>WAF管理平台后端API有做过压力测试吗？ </p>
+</li>
+<li><p>你现在的论文已经发表了吗？ </p>
+</li>
+<li><p>你的毕业论文是什么？ </p>
+</li>
+<li><p>在字节跳动训练营最大的收获是什么？ </p>
+</li>
+<li><p>在研究生期间或日常生活中有什么可以分享的有意义的事情？ </p>
+</li>
+<li><p>快排的时间复杂度是多少？ </p>
+<ul>
+<li><p>最快的情况下是多少？是什么样的情况？ </p>
+</li>
+<li><p>最慢的情况下是多少？是什么样的情况？</p>
+</li>
+</ul>
+</li>
+<li><p>哈希冲突有哪些解决办法？  </p>
+</li>
+<li><p>编程题(easy)</p>
+</li>
+</ol>
+<h2 id="二面-2"><a href="#二面-2" class="headerlink" title="二面"></a>二面</h2><ol>
+<li><p>自我介绍一下？ </p>
+</li>
+<li><p>我们这里是密码管理服务，密码这块你了解多少呢？ </p>
+</li>
+<li><p>你未来计划更偏向于安全研究还是安全研发？ </p>
+</li>
+<li><p>你对云上PKI的安全，身份认证的能力感兴趣吗？ </p>
+</li>
+<li><p>介绍一下字节跳动训练营做了什么？</p>
+<ul>
+<li><p>Sql注入的原理和防御方案有哪些？ </p>
+</li>
+<li><p>WAF防护SQL注入的原理是什么？ </p>
+</li>
+<li><p>本次训练营中，怎么分工协作的？你的角色是什么？你的贡献是什么？有没有提升效率的可能？ </p>
+</li>
+<li><p>漏洞挖掘是纯工具还是有一些手工的？ </p>
+</li>
+<li><p>WAF管理平台后端API有哪些功能？ </p>
+</li>
+<li><p>WAF的增删改查数据量大吗？ </p>
+</li>
+<li><p>Redis解决了什么问题？ </p>
+</li>
+<li><p>热点数据怎么保证redis和db中的一致？ </p>
+</li>
+<li><p>用户登录认证是怎么做的？ </p>
+</li>
+<li><p>Token的安全怎么保护？ </p>
+</li>
+<li><p>Token的内容该如何设计？ </p>
+</li>
+<li><p>怎么保证数据不被篡改呢？</p>
+</li>
+</ul>
+</li>
+<li><p>SDN漏洞挖掘的思路？ </p>
+<ul>
+<li>漏洞挖掘有挖掘出RCE漏洞吗？ </li>
+<li>对栈溢出、堆溢出有研究吗？</li>
+</ul>
+</li>
+<li><p>说一下https协议的过程？ </p>
+<ul>
+<li>随机数一般有几个？ </li>
+<li>如果有一个的话会如何？</li>
+</ul>
+</li>
+<li><p>对C++或C熟悉吗？ </p>
+</li>
+<li><p>哈希表的原理和冲突解决办法？（和一面重复了） </p>
+</li>
+<li><p>Mysql查询快的原因？ </p>
+<ul>
+<li>事务的四大特性，mysql隔离级别？ </li>
+<li>解释一下乐观锁和悲观锁？</li>
+</ul>
+</li>
+<li><p>多并发编程有涉及过吗？ </p>
+<ul>
+<li>读写锁和互斥锁&#x2F;排他锁用过吗？有什么区别？为什么会用？</li>
+</ul>
+</li>
+<li><p>有一项软件著作权，做的什么软件？    </p>
+</li>
+<li><p>编程题(medium)</p>
+</li>
+</ol>
+<h2 id="三面（交叉面）"><a href="#三面（交叉面）" class="headerlink" title="三面（交叉面）"></a>三面（交叉面）</h2><ol>
+<li>字节跳动训练营越权问题解决办法？ <ul>
+<li>防火墙都是自己写的规则去防御吗？ </li>
+<li>任务都是一样，你们得了第一，你们团队做的好的地方在哪里？</li>
+</ul>
+</li>
+<li>SDN漏洞挖掘项目，你能列举一个比较有技术含量的漏洞吗？漏洞原理和挖掘过程？ </li>
+<li>Python2和Python3的区别？</li>
+</ol>
+<ul>
+<li>Xrange和range返回的是什么？</li>
+</ul>
+<ol start="4">
+<li>数据库索引的作用？mysql索引的变化？ </li>
+<li>数据库弱口令，登进去后如何提权？ </li>
+<li>你自己写项目的时候，怎么进行的   SQL注入防御？   </li>
+<li>怎么进行CSRF防御？</li>
+</ol>
+<ul>
+<li>Token加密什么东西？ </li>
+<li>校验什么？ </li>
+<li>Token为什么需要加密？ </li>
+<li>使用明文随机数可以吗？</li>
+</ul>
+<ol start="8">
+<li>怎么防重放攻击 ？    </li>
+<li>Docker有哪些安全上的好处？    </li>
+<li>个人发展方向？    </li>
+<li>当前在哪里日常实习？   </li>
+<li>实习多久了？为什么想来阿里？</li>
+</ol>
+<h1 id="0x0A"><a href="#0x0A" class="headerlink" title="0x0A"></a>0x0A</h1><h1 id="0x0B-字节跳动-无恒实验室"><a href="#0x0B-字节跳动-无恒实验室" class="headerlink" title="0x0B 字节跳动-无恒实验室"></a>0x0B 字节跳动-无恒实验室</h1><p>部门：无恒实验室</p>
+<p>岗位：安全工程师</p>
+<p>作者：宠你＆我的天性</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/749954?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/749954?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<hr>
+<ol>
+<li>自我介绍</li>
+<li>阿里巴巴实习介绍？</li>
+<li>启明星辰实习介绍？</li>
+<li>消息队列是自研的，还是开源的？叫什么名字？</li>
+<li>任务下发？状态监测</li>
+<li>子域名扫描插件怎么写的？</li>
+<li>指纹识别插件怎么写的？</li>
+<li>wappalyzer怎么进行指纹识别的？</li>
+<li>CSDN的XSS漏洞挖掘过程？</li>
+<li>SQL注入的原理？</li>
+<li>目前防御SQL注入的方式有哪些？</li>
+<li>有哪些SQL语句无法使用预编译的方式？</li>
+<li>SQL注入如何判断注入点？ </li>
+<li>已知example.com&#x2F;?id &#x3D; 1，是mysql，如何获得mysql版本？</li>
+<li>无回显情况下怎么弄？ceye dnslog外带</li>
+<li>除了外带呢？</li>
+<li>CSRF的原理？</li>
+<li>CSRF使用POST请求时，如何攻击？隐藏表单</li>
+<li>不是表单呢？</li>
+<li>AJAX发送POST请求？</li>
+<li>Ajax发送POST请求会发几个数据包？ </li>
+<li>让你来写一个CSRF攻击插件，你怎么写？包含哪些模块？</li>
+<li>SSRF的原理？</li>
+<li>让你写一个SSRF插件，你怎么写？</li>
+<li>反问环节</li>
+</ol>
+<h1 id="0x0C-58同城-安全工程师"><a href="#0x0C-58同城-安全工程师" class="headerlink" title="0x0C 58同城-安全工程师"></a>0x0C 58同城-安全工程师</h1><p>岗位：安全工程师</p>
+<p>作者：Lamber-maybe</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/766311?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/766311?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<hr>
+<ol>
+<li><p>你先做个自我介绍吧</p>
+</li>
+<li><p>假如说有个SQL注入如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from user where userid = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>response里面没有返回内容 </li>
+<li>1s就超时了，直接返回404页面</li>
+</ol>
+<p>这种情况下如何注入?</p>
+</li>
+<li><p>比如说我写一个安全SDK</p>
+<ol>
+<li><p>sql注入的修复, 怎么写(伪代码)</p>
+<p>答：我倾向于使用预编译的方式</p>
+</li>
+<li><p>但是预编译的话, 研发可能不会用怎么办呢, 就是说如果他觉得改起来太麻烦了能不能更方便一点. 因为预编译的话, 我每条SQL每条查询都得去改.</p>
+<p>答：那设计一个白名单怎么样呢</p>
+</li>
+<li><p>那你大概写一下怎样设计一个白名单. 你可以分场景, 比如说什么场景什么场景的SQL注入, 或者是参数里面应该做什么操作</p>
+</li>
+<li><p>xss的修复, 怎么写(伪代码)<br>答: 用实体化转义</p>
+</li>
+<li><p>但是我们有一个场景啊, 你看我们上传简历这里, 有时候会支持上传html的简历, 对吧. 他本身业务就需要用到html, 如果用html实体化转义的话, 他全都会被转义, 那这样的话业务就崩了嘛, 对不对. 那这种情况下我们要怎么样去写一个xss的过滤, 或者是说转义, 去解决这个类似于简历这个场景. 你可以想一想, 写不出来代码也没关系.</p>
+<p>答：白名单限制, 黑名单过滤.</p>
+</li>
+<li><p>其实我们自己是这样做的, 对于这种情况, 我们第一是会做一个html标签的白名单, 第二是事件的白名单. 黑名单我们就不搞了.</p>
+</li>
+<li><p>rce的修复, 怎么写(伪代码)(java或者python的命令执行)<br>答: 白名单限制, 只允许需要的函数. 但RCE的话我感觉在业务场景当中, 一般来说也不是很容易出现<br>面试官: 欸, 我们就出现了很多. 尤其是运维部门.</p>
+<p>我: 我打CTF比较多, 我了解的RCE都是PHP方面的. 比如说system, popen之类的. 一般来说都是直接做过滤</p>
+</li>
+<li><p>那PHP中这些函数全部被黑名单了, 你还有什么方法</p>
+<p>答: 字符串拼接 <code>$a=p.h.p.i.n.f.o()</code></p>
+</li>
+<li><p>你有没有用过php里面的反引号啊</p>
+<p>答: 还有用 <code>chr()</code> 函数来绕过</p>
+</li>
+<li><p>面试官: 编码是吧</p>
+</li>
+<li><p>xxe的修复, 怎么写(伪代码)<br>答: 对XXE来说, 我只了解他的攻击方式, 对他的防御不是很了解. 攻击方式就是做XML的外部实体化注入. 一个攻击模板, 可以读文件, 可以做命令执行</p>
+</li>
+<li><p>XXE怎么做命令执行呢, 就拿php来说, XXE怎么做命令执行</p>
+</li>
+<li><p>XXE这个命令执行是要他的服务端本身支持某些特殊的协议, 一般来说是不行的</p>
+</li>
+</ol>
+</li>
+<li><p>了解过自动化代码<a href="">审计</a>的工具吗, 类似于fortify这种</p>
+<p>答: 我只用过那个一个比较老的那个, 我想不起来了(指seay)</p>
+</li>
+<li><p>没关系, 那你有没有了解过他的一些原理, 大概怎么做的</p>
+<p>我: 他原理一般都是通过匹配一些特殊函数, 去定位可能出现漏洞的函数的位置</p>
+</li>
+<li><p>但这种的话他误报很高欸, 就像我这种RCE的话, 你直接匹配的话他很多都是误报了, 很多他都不是web思路的</p>
+<p>我: 还有一种是, 给他加一些自定义规则</p>
+</li>
+<li><p>那有没有更好的办法呢, 误报太多了我们没办法接受啊</p>
+<p>我: 我有一个想法就是, 他自己匹配了之后, 能不能从前端从一个黑盒的层面再去验证一遍</p>
+</li>
+<li><p>那黑盒验证, 我就有需求是, 首先我得知道, 首先我php里面我这个函数到底是哪个入口传进来的, 对吧. 但这个有可能经过了层层调用, 甚至有可能是<code>include()</code>这种, 那这种的话, 对于我来说 , 我并不知道他影响到了哪一些入口, 这种情况怎么办呢</p>
+</li>
+<li><p>你们学校有学编译原理吗</p>
+</li>
+<li><p>其实我觉得安全专业还是要学一下编译原理</p>
+</li>
+<li><p>有没有搞过linux的这种后渗透相关的</p>
+<ol>
+<li><p>面试官: 比如这个linux被我攻陷了, 我想去拿到更多的信息, 比如说一些横向的信息, 那种有没有搞过<br>我: 这种不是很了解, 但windows的会一点</p>
+</li>
+<li><p>面试官: 那你可以简单讲一下, 比如你先攻陷一台windows的机器, 然后我想在这个windows的域内去做一些横向移动, 我想把这个windows的域的权限给拿到, 这种你该怎么做<br>我: 通过票据伪造, 白银票据和黄金票据<br>面试官: 你这个票据伪造要怎么做呢<br>我: 一般用mimikatz就可以了吧</p>
+</li>
+<li><p>面试官: 你mimikatz抓取的是内存里面的密码和一些他的票据, 那我如果本身是低权限的呢, 就我本身抓不了密码, 或者我抓到的用户密码并不是域账号的, 是一个低权限账号呢. 因为大部分渗透进来都是个应用, 应用他可能并没有域权限<br>我: 从低权限往上提</p>
+</li>
+<li><p>面试官: 那你一般会怎么提权<br>我: 一般windows的漏洞吧<br>面试官: 那现在就用这个windows系统的提权, 我现在就一个webshell, 那我怎么样去提权</p>
+</li>
+<li><p>面试官: 你可以这样嘛, 你上传一个提权的脚本或者exe嘛, 你webshell去跑这个exe, 他就把这个web应用权限提权了</p>
+</li>
+</ol>
+</li>
+<li><p>那你最后有什么想问我的吗</p>
+</li>
+</ol>
+<h1 id="0x0D-腾讯-玄武实验室"><a href="#0x0D-腾讯-玄武实验室" class="headerlink" title="0x0D 腾讯-玄武实验室"></a>0x0D 腾讯-玄武实验室</h1><p>作者：立志区块链安全的菜鸡</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/711602?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/711602?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<p>部门：玄武实验室</p>
+<ol>
+<li>自我介绍</li>
+<li>讲解一下CSRF原理吧</li>
+<li>什么时候接触web安全的</li>
+<li>为什么学WEB安全</li>
+<li>参加过哪些比赛</li>
+<li>你发挥了那行作用</li>
+<li>讲讲反序列化吧</li>
+<li>说一说最近你关注的安全圈大事</li>
+<li>那你说说你遇到最优印象的吧</li>
+<li>我看你简历上有黑盒测试 说一说吧<ul>
+<li>一个是钱包的测试 一个是交易所的测试，钱包主要是信息泄露，水平越权</li>
+</ul>
+</li>
+<li>怎么发现的<ul>
+<li>信息泄露是webpack可以直接查看api 等调用信息，水平越权是构造josn包返回了用户数据账户密码之类的</li>
+</ul>
+</li>
+<li>怎么构造的</li>
+<li>那继续说说交易所</li>
+<li>（区块链相关）讲一讲逆向函数涉及到的接收参数的指令集</li>
+<li>说说重入漏洞</li>
+<li>有对最近那个最大的区块链安全事件有了解吗</li>
+<li>好，那你对密码学有什么接触嘛</li>
+<li>我看你简历有许多对Defi的审计，那你有什么对漏洞的挖掘的经验吗</li>
+<li>嗯好 那现在我问你个问题 你思考下 在DEFI项目中建立了各种各样的经济模型 怎样才能找出可能存在的漏洞</li>
+<li>讲讲你对未来可能出现的新型漏洞的猜想吧</li>
+<li>有一种 游戏在猜对正确答案后可获得奖励</li>
+<li>反问</li>
+</ol>
+<h1 id="0x0E-360-安全工程师"><a href="#0x0E-360-安全工程师" class="headerlink" title="0x0E 360-安全工程师"></a>0x0E 360-安全工程师</h1><p>作者：Djade</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/628090?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/628090?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<ol>
+<li><p>自我介绍 </p>
+</li>
+<li><p>WAF及其绕过方式 </p>
+</li>
+<li><p>IPS&#x2F;IDS&#x2F;HIDS </p>
+</li>
+<li><p>云安全 </p>
+</li>
+<li><p>怎么绕过安骑士&#x2F;安全狗等 </p>
+</li>
+<li><p>Gopher扩展攻击面 </p>
+</li>
+<li><p>Struct2漏洞 </p>
+</li>
+<li><p>UDF提权 </p>
+</li>
+<li><p>DOM XSS </p>
+</li>
+<li><p>数据库提权 </p>
+</li>
+<li><p>怎么打Redis </p>
+</li>
+<li><p>内网渗透 </p>
+</li>
+<li><p>容器安全 </p>
+</li>
+<li><p>k8s docker逃逸 </p>
+</li>
+<li><p>linux、windows命令：过滤文件、查看进程环境变量 </p>
+</li>
+<li><p>站库分离怎么拿webshell</p>
+</li>
+</ol>
+<h1 id="0x0F-快手-安全实习生"><a href="#0x0F-快手-安全实习生" class="headerlink" title="0x0F 快手-安全实习生"></a>0x0F 快手-安全实习生</h1><p>作者：ArrowQin</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/651317?source_id=discuss_experience_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/651317?source_id=discuss_experience_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+<p>部门：系统运营部</p>
+<h2 id="一面-3"><a href="#一面-3" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>自我介绍</li>
+<li>问项目</li>
+<li>针对项目问了很多详细的问题，不便透露，通用问题如下：</li>
+<li>做项目的时候有没有遇到什么问题，怎么解决</li>
+<li>做项目学到了什么东西</li>
+<li>项目中有没有什么地方自己做过优化</li>
+<li>有没有对网站做过渗透测试</li>
+<li>Linux操作熟悉吗，怎么看进程PID</li>
+<li>用过什么数据库，答：sqlite,mongodb,面试官好像不太了解没咋问</li>
+<li>为什么用mongodb</li>
+<li>了解ES吗(Elasticsearch)</li>
+<li>HTTPS建立过程</li>
+<li>python怎么管理内存</li>
+<li>深拷贝和浅拷贝区别</li>
+<li>python多进程、多线程、协程有用到吗，都在什么地方用到</li>
+<li>python可以实现真正的多线程吗</li>
+<li>代码题：ip排序</li>
+</ol>
+<p>（转成元组排序就行了，记得把str转成int，不然192会比50大）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">输入：iplist = [&quot;1.1.1.1&quot;,&quot;192.168.1.110&quot;,&quot;10.192.2.4&quot;,&quot;10.50.2.3&quot;,&quot;10.50.2.10&quot;,&quot;111.120.12.1&quot;,&quot;172.18.5.112&quot;]</span><br><span class="line">输出：</span><br><span class="line">1.1.1.1</span><br><span class="line">10.50.2.3</span><br><span class="line">10.50.2.10</span><br><span class="line">10.192.2.4</span><br><span class="line">111.120.12.1</span><br><span class="line">172.18.5.112</span><br><span class="line">192.168.1.110</span><br></pre></td></tr></table></figure>
+
+<ol start="18">
+<li>写Web API的时候怎么防止SQL注入</li>
+<li>怎么防XSS</li>
+<li>了解越权漏洞么，有没有挖过越权漏洞</li>
+<li>有没有什么比较擅长的我还没问到的</li>
+</ol>
+<h2 id="二面-3"><a href="#二面-3" class="headerlink" title="二面"></a>二面</h2><ol>
+<li><p>问项目</p>
+</li>
+<li><p>项目哪一块时间花的比较多</p>
+</li>
+<li><p>怎么溯源攻击</p>
+</li>
+<li><p>举一个溯源攻击的例子</p>
+</li>
+<li><p>怎么检测webshell</p>
+</li>
+<li><p>sql注入在mysql和sqlserver中有什么区别</p>
+</li>
+<li><p>想找安全开发的岗位还是安全研究的岗位</p>
+</li>
+<li><p>代码题：手机九宫格键盘，输入数字，输出所有的字母组合</p>
+<p>如输入23，输出[‘ad’,’ae’,’af’,’bd’,’be’,’bf’,’cd’,’ce’,’cf’]</p>
+</li>
+<li><p>讲一下DNS协议的作用、解析过程</p>
+</li>
+<li><p>DNS协议的安全问题</p>
+</li>
+<li><p>实习时间</p>
+</li>
+</ol>
+<h1 id="0x10-华顺信安-安全服务工程师"><a href="#0x10-华顺信安-安全服务工程师" class="headerlink" title="0x10 华顺信安-安全服务工程师"></a>0x10 华顺信安-安全服务工程师</h1><p>来源：知乎</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426763642">https://zhuanlan.zhihu.com/p/426763642</a></p>
+<ol>
+<li>自我介绍</li>
+<li>红蓝队经验</li>
+<li>关于shiro漏洞了解多少</li>
+<li>说说你APP测试的经验</li>
+<li>xposed用的什么框架，有没有自己写过app解密</li>
+<li>Xss、SSRF、SQL 产生的原因，修复方案？</li>
+<li>如果你Xss打了后台，发现是内网的怎么办</li>
+<li>假设给你一个目标站，你要怎么做？</li>
+<li>linux和windows提权知多少。</li>
+<li>会不会进程注入？</li>
+<li>做过几次应急？</li>
+<li>讲讲windows和linux应急你咋做的</li>
+<li>用过没用过我们家的goby和fofa?</li>
+<li>会不会apk反编译？</li>
+<li>你python水平咋样？</li>
+<li>你php怎么审的</li>
+</ol>
+<hr>
+<blockquote>
+<p>备注：从0x11~0x14都是同一位师傅的面经，来源于知乎，里面有这位师傅的回答及一些总结、知识点，我这只是选了几个个人认为比较有代表性的公司和面经的题目出来</p>
+<p>来源：知乎</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/164774894">https://zhuanlan.zhihu.com/p/164774894</a></p>
+</blockquote>
+<h1 id="0x11-奇安信面试复盘"><a href="#0x11-奇安信面试复盘" class="headerlink" title="0x11 奇安信面试复盘"></a>0x11 奇安信面试复盘</h1><ol>
+<li>MVC框架详细说一下</li>
+<li>详细介绍一下sql注入</li>
+<li>xss与csrf的区别</li>
+<li>csrf的原理以及如何防范</li>
+<li>还有什么你擅长的但是没有问到的吗</li>
+<li>讲一下xxe的原理</li>
+<li>xxe会用到哪些函数</li>
+<li>文件上传，详细说说</li>
+<li>常见的web容器有哪些</li>
+<li>apache 7.0 文件上传黑名单怎么绕过，详细说说</li>
+<li>密码学的对称密码与非对称密码有哪些</li>
+<li>md5是不是对称加密</li>
+<li>apache可以执行php文件吗</li>
+<li>了解哪些数据库</li>
+<li>说说反序列化的原理</li>
+<li>反序列化会用到哪些函数</li>
+<li>xxe有没有实战过</li>
+<li>java的多线程</li>
+<li>python有过哪些项目，写过什么东西</li>
+<li>之前python学到什么地方</li>
+</ol>
+<h1 id="0x12-京东-安全研发"><a href="#0x12-京东-安全研发" class="headerlink" title="0x12 京东-安全研发"></a>0x12 京东-安全研发</h1><ol>
+<li>首先根据简历提问</li>
+<li>问我的一个项目完成的怎么的样了，&#x2F;&#x2F;简历中的</li>
+<li>Java基础怎么样，</li>
+<li>有没有自己动手写过一些工具</li>
+<li>有没有想过自己以后要写一下扫描器</li>
+<li>sql注入的简单原理及其如何防御</li>
+<li>有没有了解过反序列化 尤其是Java方向的</li>
+<li>数据结构还记得多少</li>
+<li>src主要挖掘一些什么类型的漏洞</li>
+<li>了解的MSF框架怎么样</li>
+<li>数据库主要了解的哪些，主要学的什么数据库</li>
+<li>ssrf的原理及其防御 —&gt; 这有深入</li>
+</ol>
+<h1 id="0x13-安恒面试复盘"><a href="#0x13-安恒面试复盘" class="headerlink" title="0x13 安恒面试复盘"></a>0x13 安恒面试复盘</h1><ol>
+<li><p>sqlmap爆出当前库名的参数是什么？</p>
+</li>
+<li><p>namp探测系统的参数是什么 —&gt;大写还是小写</p>
+</li>
+<li><p>namp的小写o与a是干嘛的</p>
+</li>
+<li><p>布尔型盲注的具体语句是什么</p>
+</li>
+<li><p>宽字节的原理</p>
+</li>
+<li><p>python有没有反序列化</p>
+</li>
+<li><p>get传参与post传参的区别</p>
+</li>
+<li><p>Http有哪些请求方式</p>
+</li>
+<li><p>如何判定cdn与cdn的作用</p>
+</li>
+<li><p>如何确认服务器的真实IP</p>
+</li>
+<li><p>详细说了说信息收集过程</p>
+</li>
+<li><p>一串编码如何确认是base64</p>
+</li>
+<li><p>栅栏密码的原理是什么</p>
+</li>
+<li><p>base64与md5如何区别</p>
+</li>
+<li><p>oracle的默认端口是多少</p>
+</li>
+<li><p>mysql的管理员密码一般放到哪</p>
+</li>
+<li><p>如果substr()函数被禁用，你脑子里有多少替换函数</p>
+</li>
+<li><p>redis如何拿下，哪个端口，具体语句，具体操作</p>
+</li>
+<li><p>如何通过邮箱知道对方的IP</p>
+</li>
+<li><p>说一下同源策略</p>
+</li>
+<li><p>如何收集网站管理员邮箱等等</p>
+</li>
+<li><p>ssrf有哪些危害</p>
+</li>
+<li><p>如何防御ssrf–&gt;问的较深—-&gt;建议在详细了解一下</p>
+</li>
+<li><p>Linux的某两个文件怎么分辨（忘了具体是哪两个文件了）</p>
+</li>
+<li><p>MSF框架稍微问的深入了一些</p>
+</li>
+<li><p>web容器（中间件）有哪些解析漏洞与原理</p>
+</li>
+<li><p>如何防范sql注入 —&gt;这问的很深</p>
+</li>
+</ol>
+<h1 id="0x14-浙江东岸检测"><a href="#0x14-浙江东岸检测" class="headerlink" title="0x14 浙江东岸检测"></a>0x14 浙江东岸检测</h1><ol>
+<li>xss的标签</li>
+<li>说说大学这几年，你最自豪的事情</li>
+<li>简单说说sql注入</li>
+<li>说说偏移注入</li>
+<li>说说ctf你都做哪些题型</li>
+<li>遇到的比较困难的web题型的ctf题目</li>
+<li>xxe了解吗，有没有自己审计出</li>
+<li>说说反序列化</li>
+<li>bypass说说</li>
+<li>假如，让你设计一个waf，你会怎么设计</li>
+<li>内网渗透与提权了解吗</li>
+<li>平常都挖掘哪些src</li>
+<li>有没有自己手写过一些脚本</li>
+<li>说说sql注入，手工怎么爆出所有库名字</li>
+</ol>
+<h1 id="0x15-360-安全工程师实习"><a href="#0x15-360-安全工程师实习" class="headerlink" title="0x15 360-安全工程师实习"></a>0x15 360-安全工程师实习</h1><p>时长：45min</p>
+<p>来源：知乎</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/362868972">https://zhuanlan.zhihu.com/p/362868972</a></p>
+<ol>
+<li><p>自我介绍</p>
+</li>
+<li><p>WAF及其绕过方式</p>
+</li>
+<li><p>IPS&#x2F;IDS&#x2F;HIDS</p>
+</li>
+<li><p>云安全</p>
+</li>
+<li><p>怎么绕过安骑士&#x2F;安全狗等</p>
+</li>
+<li><p>Gopher扩展攻击面</p>
+</li>
+<li><p>Struct2漏洞</p>
+</li>
+<li><p>UDF提权</p>
+</li>
+<li><p>DOM XSS</p>
+</li>
+<li><p>数据库提权</p>
+</li>
+<li><p>怎么打Redis</p>
+</li>
+<li><p>内网渗透</p>
+</li>
+<li><p>容器安全</p>
+</li>
+<li><p>k8s docker逃逸</p>
+</li>
+<li><p>linux、windows命令：过滤文件、查看进程环境变量</p>
+</li>
+<li><p>站库分离怎么拿webshell</p>
+</li>
+</ol>
+<h1 id="0x16-某一线实验室实习"><a href="#0x16-某一线实验室实习" class="headerlink" title="0x16 某一线实验室实习"></a>0x16 某一线实验室实习</h1><p>来源：知乎</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/426747686">https://zhuanlan.zhihu.com/p/426747686</a></p>
+<h2 id="技术面"><a href="#技术面" class="headerlink" title="技术面"></a>技术面</h2><ol>
+<li>面试官：你好，听说你对来我们公司的意愿非常强烈，是为什么呢</li>
+</ol>
+<p>  我：因为我在项目中与贵公司的人员有过合作，感觉无论是技术还是硬件或者是待遇都算圈子里一流的</p>
+<ol start="2">
+<li><p>面试官：那你了解我们实验室吗？</p>
+<p>我：我有了解过，巴拉巴拉说了一下</p>
+</li>
+<li><p>面试官：那我先给你介绍一下实验室的方向，分为三个方向….</p>
+<p>我：好的明白了</p>
+</li>
+<li><p>面试官：你在项目中是否使用过我们公司的设备，感觉使用体验如何（意思就是让说设备的优缺点）</p>
+<p>我：那我就实话实说了？</p>
+</li>
+<li><p>面试官：没问题的，我就想听听你的意见</p>
+<p>我：我使用过…. ,优点就是性能好，能探测到更多的威胁情报之类的（大家脑补吧），感觉不足的就是探测和分析出的威胁，没法给出具体的流量片段，没法通过一个设备有效确定攻击，没有流量特征不好和其他全流量设备进行联动，可能是设备出场的保护机制，保护特征库不被外泄。</p>
+</li>
+<li><p>面试官：你知道主流的设备原理和开发过程吗</p>
+<p>我：（我就说了一下原理，还不知道对不对）</p>
+</li>
+<li><p>面试官：你在项目中是做过流量分析对吗？能不能说说你的具体案</p>
+<p>我：我在国家hvv中协助发现过0day，单独发现过frp反弹定时回确认包向外输送流量，shiro反序列化等漏洞（我主要讲了我frp反弹的发现思路和流程）</p>
+</li>
+<li><p>面试官：除了这些常规的特征发现，你自己还有什么快速确定的方法吗？</p>
+<p>我：（给大家分享一下我自己的流量分析心得）</p>
+<ol>
+<li>确定事件的类型（确定事件是什么样的攻击，比如sql注入和爆破和frp的流量分析步骤就不一样）</li>
+<li>确定事件的时间，首先划定一个时间段</li>
+<li>确定数据流，攻击的数据流我们是要看HTTP，TCP，还是ssh</li>
+<li>分析是内网—&gt;外网还是外网—&gt;内网，内网和外网时两种查询方法，正确的查询能有效的通过分析更少的数据包获取结果<br>比如 内网—&gt;外网 我们确定后，第一步肯定先去先查看外网ip的流量，判断行为<br>外网—&gt;内网 这样一般都是拿下了一个外网的服务器当做跳板机，我们肯定要先去分析内网的受害者服务器，看看有没有被攻击成功</li>
+<li>首先我们需要确定到攻击行为后，再深入的流量分析和应急响应，很多都是误报</li>
+<li>数据包的大小也是分析的条件，分析SSL数据包需要解密<ul>
+<li>爆破攻击<ol>
+<li>SMB,SSH,MSSQL等协议比较多，看包的大小，成功登陆的包很大</li>
+<li>看ACK，SYN包的次数，如果成功至少20起步，放到科莱上为40起步，但是注意不是失效包和重传的包（注意加密流的ack和syn包也很多，为客户端一次，服务端一次）</li>
+</ol>
+</li>
+<li>重传攻击：<ol>
+<li>如果一个数据包非常大，几个G或者一个G，我们就考虑数据包是否进行了重传，然后查看数据包的重传数，打个比方就是刷新，如果短时间重传数非常多，就为机器操作，判定为攻击</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>我们发现一个攻击（如平台登录后的sql注入）我们可以通过流量回溯装置抓取那个被登录用户的用户名和密码，登录平台后自己利用发现的payload进行尝试，看是否能注入成功</li>
+</ol>
+</li>
+<li><p>面试官：听说你还做过红队？是哪个项目，你在里面的职责是什么</p>
+<p>我：介绍了一下我的项目经验，然后说我在红队的是突击手负责打点（我们当时孤军奋战没后援，也没擅长内网的选手）</p>
+</li>
+<li><p>面试官：说说你项目中的成果</p>
+<p>我：….</p>
+</li>
+<li><p>面试官：说一下你在项目里遇到的问题</p>
+<p>我：我们通过exp拿下了一个锐捷路由器的webshell，但是卡在了反弹shell上面，无法进行反弹</p>
+</li>
+<li><p>面试官：那说一下项目结束后你是否有思考过这个问题，是否咨询过他人，解决方式是什么？（我感觉真的非常重视思考和问题解决，非常重视项目的闭环）</p>
+<p>我：我有问过也拿过锐捷路由器的朋友，然后我认为是数据库和网站分离开了，然后只能拿下来webshell权限</p>
+</li>
+<li><p>面试官：你如何快速准确的确定资产？</p>
+<p>我：通过fofa，谷歌语法，钟馗之眼，一些的注册信息</p>
+</li>
+<li><p>面试官：fofa的语法是什么？</p>
+</li>
+<li><p>面试官：你如何在这些资产中快速的确定漏洞？</p>
+<p>我：最快的就是扫描器先扫描一遍，然后进行信息搜集，针对性的攻击，或者我们通过fofa语法针对性的在资产表中搜集是否存在特殊的cms或者oa系统….</p>
+</li>
+<li><p>面试官:一般扫描都会封禁你，你会怎么办</p>
+<p>我：我会第一就是使用ip池代理，要么就是使用5g</p>
+</li>
+<li><p>面试官：你这些信息搜集和攻击都是效率不是很高的，项目结束后你有没有思考解决方法呢</p>
+<p>我：我有想过自己写一个程序，把代码池和一些信息搜集和特定的利用方法融合，但是没写出来（又一次感到代码不好的痛苦）</p>
+</li>
+<li><p>面试官：那你是否有了解过国家hvv红队的隐藏流量过防火墙的技术呢？</p>
+<p>我：有了解过，但是这个我不太会，没有地方去学（有点尴尬）</p>
+</li>
+<li><p>面试官：你们在打点的时候有没有什么特殊的方法呢？</p>
+<p>我：我们除了搜索特点的oa系统，还会搜集资产里的邮件系统，进行信息搜集登录邮件系统，搜集各种配置文件数据库文件登录网站后台，我们成功登录到两个网站后台，和一个邮件系统，也拿下了几个oa</p>
+</li>
+<li><p>面试官：你们这么针对特定oa，是因为有0day吗（笑）</p>
+<p>我：我们队有这几个oa的0ady和半day</p>
+</li>
+<li><p>面试官：开发这边怎么样？能直接上手开发吗？</p>
+<p>我：python还能自己开发几个小工具，java还是只能看懂（好尴尬我真不行，可能是学安全时间还不够长，本来想今年主攻代码的）</p>
+</li>
+<li><p>面试官：意思就是只能开发几个简单的扫描脚本对么（大家一定啊要好好学代码）</p>
+<p>我：是（尴尬的笑），最近在学习使用pos3编写poc</p>
+</li>
+<li><p>面试官：你如果来实习你想进行哪方面的学习呢？</p>
+<p>我：（我选择了一个偏向防御类的方向，因为我知道攻击类的我应该水平不够，我很有自知之明）<br>然后就是一些询问能工作几个月，什么时候能到岗</p>
+</li>
+</ol>
+<blockquote>
+<p>综合下来我认为面试官认为我的不足就是，红队时的攻击和信息搜集效率不高需要改进，可能缺少一点项目的反思和解决思路</p>
+</blockquote>
+<h2 id="hr面"><a href="#hr面" class="headerlink" title="hr面"></a>hr面</h2><ol>
+<li>首先介绍一下你自己的经历？</li>
+<li>你才大二该大三，你在学校是怎么自学安全的？</li>
+<li>你是怎么接触安全的？</li>
+<li>你现在的学习内容是什么？</li>
+<li>近期的学习规划是什么？</li>
+<li>你在大学中平时课程和安全的学习是怎么分配的？是否会冲突？</li>
+</ol>
+<h1 id="0x17-腾讯-科恩实验室实习"><a href="#0x17-腾讯-科恩实验室实习" class="headerlink" title="0x17 腾讯-科恩实验室实习"></a>0x17 腾讯-科恩实验室实习</h1><h2 id="一面-4"><a href="#一面-4" class="headerlink" title="一面"></a>一面</h2><p>时长：一个半小时</p>
+<ol>
+<li><p>tcp三次握手</p>
+</li>
+<li><p>介绍一次渗透测试过程  </p>
+<ul>
+<li>讲了一次代码审计</li>
+</ul>
+</li>
+<li><p>SSRF漏洞</p>
+</li>
+<li><p>内网渗透大致流程</p>
+</li>
+<li><p>再介绍一次难度比较高的渗透测试</p>
+</li>
+<li><p>防守方有哪些入侵检测手段，有哪些痕迹是可以抓到的‌</p>
+</li>
+<li><p>介绍进程和线程</p>
+</li>
+<li><p>进程和线程内存空间的关系</p>
+</li>
+<li><p>父子进程的介绍</p>
+</li>
+<li><p>孤儿进程和僵尸进程    </p>
+<ul>
+<li>这个我讲反掉了</li>
+</ul>
+</li>
+<li><p>kill一个进程的时候，都发生了那些事情，从父子进程角度讲</p>
+</li>
+<li><p>反弹shell的几种方式    </p>
+<ul>
+<li>本质是用tcp协议传输bash程序</li>
+</ul>
+</li>
+<li><p>att&amp;ck矩阵的类别，介绍其中的CC</p>
+</li>
+<li><p>到域名下拿到命令执行的结果</p>
+<ul>
+<li>这部分没听清楚，面试的时候直接说了不知道，复盘听录音还是没怎么听清，但好像大概想问的是DNS域名解析获取命令执行回显</li>
+</ul>
+</li>
+<li><p>Linux命令通配符</p>
+</li>
+<li><p>护网的溯源、威胁分析工作之类的问了十分钟左右</p>
+<ul>
+<li>完全不会，以后简历上再也不写护网了</li>
+</ul>
+</li>
+<li><p>xx攻防演练中防守方有哪些手段，问的比较杂，主要就是问入侵痕迹检测和溯源之类的东西</p>
+<ul>
+<li>这部分也不太会</li>
+</ul>
+</li>
+<li><p>SVM、KNN介绍</p>
+</li>
+<li><p>卷积神经网络介绍</p>
+</li>
+<li><p>莱文斯坦距离</p>
+</li>
+<li><p>搜索引擎算法</p>
+<ul>
+<li>不太了解，大概讲了下字典树</li>
+</ul>
+</li>
+<li><p>倒排索引</p>
+</li>
+<li><p>恶意样本给出函数家族的md5，如何进行分类</p>
+<ul>
+<li>从统计规律讲了下</li>
+</ul>
+</li>
+<li><p>反问</p>
+</li>
+</ol>
+<h2 id="二面-4"><a href="#二面-4" class="headerlink" title="二面"></a>二面</h2><p>时长：半小时</p>
+<ol>
+<li>第一个问题就直接问了护网，和一面问的差不多，直接裂开</li>
+<li>Linux开机自启动方式</li>
+<li>init.d脚本介绍</li>
+<li>Linux怎么查看程序调用了哪些文件</li>
+<li>如何监控Linux文件操作<ul>
+<li>问到这里就已经非常慌了，Linux比较进阶的操作都不是很会，而且面试官一直在叹气我日</li>
+</ul>
+</li>
+<li>Linux有哪些系统调用<ul>
+<li>不会</li>
+</ul>
+</li>
+<li>GDB调试<ul>
+<li>不会</li>
+</ul>
+</li>
+<li>查看Linux开放的网络端口、多线程状态</li>
+<li>反弹shell的方式</li>
+<li>Linux下怎么隐藏文件</li>
+<li>子域名收集</li>
+<li>DNS重绑定</li>
+<li>DNS解析的流程</li>
+<li>CC流量<ul>
+<li>听都没听过</li>
+</ul>
+</li>
+<li>ssh隧道<ul>
+<li>面试没听清楚，听到隧道就以为是UDP穿越隧道开讲了</li>
+</ul>
+</li>
+<li>https证书机制介绍</li>
+<li>burpsuite一些使用方法，插件开发方法</li>
+<li>nmap的基本操作</li>
+<li>syn开放链接原理</li>
+<li>redis漏洞利用</li>
+<li>runc容器逃逸原理</li>
+<li>常见WAF种类(不知道为什么还特别问了长亭的WAF)</li>
+<li>MySQL的UAF<ul>
+<li>没听过</li>
+</ul>
+</li>
+<li>算法题(比较简单，leetcode easy级别)</li>
+<li>Linux进程通信</li>
+<li>反问</li>
+</ol>
+<hr>
+<blockquote>
+<p>备注：从0x18~0x1B均来自于许少牛客网的分享，不多说了，许少yyds</p>
+<p>作者：4ra1n</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/772753?source_id=profile_create_nctrack&amp;channel=-1">https://www.nowcoder.com/discuss/772753?source_id=profile_create_nctrack&amp;channel=-1</a></p>
+<p>来源：牛客网</p>
+</blockquote>
+<h1 id="0x18-某四字大厂面试复盘"><a href="#0x18-某四字大厂面试复盘" class="headerlink" title="0x18 某四字大厂面试复盘"></a>0x18 某四字大厂面试复盘</h1><p>这个面试有许少的两个问答式文章，建议参考</p>
+<p>一面链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/412934756">https://zhuanlan.zhihu.com/p/412934756</a></p>
+<p>二面链接：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/413684879">https://zhuanlan.zhihu.com/p/413684879</a></p>
+<h2 id="一面-5"><a href="#一面-5" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>看你做java多一些，讲讲java内存马原理和利用</li>
+<li>那你讲下如何查杀java内存马，工具和原理角度</li>
+<li>冰蝎和哥斯拉了解吗，讲讲原理</li>
+<li>你之前在其他公司实习做了些什么事情</li>
+<li>有绕waf的实战经验吗，从各种漏洞的角度谈下</li>
+<li>熟悉webshell免杀吗，讲下原理</li>
+<li>做过其他免杀吗，比如结合cs和msfvenom的</li>
+<li>谈谈fastjson反序列化原理和常见利用链吧</li>
+<li>数据结构熟悉吗，谈谈红黑树原理</li>
+<li>java的hashmap用到红黑树，讲下hashmap的原理</li>
+<li>有没有流量分析的经验</li>
+<li>谈谈代码审计经验</li>
+<li>看你有些cnvd和cve，讲讲挖洞的过程</li>
+<li>有打过知名的ctf吗，讲将经历</li>
+<li>熟悉内网渗透，域控这些，说一下实战经历</li>
+<li>谈谈java反序列化的cc链原理吧</li>
+<li>看你重写过sqlmap，读过sqlmap源码吗</li>
+<li>看你熟悉mysql，讲讲索引，存储结构等</li>
+<li>讲讲mysql为什么要用b+树</li>
+<li>看过mysql源码吗</li>
+<li>分析过二进制漏洞吗</li>
+<li>有没有用汇编写过东西</li>
+<li>谈谈linux内核的漏洞</li>
+<li>挖过缓冲区溢出漏洞吗</li>
+<li>python的沙箱逃逸了解吗</li>
+<li>python的flask模版注入讲讲</li>
+<li>看你做过抽象语法树相关的项目，谈一谈</li>
+<li>讲讲rasp的概念和原理</li>
+<li>谈谈rasp的对抗</li>
+<li>谈谈php和golang语言本身的安全问题</li>
+<li>机器学习和算法相关懂嘛</li>
+<li>看你尝试写过简单的操作系统，谈谈思路</li>
+<li>你有什么要问我的吗</li>
+</ol>
+<h2 id="二面-5"><a href="#二面-5" class="headerlink" title="二面"></a>二面</h2><ol>
+<li>讲讲你挖过印象最深的洞</li>
+<li>讲讲你写过的安全工具，从出发点和原理层面谈谈</li>
+<li>讲讲文件上传这里怎样绕WAF</li>
+<li>SSRF的利用和绕WAF手段</li>
+<li>谈谈MSSQL如果XPCMDSHELL不能用怎么拿SHELL</li>
+<li>遇到没有回显的RCE怎么办</li>
+<li>不使用SQLMAP的OS-SHELL，各种数据库怎么写SHELL</li>
+<li>给你一个比较大的日志，应该如何分析</li>
+<li>谈谈redis未授权会导致哪些问题</li>
+<li>讲讲SYN FLOOD原理，防御，检测手段</li>
+<li>讲讲UDP反射放大的原理，防御，检测手段</li>
+<li>说一说自己的优势吧</li>
+<li>你有什么要问我的吗</li>
+</ol>
+<h2 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h2><ol>
+<li>Padding Oracle Attack讲讲</li>
+<li>Fastjson反序列化原理以及1.2.47绕过的原理</li>
+<li>除了readObject以外造成反序列化的函数有哪些</li>
+<li>CC链中找你最熟悉的几条链讲一讲</li>
+<li>Shiro550反序列化的原理及利用工具编写思路</li>
+<li>Spring&#x2F;Struts2的RCE中印象最深的讲一讲分析过程</li>
+<li>sql注入绕WAF的方式尽可能多说</li>
+<li>分块传输绕WAF的原理</li>
+<li>文件上传绕WAF的方式都有哪些</li>
+<li>讲讲你挖过这些CVE中印象最深的</li>
+<li>你自己最大的优点和缺点是什么</li>
+<li>未来你想做安全的哪一个领域</li>
+<li>你学校成绩如何有挂科吗</li>
+<li>你有什么要问我的吗</li>
+</ol>
+<h1 id="0x19-某四字大厂实习面试复盘"><a href="#0x19-某四字大厂实习面试复盘" class="headerlink" title="0x19 某四字大厂实习面试复盘"></a>0x19 某四字大厂实习面试复盘</h1><h2 id="一面-6"><a href="#一面-6" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>自我介绍</li>
+<li>数组和链表各自的优势和原因</li>
+<li>操作系统层面解释进程和线程区别</li>
+<li>线程和进程通信方式以及数据安全问题</li>
+<li>多进程和多线程的选用场景以及原因</li>
+<li>了解过哪些WAF说说原理</li>
+<li>尽可能多地说下SQL注入绕WAF方式</li>
+<li>FUZZ绕WAF的Payload长度通常是多少</li>
+<li>写过哪些正则说说具体的场景</li>
+<li>不查资料不能测试直接写ipv4的正则</li>
+<li>Fastjson的反序列化原理</li>
+<li>Java反射机制会导致怎样的安全问题</li>
+<li>XSS和CSRF的相同点以及如何配合利用</li>
+<li>CSRF_TOKEN的位置以及原理和绕过</li>
+<li>尽可能多地说你所知道的HTTP头</li>
+<li>Nmap常见扫描方式的原理以及NSE脚本原理</li>
+<li>看到你有不少CNVD证书讲一讲挖洞过程</li>
+<li>讲一讲你考过的证书都学到了些什么</li>
+<li>看到你Github有不少项目讲讲</li>
+<li>你觉得自己还有什么亮点吗</li>
+<li>你有什么要问我的</li>
+</ol>
+<h2 id="二面-6"><a href="#二面-6" class="headerlink" title="二面"></a>二面</h2><ol>
+<li>自我介绍</li>
+<li>熟悉哪些Web漏洞讲讲</li>
+<li>跨域的解决办法原理以及安全问题</li>
+<li>Python多进程和多线程如何选择</li>
+<li>Python的GIL锁本质上做了什么事情</li>
+<li>Java的JVM为什么要有GCROOT</li>
+<li>Java的JVM有哪些垃圾收集器</li>
+<li>垃圾回收计数引用机制的缺点是什么</li>
+<li>CSRF怎么拿到Cookie</li>
+<li>如何判断一个网站是钓鱼网站</li>
+<li>不同域名怎样通过CSRF拿Cookie</li>
+<li>说一些常见的HTTP头以及作用</li>
+<li>HTTP-Only本质上做了什么事情</li>
+<li>平衡二叉树和二叉搜索树讲一下</li>
+<li>SYN Flood攻击原理及解决方案</li>
+<li>SYN 反向探测的原理是什么</li>
+<li>TCP SYN Cookie的原理</li>
+<li>ARP欺骗攻击原理及解决方案</li>
+<li>UDP端口探测的有效方式是什么</li>
+<li>Nmap的FIN扫描和空扫描是什么</li>
+<li>三次握手的序列号变化说一下</li>
+<li>Python的值类型和引用类型是哪些</li>
+<li>Python的list和dict线程安全吗</li>
+<li>讲一下你做过收获最大的一个项目</li>
+<li>你有什么要问我的</li>
+</ol>
+<h2 id="三面-1"><a href="#三面-1" class="headerlink" title="三面"></a>三面</h2><ol>
+<li>自我介绍</li>
+<li>解释下CSRF</li>
+<li>结合实际的例子说说SSRF</li>
+<li>结合实际的例子讲讲RCE</li>
+<li>为什么现在文件上传很少了</li>
+<li>基于语义分析的WAF了解吗</li>
+<li>讲一下你上一段实习做了什么</li>
+<li>讲几个印象深刻的挖洞经历</li>
+<li>讲一下你对未来的规划</li>
+<li>有没有转正的意愿</li>
+<li>你有什么要问我的</li>
+</ol>
+<h2 id="四面（HR）"><a href="#四面（HR）" class="headerlink" title="四面（HR）"></a>四面（HR）</h2><ol>
+<li>面试的体验怎么样</li>
+<li>谈人生理想</li>
+<li>最早实习时间</li>
+</ol>
+<h1 id="0x1A-某两字大厂面试复盘"><a href="#0x1A-某两字大厂面试复盘" class="headerlink" title="0x1A 某两字大厂面试复盘"></a>0x1A 某两字大厂面试复盘</h1><h2 id="一面-7"><a href="#一面-7" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>自我介绍</li>
+<li>前两段实习做了些什么</li>
+<li>中等难度的算法题</li>
+<li>java的class文件结构</li>
+<li>kafka的原理了解吗</li>
+<li>fastjson反序列化原理</li>
+<li>讲讲你研究最深入的领域</li>
+</ol>
+<h2 id="二面-7"><a href="#二面-7" class="headerlink" title="二面"></a>二面</h2><ol>
+<li>排序处不能用预编译应该怎么防</li>
+<li>从白盒黑盒两个角度讲下挖过的漏洞</li>
+<li>ssrf的绕过和防御</li>
+<li>讲讲fortity等代码审计工具原理</li>
+<li>存储过程角度讲讲预编译的原理</li>
+<li>csp是如何防御xss的</li>
+<li>csrf为什么用token可以防御</li>
+<li>给你一个项目讲下审计思路</li>
+<li>内网相关的问题</li>
+<li>讲下你挖过的逻辑漏洞</li>
+<li>讲讲你用golang写过的东西</li>
+<li>什么是安全</li>
+</ol>
+<h2 id="三面-2"><a href="#三面-2" class="headerlink" title="三面"></a>三面</h2><ol>
+<li>讲下你自己写ysoserial的思路</li>
+<li>确定sql注入漏洞后如何进一步利用</li>
+<li>泛微OA的漏洞原理讲讲</li>
+<li>新爆出的Confluence RCE讲讲</li>
+<li>以前的实习中做了什么事</li>
+<li>***原理以及实战中的绕过</li>
+<li>红蓝对抗的流程讲讲</li>
+</ol>
+<h2 id="四面"><a href="#四面" class="headerlink" title="四面"></a>四面</h2><ol>
+<li>java反序列化原理和工具</li>
+<li>讲讲关于指纹识别的方式</li>
+<li>shiro反序列化工具的原理</li>
+<li>不用sqlmap情况下sql注入点如何找</li>
+<li>讲讲你挖到的这几个cve</li>
+<li>二进制方面有无了解</li>
+</ol>
+<h1 id="0x1B-某安全公司-安全研究员"><a href="#0x1B-某安全公司-安全研究员" class="headerlink" title="0x1B 某安全公司-安全研究员"></a>0x1B 某安全公司-安全研究员</h1><h2 id="一面-8"><a href="#一面-8" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>讲讲你写的几个Burp插件原理</li>
+<li>做过什么JavaWeb项目吗</li>
+<li>CC1-7找熟悉的讲一下原理</li>
+<li>Fastjson和Jackson反序列化原理讲讲</li>
+<li>BCEL可以用其他类加载器吗</li>
+<li>XStream反序列化讲讲</li>
+<li>最基本的反序列化原理是什么</li>
+<li>了解JEP290的原理吗</li>
+<li>讲下RMI原理以及相关的漏洞</li>
+<li>JdbcRowSetImpl如何触发的JNDI注入</li>
+<li>CC链四个Transformer区别</li>
+<li>讲下你挖过的CVE和CNVD</li>
+<li>反序列化除了readObject还有什么触发点</li>
+<li>讲下Spring相关的RCE原理</li>
+<li>讲讲IIOP和T3反序列化原理</li>
+<li>PHP等语言的反序列化讲讲</li>
+</ol>
+<h2 id="二面-8"><a href="#二面-8" class="headerlink" title="二面"></a>二面</h2><ol>
+<li>做了几年安全</li>
+<li>未来想做什么</li>
+<li>讲讲实习期间做的事</li>
+<li>工作地点要求</li>
+</ol>
+<h1 id="0x1C-腾讯-科恩实验室实习"><a href="#0x1C-腾讯-科恩实验室实习" class="headerlink" title="0x1C 腾讯-科恩实验室实习"></a>0x1C 腾讯-科恩实验室实习</h1><h2 id="一面-9"><a href="#一面-9" class="headerlink" title="一面"></a>一面</h2><p>时长：一个钟</p>
+<ol>
+<li>自我介绍</li>
+<li>简单介绍做的项目-&gt;基于项目的衍生（搜索域、搜索方法等）</li>
+<li>逆向C++相比起逆向C有哪些困难点？有用IDA python吗？</li>
+<li>Linux程序分为哪几个段？</li>
+<li>.data段存放哪些数据？.bss段存放哪些数据？</li>
+<li>函数调用时的流程，参数如何传入，寄存器的变化，栈的变化？</li>
+<li>解释程序的编译和链接，编译的过程中会有哪些操作（编译原理），If&#x2F;Else语法树？</li>
+<li>了解Linux &#x2F;proc目录吗？如果要查看进程打开了哪些文件，有哪些方法？</li>
+<li>人脸识别有哪些方法？怎样去进行相似度比对？有没有听过三元组损失</li>
+<li>如何比较两篇英文文献的相似度？如何比较两个C函数的相似度？</li>
+<li>什么情况下源代码与IDA反编译程序的代码差别很大？讲讲函数展开造成的区别？如何消除这种区别实现代码相似度匹配？</li>
+<li>了解TF-IDF文档匹配算法，搜索引擎的算法吗？</li>
+<li>python中集合，求交集与并集的时间复杂度是多少？有没有o(1)的方法，迅速判定元素是否在集合中？</li>
+</ol>
+<h2 id="二面-9"><a href="#二面-9" class="headerlink" title="二面"></a>二面</h2><p>时长：一面的一半</p>
+<ol>
+<li>工控场景的入侵检测与普通场景入侵检测的区别（简历项目）</li>
+<li>有了解过真实场景的入侵检测项目吗？（如一个企业办公的出口网部署入侵检测）</li>
+<li>面对加密后流量，正常访问与木马的区别可能有哪些？如何用AI或传统方法进行检测？是有监督问题还是无监督问题？</li>
+<li>面对静态编译的大型木马（几百M…），如何通过IDA定位其网络传输部分的逻辑？</li>
+<li>如何动态地去找导入表-&gt;从攻击者的角度，如何不在编码时直接导入相关API的前提下进行攻击？</li>
+<li>Windows下有哪些常用的反调试技术？</li>
+<li>单步执行的原理是什么？</li>
+<li>在内存中已Load的程序，如何快速找到其具有执行权限的段？</li>
+<li>恶意软件有哪些方案检测自己处于沙箱中？</li>
+<li>怎么知道进程和其开的端口的对应关系？</li>
+<li>SGD和Adam的区别？</li>
+<li>神经网络架构搜索领域目前的进展</li>
+<li>WAF的实现原理，与IDA的区别，WAF针对包会检测哪些字段</li>
+<li>简介Linux下的Syscall</li>
+<li>工作中符合个人兴趣的研究项目或思路</li>
+<li>如何缩减模型的检测时延？</li>
+<li>如何降低模型的误报率？</li>
+<li>如何找攻击样本？</li>
+</ol>
+<h1 id="0x1D-长亭科技-安全服务工程师实习"><a href="#0x1D-长亭科技-安全服务工程师实习" class="headerlink" title="0x1D 长亭科技 安全服务工程师实习"></a>0x1D 长亭科技 安全服务工程师实习</h1><ol>
+<li>讲一下最熟悉的三种web漏洞类型，原理，测试方式</li>
+<li>SQL注入过滤单引号怎么绕过</li>
+<li>mysql报错注入常用的函数</li>
+<li>报错注入绕waf</li>
+<li>mysql写文件的函数有哪些</li>
+<li>into outfile使用有哪些限制</li>
+<li>mysql提权</li>
+<li>sqlserver除了sql注入外还有什么渗透的方式</li>
+<li>ssrf漏洞原理</li>
+<li>ssrf可以使用的伪协议</li>
+<li>哪些功能点会有ssrf</li>
+<li>对内网ip进行过滤，有什么绕过的方式</li>
+<li>有了解过Redis RCE的过程吗</li>
+<li>Redis未授权如何获得服务器权限</li>
+<li>Redis主从复制漏洞</li>
+<li>任意文件读取，一般读取什么类型的文件</li>
+<li>如何通过文件读取获取到web的绝对路径</li>
+<li>&#x2F;etc&#x2F;passwd文件包含哪些内容</li>
+<li>java反序列化漏洞有了解吗</li>
+<li>之前shiro的反序列化漏洞有了解吗</li>
+<li>知道哪些组件或中间件包含反序列化漏洞</li>
+<li>针对一个站点，你首先会做什么事</li>
+<li>说几个你比较熟悉的CMS，它有哪些特征</li>
+<li>正向代理和反向代理的区别</li>
+<li>说一下常见的端口对应的服务有哪些</li>
+<li>有没有接触过护网这块的工作</li>
+<li>比较常见的内置用户有哪些</li>
+<li>说一下映像最深刻的一次渗透测试经历，说一下大概过程，发现了什么漏洞</li>
+<li>有没有挖过业务逻辑的漏洞</li>
+<li>挖过哪些SRC</li>
+<li>挖到最多的是哪些类型漏洞</li>
+<li>弱口令，有验证码怎么绕过</li>
+<li>说一下非对称加密算法的加密过程</li>
+<li>有哪些了解过的非对称加密算法</li>
+</ol>
+<hr>
+<blockquote>
+<p>接下来篇都是来自<code>xiabee</code>师傅在牛客和博客上的同步分享</p>
+<p>牛客链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/subject/index/8032f6748b124176bbe67fb37b19ecad">https://www.nowcoder.com/subject/index/8032f6748b124176bbe67fb37b19ecad</a></p>
+<p>博客：</p>
+<p>作者(Author)：xiabee</p>
+<p>链接(URL)：<a target="_blank" rel="noopener" href="https://xiabee.cn/coding/2022-spring-recruitment/">https://xiabee.cn/coding/2022-spring-recruitment/</a></p>
+<p>来源(Source)：xiabee-瞎哔哔</p>
+</blockquote>
+<h1 id="0x1E-PingCAP-安全工程师"><a href="#0x1E-PingCAP-安全工程师" class="headerlink" title="0x1E PingCAP 安全工程师"></a>0x1E PingCAP 安全工程师</h1><p>岗位：安全工程师</p>
+<h2 id="一面-10"><a href="#一面-10" class="headerlink" title="一面"></a>一面</h2><p>时长：四十多分钟</p>
+<p>CTF相关：</p>
+<ol>
+<li>你给同学的授课内容<ul>
+<li>如实说</li>
+</ul>
+</li>
+<li>SQL注入如何判断数据库类型<ul>
+<li>“sqlmap一把梭……” </li>
+<li>手动注的话用version函数等 </li>
+<li>面试官在听完我的答案之后说了他的答案：一般采用撞函数的方法，xxx数据库的函数名是xxx，xxxx数据库的函数名是xxxxx，特定函数执行正确的话即可判断数据库类型，<code>version</code>广义上说说撞函数的一种</li>
+</ul>
+</li>
+<li>布尔盲注、时间盲注<ul>
+<li>忘记怎么答的了，面试官应该没有补充我的答案</li>
+</ul>
+</li>
+<li>印象中比较有价值的题<ul>
+<li>聊了一下去年的国赛SQL签到题，“网络原因，时间盲注不行……” </li>
+<li>聊了一下职业杯的某题，特定的font导致报错看不到，最后用curl实现了报错注入 </li>
+<li>聊了一下职业杯的某题，利用注入直接执行了SQL命令修改了密码执行逻辑，而非传统的读写注入</li>
+</ul>
+</li>
+<li>接上一题的<code>font</code>，“平时用过Burp Suite吗，BP中会打印全部内容，为什么会看不见<code>font</code>呢” <ul>
+<li>“用过，当时太懒了没开BP……curl了一下发现可以注就懒得开BP了”</li>
+</ul>
+</li>
+<li>一些BP的操作<ul>
+<li>忘了答了啥，应该没啥大问题</li>
+</ul>
+</li>
+<li>SSRF相关<ul>
+<li>简单聊了一下</li>
+</ul>
+</li>
+<li>如何理解逻辑层面的漏洞<ul>
+<li>聊着聊着跑题了，后面面试官提醒我，又重新编了一段（x）</li>
+<li>大概意思就是“不该加的功能别乱加”，顺便提了一下log4shell的漏洞成因，“乱加功能”</li>
+</ul>
+</li>
+<li>XSS相关<ul>
+<li>“打比赛用的不多，细节可能忘记了”</li>
+</ul>
+</li>
+</ol>
+<p> 护网相关：</p>
+<ol start="10">
+<li>聊聊演习</li>
+<li>如果让你给甲方企业做渗透测试，你的大概思路 <ul>
+<li>主站扫描、CDN检测、口令探测、注入之类 </li>
+<li>在授权范围内攻击上游厂商，尝试获取甲方站点源代码，现场审计0day </li>
+<li>在授权范围内攻击下游客户、旁站等，先进入内网再突破DMZ </li>
+<li>面试官也给出了他的答案进行补充，具体是啥忘了……</li>
+</ul>
+</li>
+<li>介绍了很久的黄金票据和白银票据，准备提问…… <ul>
+<li>“金银票据听说过，但是具体使用细节不熟悉……没有实操过” </li>
+<li>面试官给我科普了一下</li>
+</ul>
+</li>
+</ol>
+<p>项目相关：</p>
+<ol start="13">
+<li>邮件系统 <ul>
+<li>大概聊了一下多线程编程，C与python</li>
+</ul>
+</li>
+<li>作品赛<ul>
+<li>背了一下摘要，讲了一下个人工作，区块链与libsnark </li>
+<li>没有细问，但是也没有打断我，让我自己叨逼叨了半天</li>
+</ul>
+</li>
+<li>区块链与智能合约<ul>
+<li>聊了一下truffle、solidity，吐槽了一下solidity不好用</li>
+</ul>
+</li>
+<li>爬虫 <ul>
+<li>聊了一下“乐学给爷爬”系统和知乎刷流量系统 </li>
+<li>“初代项目，维护跑路，停止服务”</li>
+</ul>
+</li>
+<li>容器，介绍了很久的k8s，准备提问 <ul>
+<li>“暂时还不会，目前只用过docker-compose”，场面一度十分尴尬 </li>
+<li>虽然但是，面试官还是给我科普了一下k8s</li>
+</ul>
+</li>
+<li>可能还问到了一些二进制的问题，具体忘了 </li>
+<li>反问：工作时间，是否加班等 <ul>
+<li>“我们和国外公司比较像，周六周日、法定节假日一定不上班” </li>
+<li>“我们以结果为导向，上班时间没有强制要求，你愿意九点来也可以，愿意十点来也可以；愿意五点走也可以，愿意六点走也可以，公司没有强制要求；如果有需要，也可以远程办公”</li>
+<li>“正常情况下不加班，但是如果遇到突发事件可能需要应急响应，像log4shell这种级别的漏洞就得做应急” </li>
+<li>聊到这里突然有点哽咽，如此遵守中国劳动法的公司，对标的却是外企，国内996的公司真的需要那么多人996吗……</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>总体而言，PingCAP是截至目前，我面试过的面试体验最好的公司，问题的问题很深入，涉及的面很广，但是不管我答的有多烂面试官都会听我讲完；并且能明显看到面试官在记录面试内容，在我讲完之后再针对性提问，而不是在我讲到一半直接打断我…… PingCAP是今天最晚面试的公司，但是最早发出了二面邀请（大概一面过了三个小时就通知了）……可以感受到他们虽然不加班，但是效率还是挺高的。</p>
+</blockquote>
+<h2 id="二面-10"><a href="#二面-10" class="headerlink" title="二面"></a>二面</h2><blockquote>
+<p> 实打实面了一个小时，聊了很多很多方向，从项目经历到个人发展规划，还聊到了公司选择等，感觉收获挺大的。 </p>
+</blockquote>
+<ol>
+<li>自我介绍<ul>
+<li>简单背了一下简历（然后是针对简历的提问）</li>
+</ul>
+</li>
+</ol>
+<p>作品赛相关:</p>
+<ol start="2">
+<li>介绍这个系统 </li>
+<li>数据安全相关</li>
+<li>聊了一下区块链的开发经历</li>
+</ol>
+<p>区块链相关</p>
+<ol start="5">
+<li>智能合约的鉴权、公私密钥相关等 </li>
+<li>数字钱包的身份认证等 </li>
+<li>智能合约的开发遇到那些困难</li>
+</ol>
+<p>作品赛相关:</p>
+<ol start="8">
+<li>这个系统和普通联邦学习系统有什么突出特点吗<ul>
+<li>“挺鸡肋的……保证了安全性，但是牺牲了性能”（瞎说什么大实话）</li>
+</ul>
+</li>
+<li>聊了一下大型开源项目二次开发的经历与感悟</li>
+</ol>
+<p>渗透相关:</p>
+<ol start="10">
+<li>介绍一下渗透经历</li>
+<li>方便聊聊渗透思路吗</li>
+<li>渗透过程中的感悟，防守方有哪些不足，作为进攻方主要利用了哪些方式进行渗透 <ul>
+<li>“利用防守方安全意识薄弱……正经的WAF打不穿，但是并不是所有的站点都有WAF”</li>
+</ul>
+</li>
+</ol>
+<p> Github相关</p>
+<ol start="13">
+<li>面试官看到了我的Github，里面有一些docker-compose的脚本，聊了一下项目 </li>
+<li>介绍一下上述项目的开发历程、设计初衷等</li>
+<li>聊了很多云配置的内容 </li>
+<li>聊到了LNMP的系统搭建，dockerfile相关</li>
+</ol>
+<p>CTF相关</p>
+<ol start="17">
+<li>介绍一下CTF相关学习、比赛、获奖等</li>
+<li>介绍一下擅长领域</li>
+</ol>
+<p>工作意向相关</p>
+<ol start="19">
+<li><p>“像你有CTF经历，简历也不错，应该能去很多公司，像长亭、腾讯云、深信服等，包括我们公司，你对未来的公司选择会有怎样的考虑” </p>
+<ul>
+<li>直接点名长亭了，有点慌；内心OS：长亭的面试邮件到现在都没发，PingCAP搞快点把我收了…… </li>
+<li>说了一下自己的选择标准：优先选择“不加班”，然后选择可能可以落户的公司，最后比较薪资；</li>
+</ul>
+</li>
+<li><p>关于加班问题和面试官产生了一点分歧，“我可能要给你泼点冷水，我们也不是不加班，对于一个刚入职的新人，而且你还这么有目标，为了自己的理想肯定是要付出一定努力的……” </p>
+<ul>
+<li>狡辩了一下，“我不是厌倦加班，我厌倦的是那种没有意义的加班……单纯的堆积工作时常其实没有太多意思” </li>
+<li>然后提到了其他申请的公司，聊了一下对其他公司以及PingCAP的看法；没有踩一捧一的意思，就单纯的聊了一下对工作模式的看法</li>
+</ul>
+</li>
+<li><p>英语水平相关: 问了一下口语咋样，但是没有直接上英文，好像下一轮有英文 </p>
+</li>
+<li><p>反问环节：问了一下面试流程，其他忘记了</p>
+</li>
+</ol>
+<blockquote>
+<p>二面居然秒过了（半小时以内吧），我这面试复盘害妹写完就给我发三面邮件了……呜呜呜我宣布PingCAP也是我的Dream Company之一</p>
+</blockquote>
+<h2 id="三面-3"><a href="#三面-3" class="headerlink" title="三面"></a>三面</h2><blockquote>
+<p>项目主管面，总面试时间约50分钟，聊的内容挺多，体验也很不错。</p>
+</blockquote>
+<ol>
+<li>自我介绍</li>
+<li>介绍一下项目</li>
+<li>SSRF相关</li>
+<li>开发过的脚本、项目等</li>
+<li>python相关：python是真正的多线程吗</li>
+<li>挖过的漏洞</li>
+<li>英语相关：用英文介绍一下XSS </li>
+<li>英语相关：介绍不出来，介绍一下自己吧 </li>
+<li>平时安全相关的技术是怎样学习的呢 </li>
+<li>了解安全咨询的渠道等 </li>
+<li>实战相关 </li>
+<li>反问：主管介绍了工作内容、工作组等 </li>
+<li>反问：实习相关 </li>
+<li>主管点评：整体不错，渗透和开发这块需要加强，个人强项不够突出，可以多看看漏洞测试、漏洞公开等，尝试自己挖掘开源项目的漏洞</li>
+</ol>
+<h2 id="四面-1"><a href="#四面-1" class="headerlink" title="四面"></a>四面</h2><blockquote>
+<p>大主管+HRBP面，一共面了约四十五分钟，大主管面了半小时，HRBP面了十五分钟左右。 大主管主要是业务方向，对攻击手段问的不深，主要是防护与架构相关的问题，给我一种我是架构师的错觉（不是） </p>
+</blockquote>
+<ol>
+<li><p>介绍一下你了解到的C&#x2F;C++相关漏洞 </p>
+<ul>
+<li>聊了一下缓冲区溢出 </li>
+<li>聊了一下和其他业务嵌套时的漏洞</li>
+</ul>
+</li>
+<li><p>详细聊聊缓冲区溢出 </p>
+<ul>
+<li><p>栈溢出 </p>
+</li>
+<li><p>堆溢出（不会） </p>
+</li>
+<li><p>BSS溢出（不会）</p>
+</li>
+</ul>
+</li>
+<li><p>缓冲区溢出如何避免 </p>
+<ul>
+<li>编译时避免 </li>
+<li>运行时避免</li>
+</ul>
+</li>
+<li><p>了解GO语言吗</p>
+<ul>
+<li>“暂时不了解”</li>
+</ul>
+</li>
+<li><p>“没有关系，那根据你的认识，你认为GO语言有哪些安全漏洞呢” </p>
+<ul>
+<li>“缓冲区溢出是不可避免的，只是利用难度的区别” </li>
+<li>然后提了一下嵌套业务相关的漏洞</li>
+</ul>
+</li>
+<li><p>刚刚提到的其他漏洞如何避免 </p>
+<ul>
+<li>提到了SQL注入等</li>
+<li>“预编译，上WAF”</li>
+</ul>
+</li>
+<li><p>WAF相关，对于某些实体，比如本身就是一段SQL代码，如何防止误报</p>
+<ul>
+<li>实体化，权限控制，纯代码直接实体化，使其没有执行权限 </li>
+<li>不能实体化的代码宁可误报也不放过……（瞎答的）</li>
+</ul>
+</li>
+<li><p>开放性问题，本公司的攻击面有哪些，应对策略有哪些 </p>
+<ul>
+<li>具体比较细节了，包括内部攻击外部攻击之类的 </li>
+<li>回答的比较泛，基于规则&#x2F;行为&#x2F;角色等，也对一些具体的服务说了些应对策略</li>
+</ul>
+</li>
+<li><p>数据安全相关，安全架构相关，如何保障数据安全等 </p>
+<ul>
+<li>零信任模型 </li>
+<li>最小权限原则 </li>
+<li>基于身份&#x2F;角色的访问控制等</li>
+</ul>
+</li>
+<li><p>“简历里面提到了容器，你对容器安全有了解吗” </p>
+<ul>
+<li>瞎扯了点容器逃逸 </li>
+<li>“平时接触容器主要是开发，容器安全接除不多”</li>
+</ul>
+</li>
+<li><p>剩下内容不记得了，大概问了半小时 </p>
+</li>
+<li><p>反问：安全组的人员配置、团队规模等，以及这个凑够一桌麻将开office具体政策 </p>
+<ul>
+<li>安全团队其实都是remote work，基本上都不在北京…… </li>
+<li>开office的政策由HRBP解答的，确实有，也可以在南昌开，凑够人就行。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>HRPB基本上没有涉及技术问题，中途聊了一下作品赛，可能是提到了数据安全，HRPB对这个比较感兴趣（x） </p>
+</blockquote>
+<ol>
+<li><p>在北京吗</p>
+</li>
+<li><p>有无实习打算 </p>
+</li>
+<li><p>是否为独生子女 </p>
+</li>
+<li><p>有无考研打算 </p>
+</li>
+<li><p>回应了一下刚刚开office的问题 </p>
+</li>
+<li><p>还有没有其他公司的offer </p>
+</li>
+<li><p>对公司的选择是怎么样的 </p>
+</li>
+<li><p>为什么觉得PingCAP是dream company </p>
+</li>
+<li><p>反问环节问了一下怎么不谈薪资……“下一轮会有专门的同学和你交流”</p>
+</li>
+</ol>
+<blockquote>
+<p>从0x1F到0x26都来自于<a target="_blank" rel="noopener" href="https://github.com/biggerduck/RedTeamNotes/blob/main/2022%E5%A4%A7%E5%8E%82%E9%9D%A2%E7%BB%8F.pdf">https://github.com/biggerduck/RedTeamNotes/blob/main/2022%E5%A4%A7%E5%8E%82%E9%9D%A2%E7%BB%8F.pdf</a>  觉得写的很好就把一些比较多的整过来了，建议去下个pdf看前言部分，问题部分仅供参考</p>
+</blockquote>
+<h1 id="0x1F-shopee"><a href="#0x1F-shopee" class="headerlink" title="0x1F shopee"></a>0x1F shopee</h1><ol>
+<li>和信息安全相关的返回 response 头（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yungyu16/p/13333909.html%EF%BC%89">https://www.cnblogs.com/yungyu16/p/13333909.html）</a> </li>
+<li>linux 常见命令 </li>
+<li>docker 常见命令 </li>
+<li>jwt 是什么 </li>
+<li>weblogic 反序列化原理（有一个 xml 反序列化漏洞 还有后台文件上传 还有二次 urldecode 权限绕过） </li>
+<li>java 代码审计 exec 命令执行的相关利用 前面拼了一段 然后调用 lang.runtime.exec(“fuck” + a) 这里可以利用吗 （不行 因为根据 exec 的方法 这里不能识别执行） </li>
+<li>内存马相关原理 </li>
+<li>shiro 反序列化漏洞利用的时候 由于 waf 过长 被 ban 了 怎么解决这个问题（如果是 waf 拦截 可以尝试更换 http 头 如果是 tomcat 头过长 可以在 cookie 写一个 loader 然后 shellcode 写到 body 里） </li>
+<li>内存马扫描原理 如何检测内存马 </li>
+<li>java 代码审计反序列化原理(输入的恶意类被识别 解析了) </li>
+<li>ysoserial 原理 commoncollections 利用链的原理 (cc1 最后 invoke 反射加载输入的方法 cc2 cc3 等等大同小异) </li>
+<li>linux 全盘查找文件命令(find &#x2F; -name fucku) </li>
+<li>docker run 的常用命令(docker run -it centos -p –name -d ) </li>
+<li>java 反序列化 php 反序列化 python 反序列化的区别和相同点(java 反序列化需要利用链 php反序列化也需要利用链 python反序列化不需要利用链 有一个__reduce__可以自己构造 命令执行) </li>
+<li>linux 全盘搜索含有某个字符的文件&#x2F;linux 全盘搜索叫某个名字的文件(grep -rl ‘abc’ &#x2F;)(find -name &#x2F; fucku)</li>
+</ol>
+<h1 id="0x20-深信服"><a href="#0x20-深信服" class="headerlink" title="0x20 深信服"></a>0x20 深信服</h1><ol>
+<li>宽字节注入原理，是只有 gbk 编码的才存在宽字节注入吗？ </li>
+<li>php 反序列化原理 </li>
+<li>内网一台机器，只有一个 mssql 的服务账户权限，如何进行后续的利用 </li>
+<li>rsa 算法原理&#x2F;aes 算法原理 </li>
+<li>一台机器不能出网，如何把一个 exe 文件放到对应的目标机器上去（dmz 区）</li>
+</ol>
+<h1 id="0x21-华为"><a href="#0x21-华为" class="headerlink" title="0x21 华为"></a>0x21 华为</h1><ol>
+<li>log4j 如何绕过 trustcodebase </li>
+<li>Springboot+shiro 环境如何进行渗透 </li>
+<li>实战中如何判断 fastjson 的版本 </li>
+<li>Fastjson 文件读写 gadget 是哪条，原理是什么 </li>
+<li>内存马类型，如何检测 </li>
+<li>给一个后台登录框有什么利用思路 </li>
+<li>Spring4shell 原理&amp;检测&amp;利用 </li>
+<li>安卓系统如何进行 rce，有什么思路 </li>
+<li>给一个移动端的 app，已知服务端是 cloud 环境，有什么思路利用</li>
+</ol>
+<h1 id="0x22-360"><a href="#0x22-360" class="headerlink" title="0x22 360"></a>0x22 360</h1><blockquote>
+<p> 红队&amp;&amp;企业蓝军方向</p>
+<p>以下都是同一场面试提的问题，两个面试官，一个代审一个红队，时长接近两小时</p>
+</blockquote>
+<ol>
+<li>shiro 如何绕 waf </li>
+<li>weblogic 如果在打站的时候，一旦遇到了 waf，第一个 payload 发过去，直接被拦截了， ip 也被 ban 了，如何进行下一步操作 </li>
+<li>jboss 反序列化原理 </li>
+<li>weblogic 反序列化原理，随便说一个漏洞，然后说触发原理 </li>
+<li>fastjson 怎么判断是不是有漏洞，原理是什么 </li>
+<li>fastjson 判断漏洞回显是怎么判断的，是用 dns 做回显还是其他的协议做，为什么 </li>
+<li>fastjson 高版本，无回显的情况，如何进行绕过，为什么可以这样绕过 </li>
+<li>代码审计，做过哪些，主流的代码审计 java 框架请简述 </li>
+<li>泛微，致远，用友这三套系统代码框架简述 </li>
+<li>泛微的前台漏洞触发和后台漏洞触发，如何通用性的挖泛微的洞，泛微能反序列化吗， 怎么挖 </li>
+<li>php 代码审计如果审计到了一个文件下载漏洞，如何深入的去利用？ </li>
+<li>php 里面的 disable_function 如何去进行绕过，为什么可以绕过，原理是什么 </li>
+<li>假如说，在攻防的时候，控下来一台机器，但是只是一台云主机，没有连接内网，然后 也没有云内网，请问怎么深入的对这台云主机进行利用？ </li>
+<li>redis 怎么去做攻击，主从复制利用条件，为什么主从复制可以做到拿 shell，原理是什 么，主从复制会影响业务吗，主从复制的原理是什么？ </li>
+<li>becl 利用链使用条件，原理，代码跟过底层没有，怎么调用的？ </li>
+<li>假如我攻击了一台 17010 的机器，然后机器被打重启了，然后重启成功后，机器又打成 功了，但是无法抓到密码，为什么无法抓到，这种情况怎么解决这个问题？ </li>
+<li>内网我现在在域外有一台工作组机器的权限，但是没有域用户，横向也不能通过漏洞打 到一台域用户的权限，但是我知道一定有域，请问这种情况怎么进入域中找到域控？ </li>
+<li>jboss 反序列化漏洞原理 </li>
+<li>内网拿到了一台 mssql 机器的权限，但是主机上有 360，一开 xpcmdshell 就被拦截了， 执行命令的权限都没有，这种情况怎么进行绕过。</li>
+<li>什么是 mssql 的存储过程，本质是什么？为什么存储过程可以执行命令？</li>
+<li>如果想通过 mssql 上传文件，需要开启哪个存储过程的权限？ </li>
+<li>内网文件 exe 落地怎么去做，用什么命令去执行来落地，如果目标主机不出网怎么办？ </li>
+<li>内网域渗透中，利用 ntlm relay 配合 adcs 这个漏洞的情况，需要什么利用条件，responder 这台主机开在哪台机器上，为什么，同时为什么 adcs 这个漏洞能获取域管理员权限，原理 是什么 </li>
+<li>内网域渗透中，最新出的 CVE-2022-26923 ADCS 权限提升漏洞需要什么利用条件，原理 是什么，相比原来的 ESC8 漏洞有什么利用优势？ </li>
+<li>内网渗透中，如果拿到了一套 vcenter 的权限，如何去进一步深入利用？db 文件如何解 密？原理是什么？ </li>
+<li>vcenter 机器拿到管理员密码了，也登录进去了，但是存在一个问题，就是内部有些机 器锁屏了，需要输入密码，这个时候怎么去利用？ </li>
+<li>内网权限维持的时候，360 开启了晶核模式，怎么去尝试权限维持？计划任务被拦截了 怎么办？ </li>
+<li>mssql 除了 xpcmdshell，还有什么执行系统命令的方式？需要什么权限才可以执行？ </li>
+<li>如果 net group “Domain Admins” &#x2F;domain 这条命令，查询域内管理员，没法查到，那么 可能出现了什么问题？怎么解决 </li>
+<li>查询域内管理员的这条命令的本质究竟是去哪里查，为什么输入了之后就可以查到？ </li>
+<li>免杀中，如何去过国内的杀软，杀软究竟在杀什么？那么国外的杀软比如卡巴斯基为什 么同样的方法过不了呢？</li>
+<li>免杀中，分离免杀和单体免杀有啥区别，为什么要分离，本质是什么？</li>
+<li>打点常用什么漏洞，请简述</li>
+<li>内网横向中，是直接进去拿一台机器的权限直接开扫，还是有别的方法？ </li>
+<li>钓鱼用什么来钓？文案思路？如何判断目标单位的机器是哪种协议出网？是只做一套来 钓鱼还是做几套来钓鱼？如何提高钓鱼成功率？ </li>
+<li>钓鱼上线的主机，如何进行利用？背景是只发现了一个域用户，但是也抓不到密码，但 是有域</li>
+</ol>
+<h1 id="0x23-深信服-深蓝攻防实验室"><a href="#0x23-深信服-深蓝攻防实验室" class="headerlink" title="0x23 深信服-深蓝攻防实验室"></a>0x23 深信服-深蓝攻防实验室</h1><ol>
+<li>内网怎么打 思路 </li>
+<li>国护刷分策略 通用性的寻找通用靶标思路 怎么刷 </li>
+<li>数据库 主机 云 vcenter 刷满是多少分（看你打的多不多 对分的规则熟悉不） </li>
+<li>内网的多级代理用什么东西代理 </li>
+<li>如果 tcp 和 udp 不出网 用什么策略来进行代理的搭建 </li>
+<li>多级代理如何做一个 cdn 进行中转 具体怎么实现 </li>
+<li>内网有 acl 策略 如果是白名单 如何绕过这个白名单进行出网上线 ip 和域名的都有可能</li>
+</ol>
+<h1 id="0x24-B站"><a href="#0x24-B站" class="headerlink" title="0x24 B站"></a>0x24 B站</h1><ol>
+<li>k8s 和 docker 如何去做攻击 有哪些利用方式 是什么原因导致的 </li>
+<li>cs 的域前置和云函数如何去配置 </li>
+<li>内网攻击的时候 内网有那些设备可以利用 （hadoop kibana 之类的设备） </li>
+<li>攻击 redis 不同的 linux 系统有什么不同 </li>
+<li>sql 注入的时候，如果遇到了返回的时候长度不够，怎么解决，如何截取，用什么函数截 取 </li>
+<li>域前置 </li>
+<li>免杀</li>
+</ol>
+<h1 id="0x25-shopee-红队-Singapore"><a href="#0x25-shopee-红队-Singapore" class="headerlink" title="0x25 shopee-红队-Singapore"></a>0x25 shopee-红队-Singapore</h1><ol>
+<li>linux 除了基本的内核提权还有什么别的方式可以进行提权 </li>
+<li>如何删除 linux 机器的入侵痕迹</li>
+<li>寻找真实 ip 的快速有效的办法 </li>
+<li>print nightmare 漏洞利用&amp;分析</li>
+<li>java invoke 反射具体利用 </li>
+<li>域内常用命令 </li>
+<li>根据子网掩码探测指定资产 </li>
+<li>什么是无状态扫描 </li>
+<li>kerberos 原理 </li>
+<li>ntlm relay 原理 </li>
+<li>内网现在微软至今都没有修复一个漏洞，可以从普通的域用户提权到域管用户，用了 ntlm relay，你讲一下是什么漏洞 </li>
+<li>100 家单位，现在需要在一天时间内拿到所有单位的 ip，port，banner，怎么做，用什 么东西来做 </li>
+<li>黄金票据原理，黄金票据在 kerberos 的哪个阶段？如何制作？用哪个用户的 hash 来制 作？ </li>
+<li>cs 域前置的原理？流量是怎么通信的？从我直接执行一个命令，例如 whoami，然后到 机器上，中间的流量是怎么走的？ </li>
+<li>java 反序列化原理</li>
+</ol>
+<h1 id="0x26-长亭"><a href="#0x26-长亭" class="headerlink" title="0x26 长亭"></a>0x26 长亭</h1><ol>
+<li>spring spel 漏洞原理&amp;利用方法 什么情况才能利用</li>
+<li>java jdbc 反序列化高版本不出网的条件下如何利用 </li>
+<li>tomcat becl 如何利用 </li>
+<li>shiro 反序列化用的是哪种加密方法 如何利用</li>
+<li>ueditor 哪种语言环境存在漏洞 怎么利用 如何绕 waf </li>
+<li>内网 Windows Print Spooler 利用&amp;原理 </li>
+<li>内网 PotitPetam 利用&amp;原理 </li>
+<li>域内 pth 和工作组 pth 的差别 </li>
+<li>域内用户和工作组用户的差别 </li>
+<li>如何攻击域控 </li>
+<li>spirng4shell&amp;log4j 利用 </li>
+<li>外网常用打点漏洞有哪些</li>
+<li>一个任意文件读取&#x2F;任意文件下载，如何进一步利用</li>
+<li>用友 nc beanshell 执行命令如何过 waf</li>
+<li>shiro 反序列化漏洞如果 cookie 中的 payload 过长被 waf 拦截如何绕 waf</li>
+</ol>
+<h1 id="0x27-奇安信-安全研究员-实习"><a href="#0x27-奇安信-安全研究员-实习" class="headerlink" title="0x27 奇安信 安全研究员 实习"></a>0x27 奇安信 安全研究员 实习</h1><p>作者：想搞二进制</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/970682">https://www.nowcoder.com/discuss/970682</a></p>
+<p>来源：牛客网</p>
+<h2 id="一面-5-17"><a href="#一面-5-17" class="headerlink" title="一面 5.17"></a>一面 5.17</h2><ol>
+<li>自我介绍，内容包括：第一部分，做过的安全相关的有难度的项目，难点在哪。第二部分，安全技能树，哪些是比较擅长的，能做什么。</li>
+<li>讲讲linux平台的漏洞缓解机制</li>
+<li>讲讲linux平台的ELF文件结构，或者windows平台的PE文件结</li>
+<li>NX是怎么绕过的</li>
+<li>讲讲ASLR怎么绕过</li>
+<li>用过kali的msf吗？都用来干嘛了，哪些工具用的比较多？ </li>
+<li>函数的调用约定有哪些?区别是什么?32与64位有什么不同</li>
+<li>用fuzzing主要是用来干嘛？主流的产品（chrome那些）有挖过漏洞吗？</li>
+<li>对windows平台的漏洞和保护机制了解多少？</li>
+<li>分析过linux的公开漏洞吗？写过exp吗？</li>
+<li>有没有逆向分析过linux平台下的病毒</li>
+<li>英文水平怎么样</li>
+</ol>
+<h2 id="二面-5-18"><a href="#二面-5-18" class="headerlink" title="二面 5.18"></a>二面 5.18</h2><p>  聊了一下我现在做的fuzzing，之前做过的APT实习 </p>
+<h2 id="三面-5-24"><a href="#三面-5-24" class="headerlink" title="三面 5.24"></a>三面 5.24</h2><p>聊对奇安信的了解，聊人生 </p>
+<p>6月1号打电话说过了，6月10号收到offer： 珠海安全研究员 </p>
+<h1 id="0x28-美团-安全岗实习"><a href="#0x28-美团-安全岗实习" class="headerlink" title="0x28 美团 安全岗实习"></a>0x28 美团 安全岗实习</h1><p>备注：作者是二进制的</p>
+<p>作者：hx19970923</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/889681">https://www.nowcoder.com/discuss/889681</a></p>
+<p>来源：牛客网</p>
+<p>Q: 介绍下项目和专业技能<br>A: blah blah </p>
+<p>Q: 说说你的反汇编器如何开发的<br>A: 当时学逆向所以想写一个，上网查 x86 指令格式后就开始写 </p>
+<p>Q: 反汇编器支持的 opcode 全吗<br>A: 一字节的比较全，两字节的不够全 </p>
+<p>Q: 做一个反汇编器，指令集 opcode 的意义去哪查<br> A: 厂商的手册，比如英特尔开发者手册，如果是代码虚拟机那种就自己逆向 </p>
+<p>Q: 怎么识别指令跳转条件和内存访问<br>A: （？没懂这个问题）是说指令 opcode 内部是怎么设计的吗 </p>
+<p>Q: （重新解释了一遍问题）<br>A: （？？继续懵逼）不同的跳转条件对应不同的 opcode，也对应不同表项，反汇编器里内置了一个表，比如 0xaa 对应 jne，0xbb 对应 je（难道是想问 ModR&#x2F;M, SIB 那些？ </p>
+<p>Q: （好像还是不满意于是跳过了上一个问题）那你觉得这个项目难点在哪<br>A: 一开始完全不懂 x86 指令格式，然后自己学习查资料实现了它（好了我知道没有难点 </p>
+<p>Q: 介绍下你开发的 Windows 沙箱<br>A: blah blah </p>
+<p>Q: 这个重定向你做全了吗<br>A: 文件重定向比较全，注册表的写了一点没继续写 </p>
+<p>Q: 做一个沙箱，有什么需要重定向的<br>A: 文件，注册表，还有一些 IPC 对象比如管道 </p>
+<p>Q: 你做到什么程度<br>A: 文件比较全，注册表不全，进程隔离完全依赖于系统安全机制，IPC 对象没做（逐渐小声 </p>
+<p>Q: 说说你的研究生课题<br>A: blah blah </p>
+<p>Q: 怎么增强模型健壮性的<br>A: blah blah </p>
+<p>Q: 怎么看健壮性增强了<br>A: 增强前后各自攻击一下记录成功率，降低了就是增强了 </p>
+<p>Q: 训练学过的样本又拿去攻击，不会有问题吗<br> A: 训练集和测试集是分开的，对抗训练学的是训练集上的对抗样本 </p>
+<p>Q: 比赛是团体赛吗<br>A: 是 </p>
+<p>Q: 你负责什么<br>A: 逆向和少量 pwn </p>
+<p>Q: 这个比赛的脱壳是什么壳，怎么脱的<br>A: nSPack，ESP 定律脱 </p>
+<p>Q: 有没有手动修复，还是工具直接脱<br>A: 没有，OEP 直接 dump（感觉事情不妙） </p>
+<p>Q: 那我可以理解你这个脱壳就是工具点一下呗<br>A: ……是（呜呜 </p>
+<p>Q: ESP 定律原理知道吗<br>A: 一大堆废话，最后才转到堆栈平衡（反思一下应该先点出堆栈平衡再说废话emmm） </p>
+<p>Q: 这场比赛你贡献了啥<br>A: 做了这道逆向队伍进了决赛，虽然是因为队里 Web 手没做出题而已 </p>
+<p>Q: 看了你的博客，做这些逆向 CTF 题，可能投入了足够时间大家都能会，下一步你要怎么做<br>A: （以为是问未来学习规划）一个是实战经验很缺乏，要加强，一个是明确方向，现在有点没方向 </p>
+<p>Q: （解释了一下他说的是人工分析有局限，要向自动化分析发展）知道自动化分析吗<br>A: 知道但没深入了解 </p>
+<p>Q: 你知道哪些自动化分析的例子<br>A: fuzzing，AEG，Unicorn </p>
+<p>Q: 自己调试过真实漏洞吗<br>A: 无 </p>
+<p>Q: 研究生方向为什么不是安全<br>A: 导师选的 </p>
+<p>Q: 毕业想做安全还是研究生的方向<br>A: 安全 </p>
+<p>反问阶段<br>Q: 部门是基础研发吗<br>A: 我们主要做安全的一些基础研究，包括刚刚跟你说的自动化分析，还不是研发 </p>
+<p>Q: 能提些学习建议吗<br>A: 多实战，往自动化方向靠，深入了解操作系统的细节，重视正向开发 </p>
+<p>总结：找实习以来收到的第一次面试，没想到自己这么拉垮。本来就知道自己菜，一问三不知感觉更菜了，看得出面试官尽力找问题问我了，是我不争气凉得明明白白</p>
+<h1 id="0x29-美团-安全工程师实习"><a href="#0x29-美团-安全工程师实习" class="headerlink" title="0x29 美团 安全工程师实习"></a>0x29 美团 安全工程师实习</h1><p>作者：h4m5t</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/624742">https://www.nowcoder.com/discuss/624742</a></p>
+<p>来源：牛客网</p>
+<p>面试官是一位会弹吉他的安全工程师，比较和蔼，没有问刁钻的问题。 面试时间总共15分钟，我也不知道为啥这么短，可能那边有业务要做吧。 </p>
+<p>  1.自我介绍 </p>
+<p>  2.平时怎么学安全的 </p>
+<p>  3.每天有多长时间学安全 </p>
+<p>  4.SQL注入有哪些 </p>
+<p>  5.给你一个URL，怎么判断注入 </p>
+<p>  6.SQL注入防范 </p>
+<p>  7.平时有看安全方面的文章吗，讲一篇 </p>
+<p>  讲了一下昨晚看的DNSlog注入 </p>
+<p>  8.讲一下CTF </p>
+<p>  9.讲一下你做过的渗透 </p>
+<p>  最后 你有什么要问的吗？ </p>
+<p>  1.怎么学习安全 </p>
+<p>  2.甲方和乙方的安全有什么不同 </p>
+<p><strong>面试建议</strong> </p>
+<p>其实提前看了几篇<a href="">美团</a>技术部的文章和面试官写的web蜜罐，但我没讲。 </p>
+<p>可以提前查一下面试官的研究方向，如果正好是你擅长的，那就好了。如果是你不擅长的，就尽量把话题引导其他方向，让面试官跟着你的项目走。 </p>
+<h1 id="0x2A-京东-安全研究"><a href="#0x2A-京东-安全研究" class="headerlink" title="0x2A 京东 安全研究"></a>0x2A 京东 安全研究</h1><p>作者：方糕姐姐</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/1033501?type=all&order=recall&pos=&page=0&ncTraceId=&channel=-1&source_id=search_all_nctrack&gio_id=C644A4A66482D41AB59A3DF3F860459E-1662006302081">牛客网</a></p>
+<ol>
+<li><p>深挖项目。 </p>
+<p>   每个项目的主要难点，以及你做了什么，提到的有中间人攻击、数字证书之类的。 </p>
+</li>
+<li><p>Java八股 </p>
+<p>final关键字的用途？ </p>
+<p>   static关键字的用途？两者的区别？ </p>
+<p>   非对称密码<a href="">算法</a>和对称密码<a href="">算法</a>的区别和联系？ </p>
+<p>   RSA的数学证明？</p>
+</li>
+</ol>
+<p>​	  为什么web端的数字证书能够被抓包 解析之类的？ </p>
+<p>​	  序列化和反序列化中有什么漏洞？ </p>
+<p>​	  还有记不清了 哈哈哈 </p>
+<ol start="3">
+<li><p>手撕代码以及优化</p>
+<p>斐波那契 递归 </p>
+<p>双指针 </p>
+<p>快速查询</p>
+</li>
+</ol>
+<h1 id="0x2B-百度"><a href="#0x2B-百度" class="headerlink" title="0x2B 百度"></a>0x2B 百度</h1><p>作者：zhengtu</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/494211">牛客网</a></p>
+<h2 id="一面-11"><a href="#一面-11" class="headerlink" title="一面"></a>一面</h2><p>时长：48分钟</p>
+<ol>
+<li><p>mysql注入，已知information.schema相关表在代码层中被过滤，不考虑绕过情况，还可以怎么查询表名或字段<br>  考虑sys<a href="">数据</a>库，一些被访问过的表会被存储信息，索引中存在的表等 </p>
+</li>
+<li><p>mysql注入中基于报错注入的多种方式<br> 记得floor,updatexml，extractvalue三种，第一种主键重复，后面两种基于xpath语法解析错误 </p>
+</li>
+<li><p>前端xss如果特殊字符输出被htmlscecial过滤了怎么办<br> 该函数默认只编码双引号，对单引号无效<br> 在js中可以利用\u003c等绕过符号过滤<br> 采用反引号执行命令，(可以采用jquery加载第三方js，或者添加script子节点引入js，或者直接获取cookie利用js访问第三方脚本)<br>  编码转换，富文本，<a href="">数据</a>库输出输入场景都有可能失效，比如前端调用了html函数作为输出的情况 </p>
+</li>
+<li><p>同源策略是啥，rerfer检测，前端空rerfer防御，怎么构造<br>  同源的标准是协议，端口，域名三者的统一，实质是浏览器对不允许的服务端返回的<a href="">数据</a>进行了拦截<br> 实现跨域有两种方式，jsonp和cors<br> 服务端验证rerferer头(为空则不用rerferer头判断)，校验csrf token，在http头中自定义属性并验证 </p>
+</li>
+<li><p>jsonp是什么，怎么绕过<br> 劫持问题，防御取决于服务端如何配置，绕过取决于服务端的配置，关键词绕过 </p>
+</li>
+<li><p>sqlmap源码是否分析过。 </p>
+</li>
+<li><p>tp漏洞复现 </p>
+</li>
+<li><p>java反序列化rmi原理(简历上有写)，其他类型的反序列化是什么 </p>
+</li>
+<li><p>如果让你编写一个DOM型xss扫描器，你该怎么写？假如事件需要点击，比如onclick去点击，该怎么检测这种类型的xss<br> 返回结果，人工判断，或者利用windows事件触发 </p>
+</li>
+<li><p>内网渗透流程和方式，比如域渗透 </p>
+</li>
+<li><p>windows10上面的pth怎么利用 </p>
+</li>
+<li><p>linux主机留后门的各种方式？<br> 计划任务，webshell，自启动后门，写注册表 </p>
+</li>
+<li><p>DNS隧道搭建方式</p>
+</li>
+</ol>
+<h2 id="二面-11"><a href="#二面-11" class="headerlink" title="二面"></a>二面</h2><p>时长：53分钟</p>
+<ol>
+<li>如何入门的经历 </li>
+<li>数据结构，算法，计网基础(非计科类专业自闭) </li>
+<li>针对已有的项目深入提问(实现，拓展，创新)扫描器实现对比拓展(不晓得) </li>
+<li>知识面深入，内网探测高危服务除了端口扫描还有啥？ </li>
+<li>漏洞挖掘的挑战性的事件的优秀亮点 </li>
+<li>其他公司面试情况 </li>
+<li>渗透方向能力目标，学习的新方向。 </li>
+<li>反问，有点考核提问智慧的意思，让我各种方面问他问题</li>
+</ol>
+<h2 id="三面-4"><a href="#三面-4" class="headerlink" title="三面"></a>三面</h2><ol>
+<li>问了项目的思路和思考方式</li>
+<li>挑战性的问题如何解决</li>
+<li>聊了未来城市选择和发展路线</li>
+<li>还有一些其他遇到某问题表现和思路是什么样的</li>
+</ol>
+<p>和技术相关的问题占比很少</p>
+<h1 id="0x2C-腾讯"><a href="#0x2C-腾讯" class="headerlink" title="0x2C 腾讯"></a>0x2C 腾讯</h1><h2 id="一面-12"><a href="#一面-12" class="headerlink" title="一面"></a>一面</h2><p>作者：zhengtu</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/494211">牛客网</a></p>
+<ol>
+<li>编写工具的具体思路，sql注入，xss  </li>
+<li>csrf的防御，   referer验证，referer为空则防御(referer是浏览器特性，为空排除特性之外的问题则做防御验证)，  </li>
+<li>xxe无回显探测   dns验证，内部实体探测  </li>
+<li>xss硬编码如何利用   前端dom型被js代码转义出来，比如\u003c,前提是返回在了js中，在html中除非具备某种标签，其特性可导致特殊编码执行，则能转义出来  </li>
+<li>java反序列化基础  </li>
+<li>白盒审计能力问题–这一点应该说可以自行拓展，对owasp10做过调试，对tp审计做过深入调试，对rmi反序列化做过调试，学习过一本书的样子 </li>
+<li>密码重置处的逻辑问题–第一二三步验证不统一，验证统一但后台返回的更改密码的token可被预测，枚举可猜解，返回敏感数据，后端与前端验证不一致，存在数据查询则可注入，xss编码问题</li>
+</ol>
+<h2 id="二面-12"><a href="#二面-12" class="headerlink" title="二面"></a>二面</h2><p>问了各种问题，包括项目中如何解决问题，应急响应做过哪些处理，针对大量请求高并发的解决<br>有很多具体的场景，询问你的思路<br>聊了国家安全，各种安全视界的思考，见识</p>
+<h1 id="0x2D-奇安信-A-TEAM"><a href="#0x2D-奇安信-A-TEAM" class="headerlink" title="0x2D 奇安信 A-TEAM"></a>0x2D 奇安信 A-TEAM</h1><p>作者：zhengtu</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/494211">牛客网</a></p>
+<p>​     我投的这个岗位是<a href="">奇安信</a>A-TEAM的渗透<a href="">测试</a>，这个团队方向是以红队为主。面试流程是我体验最快的一家，可能是由于已经快11月份了，所以采取了滚动批次面试的方式，一个下午就完成了面试流程。面试官问的东西技术难度比较广和深，而且都是基于实际的应用场景来问的。所以基本杜绝了做题和背题的方式，需要一定的实战经验和见识。    </p>
+<p>​    </p>
+<h2 id="一面-13"><a href="#一面-13" class="headerlink" title="一面"></a>一面</h2><p>​     1、sql注入基于利用方式而言有哪些类型？    </p>
+<p>​     2、sql注入写马有哪些方式？    </p>
+<p>​     3、oracle注入除了注入<a href="">数据</a>之外有哪些直接利用的方式？(这个真没见过，答不出来)，sqlserver获取shell的方法？    </p>
+<p>​     4、xss的利用方式？    </p>
+<p>​     5、同源策略的绕过方式？    </p>
+<p>​     6、完整的渗透<a href="">测试</a>流程思路？(从拿下webshell到后渗透的实战经历)    </p>
+<p>​     7、如何绕过基于语义检测的waf，比如雷池，<a href="">阿里云</a>waf等(不是太理解语义这东西，说了一些我知道的绕过场景)    </p>
+<p>​     8、问了预编译场景下是否存在sql注入。(这一点老实说并不存在，但面试官提到第一次预编译的过程假如存在可控<a href="">数据</a>，这确实是可能的，我说了自己的看法)    </p>
+<p>​     9、编程问了个多线程和协程的区别。<br>​    </p>
+<h2 id="二面-13"><a href="#二面-13" class="headerlink" title="二面"></a>二面</h2><p>​     1、问了项目的实现思路和方法。    </p>
+<p>​     2、黄金票据和白银票据的区别？    </p>
+<p>​     3、pth中LM hash和NTLM hash的区别(这个之前做过研究，不过只记得一点了)    </p>
+<p>​     4、CDN的绕过方式？    </p>
+<p>​     5、waf的绕过方式？    </p>
+<p>​     6、其他忘了       </p>
+<h2 id="三面-5"><a href="#三面-5" class="headerlink" title="三面"></a>三面</h2><p>​     1、问了学校经历    </p>
+<p>​     2、问我自己觉得是个内向还是外向的人？？？(事实上我觉得让自己来评判这个问题没有意义，我可以把自己塑造得很内向，也可以说得很外向，但性格是矛盾和多样化的，用这样非黑即白的问题去询问，反而不如直接问平时相关的经历和事项)    </p>
+<p>​     我:我觉得性格这个东西是不应该一概而论的，我觉得我既不内向，也不外向。不如让我说说我的其他经历和思考。您这边来看看我是什么样的。是否适合这个岗位。剩下就balabala    </p>
+<p>​     3、询问其他offer状况</p>
+<h1 id="0x2E-快手-安全工程师"><a href="#0x2E-快手-安全工程师" class="headerlink" title="0x2E 快手 安全工程师"></a>0x2E 快手 安全工程师</h1><p>作者：牛客271656551号</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/1022507">牛客网</a></p>
+<ol>
+<li>自我介绍   </li>
+<li>介绍项目 </li>
+<li>Linux提权方式，脏牛提权原理 </li>
+<li>公司中了勒索病毒怎么办、分哪几步，勒索病毒原理，勒索病毒是怎么传播的 </li>
+<li>如何绕过waf </li>
+<li>SQL注入的种类，怎么防御SQL注入，业务层面防止SQL注入的方法 </li>
+<li>哪些情况SQL预编译无效 </li>
+<li>怎么判断服务器是Windows还是Linux，能不能用ping命令判断 </li>
+<li>了解的安全论坛有哪些 </li>
+<li>平时有什么兴趣爱好 </li>
+<li>学习过程中遇到的最大的挑战或困难 </li>
+<li>​    反问</li>
+</ol>
+<h1 id="0x2F-快手-安全实习生"><a href="#0x2F-快手-安全实习生" class="headerlink" title="0x2F 快手 安全实习生"></a>0x2F 快手 安全实习生</h1><p>作者：ArrowQin</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/651317">牛客网</a></p>
+<p>面试岗位：【暑期实习】安全实习生-系统运营部</p>
+<h2 id="一面-14"><a href="#一面-14" class="headerlink" title="一面"></a>一面</h2><ol>
+<li>自我介绍</li>
+<li>问项目</li>
+<li>针对项目问了很多详细的问题，不便透露，通用问题如下：</li>
+<li>做项目的时候有没有遇到什么问题，怎么解决</li>
+<li>做项目学到了什么东西</li>
+<li>项目中有没有什么地方自己做过优化</li>
+<li>有没有对网站做过渗透测试</li>
+<li>Linux操作熟悉吗，怎么看进程PID</li>
+<li>用过什么数据库，答：sqlite,mongodb,面试官好像不太了解没咋问</li>
+<li>为什么用mongodb</li>
+<li>了解ES吗(Elasticsearch)</li>
+<li>HTTPS建立过程</li>
+<li>python怎么管理内存</li>
+<li>深拷贝和浅拷贝区别</li>
+<li>python多进程、多线程、协程有用到吗，都在什么地方用到</li>
+<li>python可以实现真正的多线程吗</li>
+<li>代码题：ip排序（转成元组排序就行了，记得把str转成int，不然192会比50大）</li>
+<li>写Web API的时候怎么防止SQL注入</li>
+<li>怎么防XSS</li>
+<li>了解越权漏洞么，有没有挖过越权漏洞</li>
+<li>有没有什么比较擅长的我还没问到的</li>
+</ol>
+<h2 id="二面-14"><a href="#二面-14" class="headerlink" title="二面"></a>二面</h2><ol>
+<li>问项目</li>
+<li>项目哪一块时间花的比较多</li>
+<li>怎么溯源攻击</li>
+<li>举一个溯源攻击的例子</li>
+<li>怎么检测webshell</li>
+<li>sql注入在mysql和sqlserver中有什么区别</li>
+<li>想找安全开发的岗位还是安全研究的岗位</li>
+<li>代码题：手机九宫格键盘，输入数字，输出所有的字母组合</li>
+<li>如输入23，输出[‘ad’,’ae’,’af’,’bd’,’be’,’bf’,’cd’,’ce’,’cf’]</li>
+<li>(我就模拟做)</li>
+<li>讲一下DNS协议的作用、解析过程</li>
+<li>DNS协议的安全问题</li>
+<li>实习时间</li>
+</ol>
+<h1 id="0x30-快手-安全工程师"><a href="#0x30-快手-安全工程师" class="headerlink" title="0x30 快手 安全工程师"></a>0x30 快手 安全工程师</h1><p>作者：Qber</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/750247">牛客网</a></p>
+<p>技术类： </p>
+<p> 1，自我介绍 </p>
+<p> 2，根据简历逐步问技术，问工具的具体使用 </p>
+<p> 3，SQL注入漏洞，类型，可以造成什么危害 </p>
+<p>​		MSSQL与Oracle   </p>
+<p>​		SQL注入写入Shell的具体命令 </p>
+<p> 4，XSS，存储型怎么利用，有哪些危害，除了钓鱼 </p>
+<p>​        带外COKIES的时候，遇到WAF怎们 </p>
+<p> 5，AWVS登录扫描怎么操作，SQLMAP怎么用，有那几个级别，分别有什么区别，参数 </p>
+<p> SQLMAP如何扫<a href="">数据</a>包，本地读文件，指定参数，这些的具体命令 </p>
+<p> 6，如何绕过WAF </p>
+<p> 7，如何入侵<a href="">快手</a> </p>
+<p> 视频上传点、社工，钓鱼邮件 </p>
+<p> 供应链攻击 </p>
+<p> 8，钓鱼邮件你会用那些恶意木马、shellcode </p>
+<p> 9、NMAP如何静PING扫描，如何看端口开放，如何看系统版本信息，具体的命令是什么 </p>
+<p> 编程题：比较version号不同，写了大概思路，但是细节没处理好，直接给面试官说放弃了，面试官问了思想，然后又问特殊情况，想了一下，实在想不错 </p>
+<p> 经历类： </p>
+<p> 1，你挖到的比较有意思的漏洞 </p>
+<p> 2，你最近学习的东西，比较有意思的 </p>
+<p> 反问： </p>
+<p> 1，甲方安全与乙方安全有啥不同， </p>
+<p> 2，感觉自己答得磕磕绊绊的，希望面试官能给一些后续的学习建议 </p>
+<p> 总结： </p>
+<p>  面试体验非常好，中间说了好多不会，面试官也没有非常生气，还是完整的走完流程，最后给了很好的学习建议。 </p>
+<p>  对于工具的使用问题问的很细致，但是最近都在手工渗透，复测，自然没有经常用工具，哎，反正感觉每场面试问的都很不一样。</p>
+<h1 id="0x31-快手-安全工程师"><a href="#0x31-快手-安全工程师" class="headerlink" title="0x31 快手 安全工程师"></a>0x31 快手 安全工程师</h1><p>作者：HsiAo.</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/1030186">牛客网</a></p>
+<p>老早之前投的快手，26号通知面试，27号11点面试，面了40分钟。 </p>
+<p>  面试官很好，是我自己菜，还有我代码能力真的不行，尤其是用python（不自量力，python还没怎么<a href="">刷题</a>呢） </p>
+<p>  1、自我介绍 </p>
+<p>  2、介绍下项目 </p>
+<p>  3、介绍实习 </p>
+<p>  4、信息收集 </p>
+<p>  5、给你一个网站，你会怎么去挖掘漏洞 </p>
+<p>  6、sql注入修复意见 </p>
+<p>  7、XSS修复意见 </p>
+<p>  8、弱口令修复意见 </p>
+<p>  9、数据库操作 </p>
+<p>  10、手撕代码，我代码真不行，题目：给你几个版本号如：1.3.2，2.1.4，1.0，让你判断版本号大小 </p>
+<p>  11、操作系统查看最近登陆的用户 </p>
+<p>  12、查看文件的最后300行 </p>
+<p>  13、文件的权限777之类的 </p>
+<p>  14、osi7层 </p>
+<p>  15、tcp3次握手 </p>
+<p>  16、反问</p>
+<h1 id="0x32-蚂蚁-安全工程师-实习"><a href="#0x32-蚂蚁-安全工程师-实习" class="headerlink" title="0x32 蚂蚁 安全工程师 实习"></a>0x32 蚂蚁 安全工程师 实习</h1><p>作者：求求了让我来个offer</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/921755">牛客网</a></p>
+<p> 面试时间线</p>
+<p> 3.7初面也就是简历面，3.9一面，3.18二面，3.22hr面</p>
+<h2 id="简历面"><a href="#简历面" class="headerlink" title="简历面"></a>简历面</h2><p> 3.7初面 25min</p>
+<ol>
+<li>自我介绍一下</li>
+<li>hw的项目做了什么负责什么角色</li>
+<li>重保的项目做了什么负责什么角色</li>
+<li>应急响应做过吗</li>
+<li>内网渗透有了解吗然后问了关于内网渗透的东西</li>
+<li>ctf有打过吗</li>
+<li>逆向二进制有做过吗</li>
+<li>反序列化php和java</li>
+<li>你有什么想问我的吗</li>
+</ol>
+<p> 因为初面是简历评估的问题也不是很难就问了些项目延展了一点点就过去了</p>
+<h2 id="一面-15"><a href="#一面-15" class="headerlink" title="一面"></a>一面</h2><p> 3.9 一面 32min</p>
+<ol>
+<li>自我介绍</li>
+<li>hw项目</li>
+<li>重保项目</li>
+<li>src项目</li>
+<li>src中你印象最深刻的一个漏洞</li>
+<li>src中你碰到的困难以及如何克服的</li>
+<li>log4j2</li>
+<li>jndi注入</li>
+<li>逆向二进制有了解吗</li>
+<li>大学中学的最好的课</li>
+<li>我们地点是在xx地有问题吗</li>
+<li>有没有考研的想法</li>
+<li>你有什么想问我的吗</li>
+</ol>
+<p> 一面属于在初面的基础上对项目更加深层次的挖了一下</p>
+<h2 id="二面-15"><a href="#二面-15" class="headerlink" title="二面"></a>二面</h2><p> 二面 3.18 25min</p>
+<ol>
+<li>自我介绍一下</li>
+<li>自我介绍完面试官说前面两次面试已经基本差不多技术方面的东西都问完了，我来问你点别的</li>
+<li>然后问我对我这些src中挖到的漏洞的思考以及克服的困难和印象最深刻的漏洞</li>
+<li>如果是我蚂蚁的业务支付宝你会怎么样去测试</li>
+<li>有考研的打算吗</li>
+<li>base地没问题吗</li>
+<li>什么时候能来</li>
+<li>你有什么想问我的吗</li>
+</ol>
+<p> 这二面的感觉就是更加注重你的发散思维以及对他业务的逻辑思考，因为我属于是src出身，所以这次面试正好对在我的口上了，所以对他业务的东西思考我就说了很多</p>
+<h2 id="hr面-1"><a href="#hr面-1" class="headerlink" title="hr面"></a>hr面</h2><p> 3.22</p>
+<p> hr面</p>
+<p> hr面就是根据简历问你一些性格方面的东西</p>
+<p> 你项目中克服的困难</p>
+<p> 什么时候能来实习</p>
+<p> 意愿的地点是哪</p>
+<p> 为什么北方人不选择北京</p>
+<h1 id="0x33-蚂蚁-安全工程师-实习"><a href="#0x33-蚂蚁-安全工程师-实习" class="headerlink" title="0x33 蚂蚁 安全工程师 实习"></a>0x33 蚂蚁 安全工程师 实习</h1><p>作者：verf1sh</p>
+<p>来源：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/944438">牛客网</a></p>
+<h2 id="一面-16"><a href="#一面-16" class="headerlink" title="一面"></a>一面</h2><p>时间：2022&#x2F;03&#x2F;07</p>
+<ol>
+<li>对什么方向比较兴趣，漏洞挖掘还是利用</li>
+<li>有没有写过实际的利用exp（写过路由器的）</li>
+<li>路由器那个exp能达到什么效果，能rce吗</li>
+<li>这些知识是你课程上学习的还是自己打ctf学的</li>
+<li>有没有用fuzz挖到过漏洞</li>
+<li>读过英文的技术文献吗，有没有看一些英文的论文</li>
+<li>有没有写过论文</li>
+<li>愿意做偏研究的工作吗</li>
+<li>数据库fuzz你有哪些改进思路</li>
+<li>数据库的漏洞利用除了dos还能达到什么程度</li>
+<li>你用的fuzz是python写的还是c写的</li>
+<li>c开发能力怎么样</li>
+<li>用的win本还是mac本</li>
+<li>做过安卓的利用吗</li>
+<li>有什么想问我的</li>
+</ol>
+<h2 id="二面-16"><a href="#二面-16" class="headerlink" title="二面"></a>二面</h2><p>时间：2022&#x2F;03&#x2F;07</p>
+<ol>
+<li>做一下自我介绍，把实习和项目都介绍一下</li>
+<li>介绍一下rhg可以做到什么程度，能进行哪些漏洞利用，能绕过哪些保护措施</li>
+<li>rhg参加的是什么比赛，是bctf吗</li>
+<li>bctf参加过吗，有哪些有意思的题</li>
+<li>对比一下qemu模式fuzz和源码模式fuzz</li>
+<li>说说qemu模式的动态插桩怎么实现的，有什么优缺点</li>
+<li>把你的实习展开说一下</li>
+<li>fuzz普通程序和数据库有哪些不同点</li>
+<li>论文里是怎么去解决数据库fuzz中的一些难点</li>
+<li>你觉得作者的思路哪些是好的，哪些存在问题</li>
+<li>你做的一些改动提升了什么，有比较好的效果吗，有没有挖出漏洞</li>
+<li>看你的博客有用过afl++去挖漏洞，说说afl++和afl有哪些不同</li>
+<li>你觉得afl++有哪些策略对你来说很有用</li>
+<li>说说afl有哪些模块，每个模块的流程</li>
+<li>afl-fuzz为什么速度很快</li>
+<li>C++程序怎么去逆向找虚表</li>
+</ol>
+<h2 id="三面-6"><a href="#三面-6" class="headerlink" title="三面"></a>三面</h2><p>时间：2022&#x2F;04&#x2F;08</p>
+<ol>
+<li>自我介绍</li>
+<li>介绍在深信服的工作</li>
+<li>数据库fuzz和普通程序fuzz有什么不同</li>
+<li>怎么给AFL做适配去fuzz数据库</li>
+<li>介绍一下fuzz的流程，从选取目标开始</li>
+<li>讲一下AFL的插桩原理</li>
+<li>怎么选择fuzz测试点，感觉类似于fuzz单个API函数吧</li>
+<li>Linux内核你了解哪部分，内存、网络、设备？</li>
+<li>如果让你做内核的安全研究，你想从哪一块入手，为什么</li>
+<li>有计划过怎么去夯实自己的基础吗</li>
+<li>有没有工作上的规划，毕业后做哪方面研究</li>
+<li>期望base哪里</li>
+<li>什么时候可以来实习，实验室老师会限制实习时间吗</li>
+<li>研三的时候可以实习吗</li>
+</ol>
+<h2 id="HR面"><a href="#HR面" class="headerlink" title="HR面"></a>HR面</h2><p>时间：2022&#x2F;04&#x2F;20</p>
+<ol>
+<li>介绍一下本科和研究生的学习情况，为什么研究生选择换方向</li>
+<li>印象深刻的比赛，负责哪方面工作，遇到过什么难点，你认为在队友会用哪些形容词形容你</li>
+<li>了解部门工作内容吗，是你最想做的方向吗，希望base哪里</li>
+</ol>
+<p>4.28 意向</p>
+<hr>
+<p><span style="color:red;">再见少年拉满弓，不惧岁月不惧风。</span></p>
+<p>————x</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Sec-Interview-4-2023"><span class="toc-number">1.</span> <span class="toc-text">【转载】Sec-Interview-4-2023</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9B%B4%E5%89%8D%E9%9D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">写在更前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">写在前面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%8B%E6%8B%9B%E7%9B%AE%E5%BD%95%EF%BC%88%E9%9A%8F%E6%97%B6%E6%9B%B4%E6%96%B0%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">秋招目录（随时更新）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A5%BD%E6%96%87%E5%88%86%E4%BA%AB"><span class="toc-number">3.</span> <span class="toc-text">好文分享</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x00-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">4.</span> <span class="toc-text">0x00 字节跳动-渗透测试实习生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0"><span class="toc-number">5.</span> <span class="toc-text">0x01 阿里云安全实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%BC%8F%E6%B4%9E%E7%A0%94%E7%A9%B6%E5%91%98%E5%AE%9E%E4%B9%A0"><span class="toc-number">6.</span> <span class="toc-text">0x02 深信服-漏洞研究员实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x03"><span class="toc-number">7.</span> <span class="toc-text">0x03</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x04-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">8.</span> <span class="toc-text">0x04 字节跳动-安全研究实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2"><span class="toc-number">8.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2plus-%E5%AE%89%E5%85%A8%E7%A0%94%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">8.2.</span> <span class="toc-text">一面plus-安全研发实习生</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2"><span class="toc-number">8.3.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x05-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">9.</span> <span class="toc-text">0x05 长亭科技-安全服务工程师</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-1"><span class="toc-number">9.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-1"><span class="toc-number">9.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x06-%E5%A4%A9%E8%9E%8D%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">10.</span> <span class="toc-text">0x06 天融信面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x07-%E8%85%BE%E8%AE%AF-%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">11.</span> <span class="toc-text">0x07 腾讯-安全技术实习生</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x08-%E5%B0%8F%E9%B9%8F%E6%B1%BD%E8%BD%A6-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">12.</span> <span class="toc-text">0x08 小鹏汽车-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x09-%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4-%E9%98%BF%E9%87%8C%E4%BA%91%E5%AE%89%E5%85%A8"><span class="toc-number">13.</span> <span class="toc-text">0x09 阿里巴巴-阿里云安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-2"><span class="toc-number">13.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-2"><span class="toc-number">13.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2%EF%BC%88%E4%BA%A4%E5%8F%89%E9%9D%A2%EF%BC%89"><span class="toc-number">13.3.</span> <span class="toc-text">三面（交叉面）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0A"><span class="toc-number">14.</span> <span class="toc-text">0x0A</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0B-%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8-%E6%97%A0%E6%81%92%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">15.</span> <span class="toc-text">0x0B 字节跳动-无恒实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0C-58%E5%90%8C%E5%9F%8E-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">16.</span> <span class="toc-text">0x0C 58同城-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0D-%E8%85%BE%E8%AE%AF-%E7%8E%84%E6%AD%A6%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">17.</span> <span class="toc-text">0x0D 腾讯-玄武实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0E-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">18.</span> <span class="toc-text">0x0E 360-安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x0F-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">19.</span> <span class="toc-text">0x0F 快手-安全实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-3"><span class="toc-number">19.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-3"><span class="toc-number">19.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x10-%E5%8D%8E%E9%A1%BA%E4%BF%A1%E5%AE%89-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">20.</span> <span class="toc-text">0x10 华顺信安-安全服务工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x11-%E5%A5%87%E5%AE%89%E4%BF%A1%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">21.</span> <span class="toc-text">0x11 奇安信面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x12-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E5%8F%91"><span class="toc-number">22.</span> <span class="toc-text">0x12 京东-安全研发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x13-%E5%AE%89%E6%81%92%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">23.</span> <span class="toc-text">0x13 安恒面试复盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x14-%E6%B5%99%E6%B1%9F%E4%B8%9C%E5%B2%B8%E6%A3%80%E6%B5%8B"><span class="toc-number">24.</span> <span class="toc-text">0x14 浙江东岸检测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x15-360-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">25.</span> <span class="toc-text">0x15 360-安全工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x16-%E6%9F%90%E4%B8%80%E7%BA%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">26.</span> <span class="toc-text">0x16 某一线实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E9%9D%A2"><span class="toc-number">26.1.</span> <span class="toc-text">技术面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hr%E9%9D%A2"><span class="toc-number">26.2.</span> <span class="toc-text">hr面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x17-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">27.</span> <span class="toc-text">0x17 腾讯-科恩实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-4"><span class="toc-number">27.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-4"><span class="toc-number">27.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x18-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">28.</span> <span class="toc-text">0x18 某四字大厂面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-5"><span class="toc-number">28.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-5"><span class="toc-number">28.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2"><span class="toc-number">28.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x19-%E6%9F%90%E5%9B%9B%E5%AD%97%E5%A4%A7%E5%8E%82%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">29.</span> <span class="toc-text">0x19 某四字大厂实习面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-6"><span class="toc-number">29.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-6"><span class="toc-number">29.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-1"><span class="toc-number">29.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2%EF%BC%88HR%EF%BC%89"><span class="toc-number">29.4.</span> <span class="toc-text">四面（HR）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1A-%E6%9F%90%E4%B8%A4%E5%AD%97%E5%A4%A7%E5%8E%82%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98"><span class="toc-number">30.</span> <span class="toc-text">0x1A 某两字大厂面试复盘</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-7"><span class="toc-number">30.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-7"><span class="toc-number">30.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-2"><span class="toc-number">30.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2"><span class="toc-number">30.4.</span> <span class="toc-text">四面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1B-%E6%9F%90%E5%AE%89%E5%85%A8%E5%85%AC%E5%8F%B8-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98"><span class="toc-number">31.</span> <span class="toc-text">0x1B 某安全公司-安全研究员</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-8"><span class="toc-number">31.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-8"><span class="toc-number">31.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1C-%E8%85%BE%E8%AE%AF-%E7%A7%91%E6%81%A9%E5%AE%9E%E9%AA%8C%E5%AE%A4%E5%AE%9E%E4%B9%A0"><span class="toc-number">32.</span> <span class="toc-text">0x1C 腾讯-科恩实验室实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-9"><span class="toc-number">32.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-9"><span class="toc-number">32.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1D-%E9%95%BF%E4%BA%AD%E7%A7%91%E6%8A%80-%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">33.</span> <span class="toc-text">0x1D 长亭科技 安全服务工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1E-PingCAP-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">34.</span> <span class="toc-text">0x1E PingCAP 安全工程师</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-10"><span class="toc-number">34.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-10"><span class="toc-number">34.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-3"><span class="toc-number">34.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2-1"><span class="toc-number">34.4.</span> <span class="toc-text">四面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x1F-shopee"><span class="toc-number">35.</span> <span class="toc-text">0x1F shopee</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x20-%E6%B7%B1%E4%BF%A1%E6%9C%8D"><span class="toc-number">36.</span> <span class="toc-text">0x20 深信服</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x21-%E5%8D%8E%E4%B8%BA"><span class="toc-number">37.</span> <span class="toc-text">0x21 华为</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x22-360"><span class="toc-number">38.</span> <span class="toc-text">0x22 360</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x23-%E6%B7%B1%E4%BF%A1%E6%9C%8D-%E6%B7%B1%E8%93%9D%E6%94%BB%E9%98%B2%E5%AE%9E%E9%AA%8C%E5%AE%A4"><span class="toc-number">39.</span> <span class="toc-text">0x23 深信服-深蓝攻防实验室</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x24-B%E7%AB%99"><span class="toc-number">40.</span> <span class="toc-text">0x24 B站</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x25-shopee-%E7%BA%A2%E9%98%9F-Singapore"><span class="toc-number">41.</span> <span class="toc-text">0x25 shopee-红队-Singapore</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x26-%E9%95%BF%E4%BA%AD"><span class="toc-number">42.</span> <span class="toc-text">0x26 长亭</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x27-%E5%A5%87%E5%AE%89%E4%BF%A1-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6%E5%91%98-%E5%AE%9E%E4%B9%A0"><span class="toc-number">43.</span> <span class="toc-text">0x27 奇安信 安全研究员 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-5-17"><span class="toc-number">43.1.</span> <span class="toc-text">一面 5.17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-5-18"><span class="toc-number">43.2.</span> <span class="toc-text">二面 5.18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-5-24"><span class="toc-number">43.3.</span> <span class="toc-text">三面 5.24</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x28-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B2%97%E5%AE%9E%E4%B9%A0"><span class="toc-number">44.</span> <span class="toc-text">0x28 美团 安全岗实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x29-%E7%BE%8E%E5%9B%A2-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%AE%9E%E4%B9%A0"><span class="toc-number">45.</span> <span class="toc-text">0x29 美团 安全工程师实习</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2A-%E4%BA%AC%E4%B8%9C-%E5%AE%89%E5%85%A8%E7%A0%94%E7%A9%B6"><span class="toc-number">46.</span> <span class="toc-text">0x2A 京东 安全研究</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2B-%E7%99%BE%E5%BA%A6"><span class="toc-number">47.</span> <span class="toc-text">0x2B 百度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-11"><span class="toc-number">47.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-11"><span class="toc-number">47.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-4"><span class="toc-number">47.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2C-%E8%85%BE%E8%AE%AF"><span class="toc-number">48.</span> <span class="toc-text">0x2C 腾讯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-12"><span class="toc-number">48.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-12"><span class="toc-number">48.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2D-%E5%A5%87%E5%AE%89%E4%BF%A1-A-TEAM"><span class="toc-number">49.</span> <span class="toc-text">0x2D 奇安信 A-TEAM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-13"><span class="toc-number">49.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-13"><span class="toc-number">49.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-5"><span class="toc-number">49.3.</span> <span class="toc-text">三面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2E-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">50.</span> <span class="toc-text">0x2E 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x2F-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%AE%9E%E4%B9%A0%E7%94%9F"><span class="toc-number">51.</span> <span class="toc-text">0x2F 快手 安全实习生</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-14"><span class="toc-number">51.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-14"><span class="toc-number">51.2.</span> <span class="toc-text">二面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x30-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">52.</span> <span class="toc-text">0x30 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x31-%E5%BF%AB%E6%89%8B-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88"><span class="toc-number">53.</span> <span class="toc-text">0x31 快手 安全工程师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x32-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0"><span class="toc-number">54.</span> <span class="toc-text">0x32 蚂蚁 安全工程师 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8E%86%E9%9D%A2"><span class="toc-number">54.1.</span> <span class="toc-text">简历面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-15"><span class="toc-number">54.2.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-15"><span class="toc-number">54.3.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hr%E9%9D%A2-1"><span class="toc-number">54.4.</span> <span class="toc-text">hr面</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x33-%E8%9A%82%E8%9A%81-%E5%AE%89%E5%85%A8%E5%B7%A5%E7%A8%8B%E5%B8%88-%E5%AE%9E%E4%B9%A0"><span class="toc-number">55.</span> <span class="toc-text">0x33 蚂蚁 安全工程师 实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2-16"><span class="toc-number">55.1.</span> <span class="toc-text">一面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2-16"><span class="toc-number">55.2.</span> <span class="toc-text">二面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2-6"><span class="toc-number">55.3.</span> <span class="toc-text">三面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HR%E9%9D%A2"><span class="toc-number">55.4.</span> <span class="toc-text">HR面</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/10/01/1001/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/10/01/1001/&text=Sec-Interview"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/10/01/1001/&is_video=false&description=Sec-Interview"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sec-Interview&body=Check out this article: http://example.com/2022/10/01/1001/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/10/01/1001/&title=Sec-Interview"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/10/01/1001/&name=Sec-Interview&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/10/01/1001/&t=Sec-Interview"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

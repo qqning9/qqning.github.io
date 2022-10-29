@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="0x00 前言收集了部分渗透测试、内网渗透、代码审计、面试经验，方便学习整理 0x01 信息收集工具综合自动化收集 水泽-信息收集自动化工具  企业信息收集 ENScan 基于爱企查的一款企业信息查询工具 cDomain 利用天眼查查询企业备案 JWS-icpscan ICP备案脚本，用于快速定位资产  子域名收集类 OneForAll 一款功能强大的子域收集工具 ESD(枚举子域名工具) ks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工具资料整合">
+<meta property="og:url" content="http://example.com/2022/09/30/0930/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="0x00 前言收集了部分渗透测试、内网渗透、代码审计、面试经验，方便学习整理 0x01 信息收集工具综合自动化收集 水泽-信息收集自动化工具  企业信息收集 ENScan 基于爱企查的一款企业信息查询工具 cDomain 利用天眼查查询企业备案 JWS-icpscan ICP备案脚本，用于快速定位资产  子域名收集类 OneForAll 一款功能强大的子域收集工具 ESD(枚举子域名工具) ks">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-30T13:20:26.901Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="渗透Q">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>工具资料整合</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/10/01/1001/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/09/24/0924/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/09/30/0930/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/09/30/0930/&text=工具资料整合"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/09/30/0930/&is_video=false&description=工具资料整合"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=工具资料整合&body=Check out this article: http://example.com/2022/09/30/0930/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/09/30/0930/&name=工具资料整合&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/09/30/0930/&t=工具资料整合"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">0x01 信息收集工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E8%87%AA%E5%8A%A8%E5%8C%96%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.1.</span> <span class="toc-text">综合自动化收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.2.</span> <span class="toc-text">企业信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E7%B1%BB"><span class="toc-number">2.0.3.</span> <span class="toc-text">子域名收集类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.0.4.</span> <span class="toc-text">端口扫描工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.5.</span> <span class="toc-text">系统信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB"><span class="toc-number">2.0.6.</span> <span class="toc-text">指纹识别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B7%A5%E5%85%B7"><span class="toc-number">2.0.7.</span> <span class="toc-text">暴力破解工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">0x02 渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">3.0.1.</span> <span class="toc-text">渗透学习资料</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">3.0.2.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%A2%E9%98%9F%E6%96%B9%E5%90%91"><span class="toc-number">3.0.3.</span> <span class="toc-text">红队方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">3.0.4.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F"><span class="toc-number">3.0.4.1.</span> <span class="toc-text">漏洞扫描</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">3.0.4.2.</span> <span class="toc-text">漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E5%91%8A-amp-%E6%96%87%E6%A1%A3"><span class="toc-number">3.0.5.</span> <span class="toc-text">报告&amp;文档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="toc-number">4.</span> <span class="toc-text">0x03 内网渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">4.0.1.</span> <span class="toc-text">内网学习资料</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7-1"><span class="toc-number">4.0.2.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86"><span class="toc-number">4.0.2.1.</span> <span class="toc-text">隧道代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">4.0.2.2.</span> <span class="toc-text">信息收集</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%88%86%E7%A0%B4"><span class="toc-number">4.0.2.3.</span> <span class="toc-text">爆破</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.0.2.4.</span> <span class="toc-text">权限提升</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows"><span class="toc-number">4.0.2.5.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux"><span class="toc-number">4.0.2.6.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81"><span class="toc-number">4.0.2.7.</span> <span class="toc-text">权限维持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows-1"><span class="toc-number">4.0.2.8.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-1"><span class="toc-number">4.0.2.9.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.0.2.10.</span> <span class="toc-text">横向移动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="toc-number">4.0.2.11.</span> <span class="toc-text">域渗透</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94"><span class="toc-number">5.</span> <span class="toc-text">0x04 应急响应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-1"><span class="toc-number">5.0.1.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C"><span class="toc-number">5.0.2.</span> <span class="toc-text">实战经验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.3.</span> <span class="toc-text">综合工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7-2"><span class="toc-number">5.0.4.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.1.</span> <span class="toc-text">进程分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.2.</span> <span class="toc-text">启动项分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.3.</span> <span class="toc-text">流量分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WEBSHELL%E6%9F%A5%E6%9D%80"><span class="toc-number">5.0.4.4.</span> <span class="toc-text">WEBSHELL查杀</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.5.</span> <span class="toc-text">日志分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows-2"><span class="toc-number">5.0.4.6.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WEB"><span class="toc-number">5.0.4.7.</span> <span class="toc-text">WEB</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5"><span class="toc-number">5.0.5.</span> <span class="toc-text">威胁情报</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BD%E5%86%85"><span class="toc-number">5.0.5.1.</span> <span class="toc-text">国内</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BD%E5%A4%96"><span class="toc-number">5.0.5.2.</span> <span class="toc-text">国外</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3"><span class="toc-number">5.0.6.</span> <span class="toc-text">相关文档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.</span> <span class="toc-text">0x05 代码审计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.1.</span> <span class="toc-text">PHP代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JAVA%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.2.</span> <span class="toc-text">JAVA代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Golang-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.3.</span> <span class="toc-text">Golang 代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.4.</span> <span class="toc-text">python 代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="toc-number">6.0.5.</span> <span class="toc-text">代码审计工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP"><span class="toc-number">6.0.5.1.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JAVA"><span class="toc-number">6.0.5.2.</span> <span class="toc-text">JAVA</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Pyton"><span class="toc-number">6.0.5.3.</span> <span class="toc-text">Pyton</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">7.</span> <span class="toc-text">0x06 知识库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E5%AD%97%E5%85%B8%E6%94%B6%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">0x07 字典收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C"><span class="toc-number">9.</span> <span class="toc-text">0x08 面试经验</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        工具资料整合
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-09-29T16:00:00.000Z" itemprop="datePublished">2022-09-30</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%B8%97%E9%80%8FQ/" rel="tag">渗透Q</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>收集了部分渗透测试、内网渗透、代码审计、面试经验，方便学习整理</p>
+<h2 id="0x01-信息收集工具"><a href="#0x01-信息收集工具" class="headerlink" title="0x01 信息收集工具"></a>0x01 信息收集工具</h2><h4 id="综合自动化收集"><a href="#综合自动化收集" class="headerlink" title="综合自动化收集"></a>综合自动化收集</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/0x727/ShuiZe_0x727">水泽-信息收集自动化工具</a></li>
+</ul>
+<h4 id="企业信息收集"><a href="#企业信息收集" class="headerlink" title="企业信息收集"></a>企业信息收集</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/wgpsec/ENScan">ENScan 基于爱企查的一款企业信息查询工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/canc3s/cDomain">cDomain 利用天眼查查询企业备案</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jammny/JWS-icpscan">JWS-icpscan ICP备案脚本，用于快速定位资产</a></li>
+</ul>
+<h4 id="子域名收集类"><a href="#子域名收集类" class="headerlink" title="子域名收集类"></a><strong>子域名收集类</strong></h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll">OneForAll 一款功能强大的子域收集工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FeeiCN/ESD">ESD(枚举子域名工具)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/knownsec/ksubdomain">ksubdomain 无状态子域名爆破工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yunxu1/dnsub">dnsub 一款好用且强大的子域名扫描工具</a></li>
+</ul>
+<h4 id="端口扫描工具"><a href="#端口扫描工具" class="headerlink" title="端口扫描工具"></a>端口扫描工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/robertdavidgraham/masscan">masscan 世界上最快的端口扫描器</a></li>
+<li><a target="_blank" rel="noopener" href="https://nmap.org/">NMAP 一款强大的端口扫描工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/naabu">naabu 用 go 编写的快速端口扫描器</a></li>
+</ul>
+<h4 id="系统信息收集"><a href="#系统信息收集" class="headerlink" title="系统信息收集"></a>系统信息收集</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/r0eXpeR/redteam-tools/blob/main/getinfo.sh">linux 内网信息收集shell脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uknowsec/SharpCheckInfo">收集目标主机信息，包括最近打开文件，系统环境变量和回收站文件等信息</a></li>
+</ul>
+<h4 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/EdgeSecurityTeam/EHole">EHole(棱洞)2.0-红队重点攻击系统指纹探测工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/EASY233/Finger">Finger 一款红队在大量的资产中存活探测与重点攻击系统指纹探测工具</a></li>
+</ul>
+<h4 id="暴力破解工具"><a href="#暴力破解工具" class="headerlink" title="暴力破解工具"></a>暴力破解工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/awake1t/PortBrute">PortBrute 一款跨平台小巧的端口爆破工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shack2/SNETCracker">SNETCracker-Windows下的超级弱口令检查工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/22XploiterCrew-Team/WpCrack">WordPress 超级快速暴力破解工具</a></li>
+</ul>
+<h2 id="0x02-渗透测试"><a href="#0x02-渗透测试" class="headerlink" title="0x02 渗透测试"></a>0x02 渗透测试</h2><h4 id="渗透学习资料"><a href="#渗透学习资料" class="headerlink" title="渗透学习资料"></a>渗透学习资料</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/xiaoy-sec/Pentest_Note">渗透测试常规操作记录</a></li>
+<li><a target="_blank" rel="noopener" href="https://websec.readthedocs.io/zh/latest/">Web安全学习笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eastmountyxz/NetworkSecuritySelf-study">网络安全自学教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/awake1t/HackReport">渗透测试报告&#x2F;资料文档&#x2F;渗透经验文档&#x2F;安全书籍</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pen4uin/pentest-note">渗透测试☞经验&#x2F;思路&#x2F;想法&#x2F;总结&#x2F;笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mstxq17/VunHunterTips">漏洞挖掘技巧及其一些工具集成</a></li>
+</ul>
+<h4 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/iSafeBlue/Mind-Map">超详细的渗透测试思维导图</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/NyDubh3/Pentesting-Active-Directory-CN">域渗透脑图中文翻译版</a></li>
+</ul>
+<h4 id="红队方向"><a href="#红队方向" class="headerlink" title="红队方向"></a>红队方向</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/we1h0/redteam-tips">关于红队方面的学习资料</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/safe6Sec/command">红队常用命令速查</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/r0eXpeR/redteam_vul">红队作战中比较常遇到的一些重点系统漏洞整理。</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fengjixuchui/RedTeamer">红方人员作战执行手册</a></li>
+</ul>
+<h4 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h4><ul>
+<li><h5 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/chaitin/xray">Xray 一款功能强大的安全评估工具 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yaklang/yakit">Yakit: 集成化单兵安全能力平台</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/knownsec/pocsuite3">pocsuite3 开源的远程漏洞测试框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gobysec/Goby">Goby  网络安全测试工具 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DSO-Lab/pocscan">pocscan PoC扫描器 主要用于指纹识别后，进行漏洞精准扫描</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Adminisme/ServerScan">ServerScan一款使用Golang开发的高并发网络扫描、服务探测工具。</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/P1-Team/AlliN">AlliN python无依赖打点工具</a></li>
+</ul>
+</li>
+<li><h5 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhzyker/exphub">Exphub漏洞利用脚本库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lijiaxing1997/Gr33k">Gr33k 漏洞利用工具集</a></li>
+<li>Struts2<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/HatBoy/Struts2-Scan">Struts2全漏洞扫描利用工具</a></li>
+</ul>
+</li>
+<li>Fastjson<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/c0ny1/FastjsonExploit">Fastjson漏洞快速利用框架</a></li>
+</ul>
+</li>
+<li>Weblogic<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rabbitmask/WeblogicScan">WeblogicScan - Weblogic一键漏洞检测工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/0xn0ne/weblogicScanner">weblogicScanner - weblogic 漏洞扫描工具</a></li>
+</ul>
+</li>
+<li>Shiro<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/j1anFen/shiro_attack">shiro反序列化漏洞综合利用</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fupinglee/ShiroScan">Shiro RememberMe 1.2.4 反序列化漏洞图形化检测工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sv3nbeast/ShiroScan">Shiro&lt;&#x3D;1.2.4反序列化，一键检测工具</a></li>
+</ul>
+</li>
+<li>ThinkPhP<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Lotus6/ThinkphpGUI">Thinkphp(GUI)漏洞利用工具</a></li>
+</ul>
+</li>
+<li>OA<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/z1un/weaver_exp#%E6%B3%9B%E5%BE%AEoa%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86">泛微OA漏洞综合利用脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xinyu2428/TDOA_RCE">通达OA综合利用工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Summer177/seeyon_exp">致远OA综合利用工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/z1un/seeyou_exp">致远OA漏洞综合利用脚本</a></li>
+</ul>
+</li>
+<li>数据库 <ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/safe6Sec/PentestDB">收集整理各种数据库的利用姿势</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SafeGroceryStore/MDUT">MDUT  一款中文的数据库跨平台利用工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Ryze-T/Sylas">Sylas 数据库综合利用工具</a></li>
+</ul>
+</li>
+<li>云存储<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/UzJu/Cloud-Bucket-Leak-Detection-Tools">六大云存储，泄露利用检测工具</a></li>
+</ul>
+</li>
+<li>POC<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/binganao/vulns-2022">搜集 2022 年的漏洞</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="报告-amp-文档"><a href="#报告-amp-文档" class="headerlink" title="报告&amp;文档"></a>报告&amp;文档</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/awake1t/HackReport">渗透测试报告&#x2F;资料文档&#x2F;渗透经验文档&#x2F;安全书籍</a></li>
+</ul>
+<h2 id="0x03-内网渗透"><a href="#0x03-内网渗透" class="headerlink" title="0x03 内网渗透"></a>0x03 内网渗透</h2><h4 id="内网学习资料"><a href="#内网学习资料" class="headerlink" title="内网学习资料"></a>内网学习资料</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/l3m0n/pentest_study">从零开始内网渗透学习</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uknowsec/Active-Directory-Pentest-Notes">个人域渗透学习笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Ridter/Intranet_Penetration_Tips">2018年初整理的一些内网渗透TIPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chriskaliX/AD-Pentest-Notes">用于记录内网渗透(域渗透)学习 :-)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ybdt/post-hub">后渗透：代理、C2、免杀、横向、域渗透</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SeikoSrp/Pentest-Notes">《内网安全攻防-渗透测试实战指南》一些技术点概括</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/0range-x/Domain-penetration_one-stop">域渗透一条龙</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/r0eXpeR/pentest">内网渗透中的一些工具及项目资料</a></li>
+</ul>
+<h4 id="常用工具-1"><a href="#常用工具-1" class="headerlink" title="常用工具"></a>常用工具</h4><ul>
+<li><h5 id="隧道代理"><a href="#隧道代理" class="headerlink" title="隧道代理"></a>隧道代理</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">frp 专注于内网穿透的高性能的反向代理应用</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mstxq17/FrpProPlugin">frp0.33修改版,过流量检测,免杀,支持加载远程配置文件可用于cs直接使用的插件</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ehang-io/nps">nps 轻量级、高性能、功能强大的内网穿透代理服务器</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/L-codes/Neo-reGeorg">Neo-reGeorg 改进的reGeorg版本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/idlefire/ew">ew 用于开启 SOCKS v5 代理服务的工具(跨平台)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alex-sector/dns2tcp">dns2tcp是一款利用dns协议传输tcp数据的工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lz520520/Stowaway">一个专为渗透测试工作者制作的多级代理工具</a></li>
+</ul>
+</li>
+<li><h5 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shadow1ng/fscan">fscan - 一款内网扫描工具，方便一键大保健</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lz520520/railgun">Railgun 一款GUI界面的渗透工具，综合类的扫描工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Heart-Sky/ListRDPConnections">读取本机对外RDP连接记录和其他主机对该主机的连接记录</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/k8gege/Ladon">Ladon一款用于大型网络渗透的多线程插件化综合扫描神</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pandasec888/taowu-cobalt-strike">梼杌 cobalt strike3.x与cobalt strike4.x的插件</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/QAX-A-Team/BrowserGhost">BrowserGhost 一个抓取浏览器密码的工具</a></li>
+</ul>
+</li>
+<li><h5 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a>爆破</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shack2/SNETCracker">SNETCracker-Windows下的超级弱口令检查工具</a></li>
+</ul>
+</li>
+<li><h5 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h5><ul>
+<li><h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://i.hacking8.com/tiquan/">Windows提权辅助网页</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">windows-kernel-exploits Windows平台提权漏洞集合</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Ascotbe/Kernelhub">Windows 提权漏洞合集(带有编译环境&#x2F;详细说明)</a></li>
+<li>MS16-075(Patato)提权<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits/blob/master/MS16-075/potato.exe">MS16-075</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/breenmachine/RottenPotatoNG">RottenPotatoNG</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/foxglovesec/RottenPotato">RottenPotato</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">linux-kernel-exploits Linux平台提权漏洞集合</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/worawit/CVE-2021-3156">CVE-2021-3156 sudo 提权漏洞 各平台下的EXP</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/liamg/traitor">自动化Linux权限提升工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FireFart/dirtycow">CVE-2016-5195 脏牛漏洞提权EXP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="权限维持"><a href="#权限维持" class="headerlink" title="权限维持"></a>权限维持</h5><ul>
+<li><h5 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h5></li>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/360-Linton-Lab/Telemetry">WINDOWS TELEMETRY权限维持</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Lhaihai/PythonPersistence">python3 写的一些权限维持脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AV1080p/Schtasks-Backdoor">一款权限维持后门PowerShell脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Al1ex/Monitor">用于实现后渗透测试阶段权限维持</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wgpsec/Automatic-permission-maintenance">CobaltStrike 上线自动权限维持插件</a></li>
+</ul>
+</li>
+<li><h5 id="Linux-1"><a href="#Linux-1" class="headerlink" title="Linux"></a>Linux</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-mo-/p/12337766.html">Linux权限维持总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://bypass007.github.io/Emergency-Response-Notes/privilege/%E7%AC%AC3%E7%AF%87%EF%BC%9ALinux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81--%E9%9A%90%E8%97%8F%E7%AF%87.html">Linux权限维持–隐藏篇</a></li>
+<li><a target="_blank" rel="noopener" href="https://bypass007.github.io/Emergency-Response-Notes/privilege/%E7%AC%AC4%E7%AF%87%EF%BC%9ALinux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81--%E5%90%8E%E9%97%A8%E7%AF%87.html">Linux权限维持–后门篇</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="横向移动"><a href="#横向移动" class="headerlink" title="横向移动"></a>横向移动</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">Mimikatz Windows 密码抓取神器</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/QAX-A-Team/sharpwmi">sharpwmi基于rpc的横向移动工具，具有上传和执行命令功能</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Lucifer1993/PLtools">整理一些内网常用渗透小工具</a></li>
+</ul>
+</li>
+<li><h5 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/SkewwG/domainTools">内网域渗透小工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/maaaaz/impacket-examples-windows">impacket-examples-windows</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/r00tkie/PowerScripts">PowerScripts</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit">PowerSploit</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="0x04-应急响应"><a href="#0x04-应急响应" class="headerlink" title="0x04 应急响应"></a>0x04 应急响应</h2><h4 id="思维导图-1"><a href="#思维导图-1" class="headerlink" title="思维导图"></a>思维导图</h4><p><a target="_blank" rel="noopener" href="https://github.com/mrknow001/Mind_Map/blob/main/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E6%80%BB%E7%BB%93%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png">应急响应思维导图</a></p>
+<h4 id="实战经验"><a href="#实战经验" class="headerlink" title="实战经验"></a>实战经验</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Bypass007/Emergency-Response-Notes">应急响应实战笔记，一个安全工程师的自我修养</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tide-emergency/yingji/">应急相关内容积累</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/4NtHCU9nM9uQVlM_Fn9kzg">Linux 应急响应手册 v1.3</a></li>
+</ul>
+<h4 id="综合工具"><a href="#综合工具" class="headerlink" title="综合工具"></a>综合工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/grayddq/GScan">GScan 主机侧Checklist的自动全面化检测脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/al0ne/LinuxCheck">Linux应急处置&#x2F;信息搜集&#x2F;漏洞检测工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MountCloud/FireKylin">火麒麟-网络安全应急响应工具(系统痕迹采集)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/heikanet/whohk">whohk linux下一款强大的应急响应工具</a></li>
+</ul>
+<h4 id="常用工具-2"><a href="#常用工具-2" class="headerlink" title="常用工具"></a>常用工具</h4><ul>
+<li><h5 id="进程分析工具"><a href="#进程分析工具" class="headerlink" title="进程分析工具"></a>进程分析工具</h5><ul>
+<li>ProcessHacker</li>
+<li>ProcessExplorer</li>
+<li>XueTr</li>
+<li><a target="_blank" rel="noopener" href="http://www.xuetr.com/">PCHunter</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.huorong.cn/">火绒剑</a></li>
+</ul>
+</li>
+<li><h5 id="启动项分析工具"><a href="#启动项分析工具" class="headerlink" title="启动项分析工具"></a>启动项分析工具</h5><ul>
+<li>AutoRuns</li>
+<li>TCPView</li>
+</ul>
+</li>
+<li><h5 id="流量分析工具"><a href="#流量分析工具" class="headerlink" title="流量分析工具"></a>流量分析工具</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.wireshark.org/">Wireshark</a></li>
+<li>科来网络分析</li>
+<li>TCPView</li>
+</ul>
+</li>
+<li><h5 id="WEBSHELL查杀"><a href="#WEBSHELL查杀" class="headerlink" title="WEBSHELL查杀"></a>WEBSHELL查杀</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.d99net.net/">D盾_webshell查杀</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shellpub.com/">河马webshell查杀</a></li>
+</ul>
+</li>
+<li><h5 id="日志分析工具"><a href="#日志分析工具" class="headerlink" title="日志分析工具"></a>日志分析工具</h5><ul>
+<li><h5 id="Windows-2"><a href="#Windows-2" class="headerlink" title="Windows"></a>Windows</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=24659">logparser</a></li>
+</ul>
+</li>
+<li><h5 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.pcsoft.com.cn/soft/15718.html">360星图</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tide-emergency/yingji/tree/master/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E4%B9%8B%E5%B7%A5%E5%85%B7%E7%AF%87/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E8%84%9A%E6%9C%AC">日志分析脚本</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/al0ne/nginx_log_check">nginx_log_check</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Lucifer1993/ALB">攻击日志分析工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="威胁情报"><a href="#威胁情报" class="headerlink" title="威胁情报"></a>威胁情报</h4><ul>
+<li><h5 id="国内"><a href="#国内" class="headerlink" title="国内"></a>国内</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://x.threatbook.cn/">微步在线</a></li>
+<li><a target="_blank" rel="noopener" href="https://ti.360.net/">360威胁情报中心</a></li>
+<li><a target="_blank" rel="noopener" href="https://redqueen.tj-un.com/">天际友盟RedQueen安全智能服务平台</a></li>
+<li><a target="_blank" rel="noopener" href="https://ti.qianxin.com/">奇安信威胁情报中心</a></li>
+<li><a target="_blank" rel="noopener" href="https://ti.dbappsecurity.com.cn/">安恒威胁情报中心</a></li>
+</ul>
+</li>
+<li><h5 id="国外"><a href="#国外" class="headerlink" title="国外"></a>国外</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://exchange.xforce.ibmcloud.com/">IBM X-Force</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.virustotal.com/gui/home/upload">VirusTotal</a></li>
+<li><a target="_blank" rel="noopener" href="https://isc.sans.edu/">SANS互联网风暴中心</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.threatcrowd.org/">Threatcrowd</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.threatminer.org/">hreatMiner</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h4><p><a target="_blank" rel="noopener" href="https://github.com/ffffffff0x/1earn/blob/master/1earn/Security/BlueTeam/%E5%BA%94%E6%80%A5.md">应急资源、溯源案例</a></p>
+<h2 id="0x05-代码审计"><a href="#0x05-代码审计" class="headerlink" title="0x05 代码审计"></a>0x05 代码审计</h2><h4 id="PHP代码审计"><a href="#PHP代码审计" class="headerlink" title="PHP代码审计"></a>PHP代码审计</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hongriSec/PHP-Audit-Labs">一个关于PHP的代码审计项目</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/0e0w/HackPHP">《深入理解PHP代码审计》</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bowu678/php_bugs">PHP代码审计分段讲解</a></li>
+</ul>
+<h4 id="JAVA代码审计"><a href="#JAVA代码审计" class="headerlink" title="JAVA代码审计"></a>JAVA代码审计</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/proudwind/javasec_study">java代码审计学习笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pen4uin/java-security">Java安全☞代码审计&#x2F;漏洞研究&#x2F;武器化</a></li>
+</ul>
+<h4 id="Golang-代码审计"><a href="#Golang-代码审计" class="headerlink" title="Golang 代码审计"></a>Golang 代码审计</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/pen4uin/golang-security">Golang 安全</a></li>
+</ul>
+<h4 id="python-代码审计"><a href="#python-代码审计" class="headerlink" title="python 代码审计"></a>python 代码审计</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bit4woo/python_sec">python安全和代码审计相关资料收集</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MisakiKata/python_code_audit">python 代码审计项目</a></li>
+</ul>
+<h4 id="代码审计工具"><a href="#代码审计工具" class="headerlink" title="代码审计工具"></a>代码审计工具</h4><ul>
+<li><h5 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/f1tz/cnseay">Seay源代码审计系统</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TheKingOfDuck/FileMonitor">代码审计辅助工具（文件监控）</a></li>
+</ul>
+</li>
+<li><h5 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://www.joinfortify.com/">Fortify</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/4ra1n/SpringInspector">Java自动代码审计工具</a></li>
+</ul>
+</li>
+<li><h5 id="Pyton"><a href="#Pyton" class="headerlink" title="Pyton"></a>Pyton</h5><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/suanve/recode">基于python的代码审计工具</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="0x06-知识库"><a href="#0x06-知识库" class="headerlink" title="0x06 知识库"></a>0x06 知识库</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Micropoor/Micro8">Micro8 系列文章</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cckuailong/vulbase">各大漏洞文库合集</a></li>
+<li><a target="_blank" rel="noopener" href="https://vulwiki.readthedocs.io/zh_CN/latest/">web知识库</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.hacking8.com/repository">Hacking8 安全知识库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SuperKieran/WooyunDrops">Wooyun知识库</a></li>
+</ul>
+<h2 id="0x07-字典收集"><a href="#0x07-字典收集" class="headerlink" title="0x07 字典收集"></a>0x07 字典收集</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/insightglacier/Dictionary-Of-Pentesting">Dictionary-Of-Pentesting - 渗透测试、SRC漏洞挖掘、爆破、Fuzzing等字典收集项目</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TheKingOfDuck/fuzzDicts">Web Pentesting Fuzz 字典,一个就够了</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gh0stkey/Web-Fuzzing-Box">Web Fuzzing Box - Web 模糊测试字典与一些Payloads</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ybdt/dict-hub">红队字典：默认凭证、弱用户名、弱口令、弱Web路径</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ppbibo/PentesterSpecialDict">渗透测试人员专用精简化字典</a></li>
+</ul>
+<h2 id="0x08-面试经验"><a href="#0x08-面试经验" class="headerlink" title="0x08 面试经验"></a>0x08 面试经验</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/FeeiCN/SecurityInterviewGuide">网络信息安全从业者面试指南（持续补充各公司招聘面试题目和侧重点）</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/Leezj9671/Pentest_Interview">个人准备渗透测试和安全面试的经验之谈，和去部分厂商的面试题,干货真的满满~</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/j2ekim/Security_Service_Interviews/">安服面经☞渗透测试&#x2F;代码审计&#x2F;安全研究</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/EvilAnne/Pentest_questions">渗透测试面试题目</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/vvmdx/Sec-Interview-4-2023">一个2023届毕业生在毕业前持续更新、收集的安全岗面试题及面试经验分享~</a></p>
+<hr>
+<p><span style="color:red;">再见少年拉满弓，不惧岁月不惧风。</span></p>
+<p>————x</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">0x01 信息收集工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E8%87%AA%E5%8A%A8%E5%8C%96%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.1.</span> <span class="toc-text">综合自动化收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.2.</span> <span class="toc-text">企业信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86%E7%B1%BB"><span class="toc-number">2.0.3.</span> <span class="toc-text">子域名收集类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.0.4.</span> <span class="toc-text">端口扫描工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">2.0.5.</span> <span class="toc-text">系统信息收集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB"><span class="toc-number">2.0.6.</span> <span class="toc-text">指纹识别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E5%B7%A5%E5%85%B7"><span class="toc-number">2.0.7.</span> <span class="toc-text">暴力破解工具</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text">0x02 渗透测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">3.0.1.</span> <span class="toc-text">渗透学习资料</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="toc-number">3.0.2.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%A2%E9%98%9F%E6%96%B9%E5%90%91"><span class="toc-number">3.0.3.</span> <span class="toc-text">红队方向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">3.0.4.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F"><span class="toc-number">3.0.4.1.</span> <span class="toc-text">漏洞扫描</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">3.0.4.2.</span> <span class="toc-text">漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A5%E5%91%8A-amp-%E6%96%87%E6%A1%A3"><span class="toc-number">3.0.5.</span> <span class="toc-text">报告&amp;文档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="toc-number">4.</span> <span class="toc-text">0x03 内网渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="toc-number">4.0.1.</span> <span class="toc-text">内网学习资料</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7-1"><span class="toc-number">4.0.2.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9A%A7%E9%81%93%E4%BB%A3%E7%90%86"><span class="toc-number">4.0.2.1.</span> <span class="toc-text">隧道代理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">4.0.2.2.</span> <span class="toc-text">信息收集</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%88%86%E7%A0%B4"><span class="toc-number">4.0.2.3.</span> <span class="toc-text">爆破</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-number">4.0.2.4.</span> <span class="toc-text">权限提升</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows"><span class="toc-number">4.0.2.5.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux"><span class="toc-number">4.0.2.6.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81"><span class="toc-number">4.0.2.7.</span> <span class="toc-text">权限维持</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows-1"><span class="toc-number">4.0.2.8.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux-1"><span class="toc-number">4.0.2.9.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8"><span class="toc-number">4.0.2.10.</span> <span class="toc-text">横向移动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%9F%E6%B8%97%E9%80%8F"><span class="toc-number">4.0.2.11.</span> <span class="toc-text">域渗透</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94"><span class="toc-number">5.</span> <span class="toc-text">0x04 应急响应</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-1"><span class="toc-number">5.0.1.</span> <span class="toc-text">思维导图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E7%BB%8F%E9%AA%8C"><span class="toc-number">5.0.2.</span> <span class="toc-text">实战经验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.3.</span> <span class="toc-text">综合工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7-2"><span class="toc-number">5.0.4.</span> <span class="toc-text">常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.1.</span> <span class="toc-text">进程分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.2.</span> <span class="toc-text">启动项分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.3.</span> <span class="toc-text">流量分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WEBSHELL%E6%9F%A5%E6%9D%80"><span class="toc-number">5.0.4.4.</span> <span class="toc-text">WEBSHELL查杀</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="toc-number">5.0.4.5.</span> <span class="toc-text">日志分析工具</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows-2"><span class="toc-number">5.0.4.6.</span> <span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#WEB"><span class="toc-number">5.0.4.7.</span> <span class="toc-text">WEB</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5"><span class="toc-number">5.0.5.</span> <span class="toc-text">威胁情报</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BD%E5%86%85"><span class="toc-number">5.0.5.1.</span> <span class="toc-text">国内</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BD%E5%A4%96"><span class="toc-number">5.0.5.2.</span> <span class="toc-text">国外</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E6%A1%A3"><span class="toc-number">5.0.6.</span> <span class="toc-text">相关文档</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.</span> <span class="toc-text">0x05 代码审计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.1.</span> <span class="toc-text">PHP代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JAVA%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.2.</span> <span class="toc-text">JAVA代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Golang-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.3.</span> <span class="toc-text">Golang 代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#python-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1"><span class="toc-number">6.0.4.</span> <span class="toc-text">python 代码审计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7"><span class="toc-number">6.0.5.</span> <span class="toc-text">代码审计工具</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP"><span class="toc-number">6.0.5.1.</span> <span class="toc-text">PHP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JAVA"><span class="toc-number">6.0.5.2.</span> <span class="toc-text">JAVA</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Pyton"><span class="toc-number">6.0.5.3.</span> <span class="toc-text">Pyton</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">7.</span> <span class="toc-text">0x06 知识库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E5%AD%97%E5%85%B8%E6%94%B6%E9%9B%86"><span class="toc-number">8.</span> <span class="toc-text">0x07 字典收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-%E9%9D%A2%E8%AF%95%E7%BB%8F%E9%AA%8C"><span class="toc-number">9.</span> <span class="toc-text">0x08 面试经验</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/09/30/0930/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/09/30/0930/&text=工具资料整合"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/09/30/0930/&is_video=false&description=工具资料整合"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=工具资料整合&body=Check out this article: http://example.com/2022/09/30/0930/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/09/30/0930/&title=工具资料整合"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/09/30/0930/&name=工具资料整合&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/09/30/0930/&t=工具资料整合"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

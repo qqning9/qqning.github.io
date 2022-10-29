@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~      1.线性规划 eg:张麻子既要攻碉楼又要追替身，他们一伙6人，总共1200发子 弹；每有一人攻碉楼会给百姓带来40点士气值，每有一人追替身会给 百姓带来30点士气值；攻碉楼每人需240发子弹，追替身每人需120发。 问攻碉楼和追替身各派几个人，能使百姓的士气值最大？ 解：设派𝑥1人攻碉楼，派 𝑥2人追替身，百姓士气值为𝑦 ；  •">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学建模模型算法(基础)">
+<meta property="og:url" content="http://example.com/2022/10/03/1003/index.html">
+<meta property="og:site_name" content="Sunshine">
+<meta property="og:description" content="听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~      1.线性规划 eg:张麻子既要攻碉楼又要追替身，他们一伙6人，总共1200发子 弹；每有一人攻碉楼会给百姓带来40点士气值，每有一人追替身会给 百姓带来30点士气值；攻碉楼每人需240发子弹，追替身每人需120发。 问攻碉楼和追替身各派几个人，能使百姓的士气值最大？ 解：设派𝑥1人攻碉楼，派 𝑥2人追替身，百姓士气值为𝑦 ；  •">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/photos/2022/1003/1.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/1.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/2.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/3.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/3.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/3.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/3.4.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/4.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/4.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/4.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/5.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/5.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/5.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/5.4.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/5.5.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/6.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/6.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/6.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/6.4.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/6.5.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.4.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.5.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.6.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.7.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/7.8.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.1.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.2.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.3.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.4.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.5.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.6.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.7.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.8.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.9.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.10.png">
+<meta property="og:image" content="http://example.com/photos/2022/1003/8.11.png">
+<meta property="article:published_time" content="2022-10-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-03T11:54:55.459Z">
+<meta property="article:author" content="qqning">
+<meta property="article:tag" content="数学建模">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/photos/2022/1003/1.1.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>数学建模模型算法(基础)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2022/10/29/1029/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2022/10/01/1001/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/10/03/1003/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/10/03/1003/&text=数学建模模型算法(基础)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/10/03/1003/&is_video=false&description=数学建模模型算法(基础)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数学建模模型算法(基础)&body=Check out this article: http://example.com/2022/10/03/1003/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/10/03/1003/&name=数学建模模型算法(基础)&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/10/03/1003/&t=数学建模模型算法(基础)"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">1.线性规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%80%82%E7%94%A8%E7%9A%84%E5%85%B8%E5%9E%8B%E8%B5%9B%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">线性规划适用的典型赛题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8BMATLAB%E6%B1%82%E8%A7%A3%EF%BC%9ALinprog%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">模型MATLAB求解：Linprog函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="toc-number">2.</span> <span class="toc-text">2.非线性规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%A2-%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">• 函数求解：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">3.多目标规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E7%BB%9D%E5%AF%B9%E7%BA%A6%E6%9D%9F%E5%92%8C%E7%9B%AE%E6%A0%87%E7%BA%A6%E6%9D%9F"><span class="toc-number">3.1.</span> <span class="toc-text">❑ 绝对约束和目标约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">4.</span> <span class="toc-text">4.最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B"><span class="toc-number">5.</span> <span class="toc-text">5.灰色预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">6.</span> <span class="toc-text">6.神经网络感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%A8%A1%E5%9E%8B%EF%BC%9A%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.1.</span> <span class="toc-text">❑ 感知机模型：最简单的神经网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">7.层次分析法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B"><span class="toc-number">7.1.</span> <span class="toc-text">❑ 模型建立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E4%B8%8D%E4%B8%80%E8%87%B4%E7%8E%B0%E8%B1%A1"><span class="toc-number">7.2.</span> <span class="toc-text">❑ 不一致现象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%9A%81%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">8.蚁群算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E8%9A%82%E8%9A%81%E9%80%89%E6%8B%A9%E8%B7%AF%E5%BE%84"><span class="toc-number">8.1.</span> <span class="toc-text">❑ 蚂蚁选择路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.2.</span> <span class="toc-text">❑ 迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">8.3.</span> <span class="toc-text">❑算法步骤</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        数学建模模型算法(基础)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">qqning</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-10-02T16:00:00.000Z" itemprop="datePublished">2022-10-03</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag">数学建模</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<p><strong>听说，阅读和音乐更配哟！阅读之前可以听一首歌呀~</strong></p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=520849195&auto=1&height=66"></iframe>
+
+
+
+<hr>
+<h3 id="1-线性规划"><a href="#1-线性规划" class="headerlink" title="1.线性规划"></a>1.线性规划</h3><hr>
+<p>eg:<strong>张麻子既要攻碉楼又要追替身，他们一伙6人，总共1200发子 弹；每有一人攻碉楼会给百姓带来40点士气值，每有一人追替身会给 百姓带来30点士气值；攻碉楼每人需240发子弹，追替身每人需120发。 问攻碉楼和追替身各派几个人，能使百姓的士气值最大？</strong></p>
+<p>解：设派𝑥1人攻碉楼，派 𝑥2人追替身，百姓士气值为𝑦 ； </p>
+<p>• 士气值最大：<code>𝑚𝑎𝑥 𝑦 = 40𝑥1+ 30𝑥2；</code> </p>
+<p>• 总共6人： <code>𝑥1+ 𝑥2 ≤6；</code> </p>
+<p>• 既要攻碉楼又要追替身：<code>𝑥1 ≥ 1， 𝑥2 ≥ 1；</code> </p>
+<p>• 子弹有限：则<code>240𝑥1+ 120𝑥2 ≤ 1200；</code></p>
+<p><img src="/photos/2022/1003/1.1.png"></p>
+<hr>
+<h4 id="线性规划适用的典型赛题"><a href="#线性规划适用的典型赛题" class="headerlink" title="线性规划适用的典型赛题"></a><strong>线性规划适用的<em>典型赛题</em></strong></h4><p>题目中提到“怎样安排&#x2F;分配”“尽量多(少)”“最多(少)”“利润最大”“最合理”等词；</p>
+<ul>
+<li><strong>生产安排</strong>：原材料、设备有限制，总利润最大 。</li>
+</ul>
+<p>  ​	生产两种机床，利润分别为XXX，A机器和B机器加工，两种机器工作时间…；怎样安排生产使得总 利润最大？</p>
+<ul>
+<li><strong>投资收益</strong>：资产配置、收益率、损失率、组合投资、总收益最大 。</li>
+</ul>
+<p>  ​         总资金为M，有n种资产可以配置，平均收益率…，风险损失率…，手续费…，设计组合投资方案使 得收益尽可能大，总体风险尽可能小</p>
+<ul>
+<li><strong>销售运输</strong>：产地、销地、产量、销量、运费，总运费最省 。</li>
+</ul>
+<p>​                    商品有m个产地和n个销地，各产地的产量…，各销地需求量…由a产地运到b销地的运价xxx；如何 调运才能使总运费最省？</p>
+<ul>
+<li><strong>车辆安排</strong>：路线、起点终点、承载量、时间点、车次安排最合理。</li>
+</ul>
+<p>  ​	 不同种类的车辆有各自的承载量，工地里有多条路线，满足用工需求的情况下，如何安排车辆能使 产量尽可能大？ </p>
+<p>（PS：一般整数规划、0-1规划往往也默认为线性规划的特例）</p>
+<hr>
+<h4 id="模型MATLAB求解：Linprog函数"><a href="#模型MATLAB求解：Linprog函数" class="headerlink" title="模型MATLAB求解：Linprog函数"></a>模型MATLAB求解：<strong>Linprog函数</strong></h4><p>模型化为matlab标准型：<em>目标函数最小值、约束条件小于等于号或等号</em></p>
+<table>
+<thead>
+<tr>
+<th>𝒇</th>
+<th>目标函数的系数列向量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>𝑨，𝒃</td>
+<td>不等式约束条件的变量系数矩阵和常数项矩阵</td>
+</tr>
+<tr>
+<td>Aeq，beq</td>
+<td>等式约束条件的系数矩阵和常数项矩阵</td>
+</tr>
+<tr>
+<td>lb，ub</td>
+<td>决策变量的最小取值和最大取值</td>
+</tr>
+</tbody></table>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[𝑥, fval ] = linprog (𝑓, 𝐴, 𝑏, 𝐴𝑒𝑞, beq , 𝑙𝑏, 𝑢𝑏)</span><br></pre></td></tr></table></figure>
+
+<p>x返回最优解的变量取值，fval返回目标函数的最优值</p>
+<p><img src="/photos/2022/1003/1.2.png"></p>
+<p>如果求最大值怎么办？约束条件有大于等于怎么办？</p>
+<p>PS:若不存在不等式约束，用“ [ ]” 代替𝐴和𝑏： </p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[𝑥, fval ] = linprog (𝑓,[ ],[ ], 𝐴𝑒𝑞, beq , 𝑙𝑏, 𝑢𝑏) </span><br></pre></td></tr></table></figure>
+
+<p>• 若不存在等式约束，用“ [ ]” 代替𝐴𝑒𝑞和𝑏𝑒𝑞：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[𝑥, fval ] = linprog (𝑓, 𝐴, 𝑏,[ ], [ ] , 𝑙𝑏, 𝑢𝑏) </span><br></pre></td></tr></table></figure>
+
+<p>• 没有等式约束和最小、最大取值的约束时，可以不写𝐴𝑒𝑞, 𝑏𝑒𝑞 和𝑙𝑏, 𝑢𝑏：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[𝑥, fval ] = linprog (𝑓, 𝐴, 𝑏) </span><br></pre></td></tr></table></figure>
+
+<p>• 若题目求最大值：目标函数等号两端加符号转为求最小值；求解后目标值再<strong>取负</strong></p>
+<hr>
+<h3 id="2-非线性规划"><a href="#2-非线性规划" class="headerlink" title="2.非线性规划"></a>2.非线性规划</h3><hr>
+<p>线性规划：所有变量都是一次方 </p>
+<p>非线性规划：<strong>至少一个变量不是一次方</strong></p>
+<p><img src="/photos/2022/1003/2.1.png"></p>
+<h4 id="•-函数求解："><a href="#•-函数求解：" class="headerlink" title="• 函数求解："></a><strong>• 函数求解：</strong></h4><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x, fval] = fmincon( fun, x0, A, b, Aeq, beq, lb, ub, nonlcon)</span><br></pre></td></tr></table></figure>
+
+<p>• x得到决策变量取值，fval得到最优解取值 </p>
+<p>• 设好后fun和nonlcon函数文件以及其他参数后，执行： </p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[x,y] = fmincon(<span class="string">&#x27;fun1&#x27;</span>,[<span class="number">0</span>;<span class="number">0</span>;<span class="number">0</span>],[],[],[],[],[<span class="number">0</span>;<span class="number">0</span>;<span class="number">0</span>],[],<span class="string">&#x27;fun2’)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-多目标规划"><a href="#3-多目标规划" class="headerlink" title="3.多目标规划"></a>3.多目标规划</h3><hr>
+<p>❑既要XXX，又要XXX </p>
+<p>• (非)线性规划都是一个目标函数，例如工业生产两种产品，追求最大化利润。 </p>
+<p>• eg：某工厂生产产品Ⅰ和产品Ⅱ，有关数据如下，若只追求最大化利润，得到模型： </p>
+<p><img src="/photos/2022/1003/3.1.png"></p>
+<p>❑ 但现在有3个目标：1.尽量使产品Ⅰ的产量不超过产品Ⅱ的产量；2.尽可能充分利用所有设备； 3.尽可能 使利润不少于56万 </p>
+<p>❑ 注意：目标1是“不超过”，也就是尽量“⩽”；目标2是“充分利用”，也就是尽量“&#x3D;”；目标3是 “不少于”，也就是尽量“⩾” </p>
+<p>❑ 需要衡量每个目标的完成情况，并主观上区分三个目标的重要性，使得整体的完成情况尽量好。</p>
+<p>❑ 引入三个概念：正负偏差变量，绝对约束和目标约束，优先因子 </p>
+<p>❑ 1、衡量每个目标的完成情况：正负偏差变量 </p>
+<p>​	• 设 𝑓𝑖(𝑖 &#x3D; 1, ⋯ , 𝑙) 为第 𝑖 个目标函数,  </p>
+<p>​	• 正偏差变量 <code>𝑑𝑖+ = max &#123;𝑓𝑖 − 𝑑𝑖0, 0&#125;</code> 表示实际值超过目标值的部分，负偏差变量 𝑑𝑖− &#x3D; −min {𝑓𝑖 − 𝑑𝑖0 , 0}表示实际 值<strong>未达到</strong>目标值的部分，这里 𝑑𝑖0 表示 𝑓𝑖 的<strong>目标值</strong>。 </p>
+<p>​	• 例如本题，目标3：尽可能使利润不少于56万，那么𝑑30 &#x3D;56</p>
+<p><img src="/photos/2022/1003/3.2.png"></p>
+<p>❑ 尽量不少于，<em>意味着负偏差变量 𝑑3−越小越好</em></p>
+<p>❑需要衡量每个目标的完成情况，并主观上区分三个目标的重要性，使得整体的完成情况尽量好 </p>
+<p>❑ 引入三个概念：<strong>正负偏差变量，绝对约束和目标约束，优先因子</strong> </p>
+<h4 id="❑-绝对约束和目标约束"><a href="#❑-绝对约束和目标约束" class="headerlink" title="❑ 绝对约束和目标约束"></a>❑ <strong>绝对约束和目标约束</strong></h4><p>​	• 绝对约束是模型中自带的约束条件，必须满足，否则是不可行解 </p>
+<p>​	• 例如2𝑥1 + 𝑥2 ⩽ 11，使用材料的数量不能超过总共数量 </p>
+<p>❑ 目标约束是模型中对不等式右端追求的值允许有偏差 </p>
+<p>​	• 目标3：尽可能使利润不少于56万，也就是𝑧 &#x3D; 8𝑥1 + 10𝑥2 ⩾ 56，但允许有偏差</p>
+<p>​	• 这个“偏差”就是加入正负偏差变量，变成： <code>8𝑥1 + 10𝑥2 + 𝑑𝑖 − − 𝑑𝑖 +=56</code> </p>
+<p>❑ 利用了允许的“偏差”即正负偏差变量，多退少补，把目标函数变成了等式约束条件</p>
+<p>❑需要衡量每个目标的完成情况，并主观上区分三个目标的重要性，使得整体的完成情况尽量好 </p>
+<p>❑ 引入三个概念：正负偏差变量，绝对约束和目标约束，优先因子 </p>
+<p>❑ 优先因子 </p>
+<p>​	• 1.尽量使产品Ⅰ的产量不超过产品Ⅱ的产量；2.尽可能充分利用所有设备； 3.尽可能使利润不少于56万 </p>
+<p>​	• 这三者到底哪个重要？需要主观上确定优先因子𝑃k 。 </p>
+<p>​	• 例如，我认为目标3最重要，给他优先因子是10；目标2第二重要，给他优先因子5；目标1第三重要，给它优 先因子是1。那么三个目标重要性之比是10：5：1 </p>
+<p>❑ 第一个目标要求不超过目标值，意味着正偏差变量 𝑑1+ 越小越好</p>
+<p><img src="/photos/2022/1003/3.3.png"></p>
+<hr>
+<p>❑ 某工厂生产产品Ⅰ和产品Ⅱ，有关数据如下，有3个目标：1.尽量使产品Ⅰ的产量不超过产品Ⅱ的产 量；2.尽可能充分利用所有设备； 3.尽可能使利润不少于56万 </p>
+<p>❑ 需要衡量每个目标的完成情况，并主观上区分三个目标的重要性，使得整体的完成情况尽量好。</p>
+<p>​	 • 把所有的目标约束都加上*<code>𝑑𝑖−  −  𝑑𝑖 +</code>*变成等式（注意，绝对约束也可以这样做变成等式，视情况而定） </p>
+<p>​	• 按照需要，主观确定确定优先因子𝑃k ，</p>
+<p> ❑ 得到多目标规划模型：</p>
+<p><img src="/photos/2022/1003/3.4.png"></p>
+<p><strong>求解方法：fgoalattain函数；或序贯算法；或用Lingo求解</strong></p>
+<hr>
+<h3 id="4-最短路径"><a href="#4-最短路径" class="headerlink" title="4.最短路径"></a>4.最短路径</h3><hr>
+<p>❑从A到B，总路径最短 </p>
+<p>❑ 在下图中,用点表示城市,现有𝑣1, 𝑣2, … 𝑣5共5个城市。点与点之间的连线表示城市间有道路相连。连线 旁的数字表示道路的长度。现计划从城市𝑣1到城市𝑣3铺设一条天然气管道,请设计出最小长度管道铺设 方案。</p>
+<p><img src="/photos/2022/1003/4.1.png"></p>
+<p>❑ 最短路径：从图中的某个顶点出发，到达另外一个顶点的所经过的边的权重之和最小的一条路径 • 图：边和节点组成的结构，在数学建模中例如本题中道路和城市。 • 边带有方向的是有向图，否则为无向图 • 权重：每条边都有与之对应的值，本题中边道路，边的权重就是道路长度，当然是越小越好。</p>
+<p><img src="/photos/2022/1003/4.2.png"></p>
+<p><img src="/photos/2022/1003/4.3.png"></p>
+<hr>
+<h3 id="5-灰色预测"><a href="#5-灰色预测" class="headerlink" title="5.灰色预测"></a>5.灰色预测</h3><hr>
+<p>❑GM(1,1)模型 </p>
+<p>❑ 例：某城市1986到1992年道路噪声平均声级数据见下表，请预测下一年的数据。 </p>
+<p>• 某城市交通噪声数据&#x2F;dB(A)</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年份</td>
+<td>1986</td>
+<td>1987</td>
+<td>1988</td>
+<td>1989</td>
+<td>1990</td>
+<td>1991</td>
+<td>1992</td>
+</tr>
+<tr>
+<td>噪声</td>
+<td>71.1</td>
+<td>72.4</td>
+<td>72.4</td>
+<td>72.1</td>
+<td>71.4</td>
+<td>72.0</td>
+<td>71.6</td>
+</tr>
+</tbody></table>
+<p>• 特点：<strong>数据少，看不出明显规律，适合用灰色预测</strong></p>
+<p>❑ 这一组数看不出规律怎么办？<em>制造规律</em>—-<strong>累加 x(1)的值为前面的值总和</strong></p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年份</td>
+<td>1986</td>
+<td>1987</td>
+<td>1988</td>
+<td>1989</td>
+<td>1990</td>
+<td>1991</td>
+<td>1992</td>
+</tr>
+<tr>
+<td>x(0)</td>
+<td>71.1</td>
+<td>72.4</td>
+<td>72.4</td>
+<td>72.1</td>
+<td>71.4</td>
+<td>72.0</td>
+<td>71.6</td>
+</tr>
+<tr>
+<td>x(1)</td>
+<td>71.1</td>
+<td>143.5</td>
+<td>215.9</td>
+<td>288</td>
+<td>359.4</td>
+<td>431.4</td>
+<td>503</td>
+</tr>
+</tbody></table>
+<p><img src="/photos/2022/1003/5.1.png"></p>
+<p>❑ 生成的新序列𝑥 (1) ，看起来像一个指数曲线（直线）</p>
+<p> • 可用一个指数曲线乃至一条直线的表达式来逼近这个新序列 </p>
+<p>• 构建一阶常微分方程来求解拟合曲线的函数表达式</p>
+<p> ❑ 设𝑥 (1)满足： <code>𝑑𝑥 (1)/ 𝑑𝑡 + 𝑎𝑥 (1) = 𝑢</code>（一阶常微分方程），若a和u已知则可直接求解出结果</p>
+<p> • 要预测下一年数值，就解出微分方程；要解微分方程，就要知道a和u</p>
+<p><img src="/photos/2022/1003/5.2.png"></p>
+<p>❑ 想求a和u，就要用<strong>最小二乘法</strong>，通过最小化误差的平方和寻找数据的最佳函数匹配 </p>
+<p>​		• 式子左边是<em>已知数据</em>，右边就是<em>含有未知数的函数</em>，此时就可用最小二乘法</p>
+<p><img src="/photos/2022/1003/5.3.png"></p>
+<p><img src="/photos/2022/1003/5.4.png"></p>
+<p><img src="/photos/2022/1003/5.5.png"></p>
+<hr>
+<h3 id="6-神经网络感知机"><a href="#6-神经网络感知机" class="headerlink" title="6.神经网络感知机"></a>6.神经网络感知机</h3><hr>
+<p>❑ <strong>eg：景区规定14周岁以下的儿童可买半价票。但儿童往往没有身份证，难以准确判断年龄， 如何根据一个人的身高和体重，判断其是否可以买半价票？</strong></p>
+<h4 id="❑-感知机模型：最简单的神经网络"><a href="#❑-感知机模型：最简单的神经网络" class="headerlink" title="❑ 感知机模型：最简单的神经网络"></a>❑ <strong>感知机模型：最简单的神经网络</strong></h4><p>• 输入层：输入身高𝑥1和体重数据𝑥2，相当于神经元接收2个输入信号 </p>
+<p>• 激活函数： 综合判断输入信号是否达到阈值 </p>
+<p>• 输出层：激活函数就在输出层，求得的函数值就是输出值y</p>
+<p><img src="/photos/2022/1003/6.1.png"></p>
+<p><img src="/photos/2022/1003/6.2.png"></p>
+<p><img src="/photos/2022/1003/6.3.png"></p>
+<p><img src="/photos/2022/1003/6.4.png"></p>
+<p><em>针对此问题感知机模型</em></p>
+<p><img src="/photos/2022/1003/6.5.png"></p>
+<p><strong>PS:建模中常用的是BP神经网络</strong></p>
+<hr>
+<h3 id="7-层次分析法"><a href="#7-层次分析法" class="headerlink" title="7.层次分析法"></a>7.层次分析法</h3><hr>
+<p><strong>eg：对以下几位b站up主进行综合评价，评选出综合得分第一名：老番茄、老师好我叫何同学、 木鱼水心、凉风Kaze、罗翔说刑法</strong></p>
+<p>❑ 本题的目标是：根据评价结果进行排名，确定第一名是谁 </p>
+<p>❑ 评价一个up主的准则是什么？ </p>
+<p>​	• 粉丝数，最高播放数，获赞数，稿件数（指视频稿件数） </p>
+<p>​	• 使用这4条可量化的指标作为评价准则 </p>
+<p>❑ 可能的结果&#x2F;方案？ </p>
+<p>​	• 老番茄是第一；或何同学第一，或……； </p>
+<p>​	• 5位up主均有可能，即5种方案</p>
+<h4 id="❑-模型建立"><a href="#❑-模型建立" class="headerlink" title="❑ 模型建立"></a>❑ 模型建立</h4><p><img src="/photos/2022/1003/7.1.png"></p>
+<p>❑ 如何根据4项指标对5位up主进行综合评价？</p>
+<p>❑ 简单粗暴法：粉丝数+播放数+获赞数+稿件数，数值最大的就是第一 </p>
+<p>• 但现实中指标对于评价的重要性不同 </p>
+<p>• 一般来说，粉丝数比稿件数更能体现up主的优秀 </p>
+<p>❑ 指标数值乘以权重再相加，以区分重要性 </p>
+<p>• 假设 综合评分 &#x3D; 0.4粉丝数+0.2播放数+0.3获赞数+0.1稿件数 </p>
+<p>• 权重是人为主观设定的，这也是层次分析法的缺点 </p>
+<p>• 极端情况：主观认为稿件数权重是1，其他指标设为0，会带来荒谬的结论</p>
+<p>❑ 如何较为科学地设定权重？ • 对指标的重要性进行两两比较，构造判断矩阵，从而求出权重 ❑ 矩阵中元素𝑎𝑖𝑗的意义是，第𝑖个指标相对第𝑗个指标的重要程度 • 粉丝数和稿件数相比，根据文献或个人主观认为，粉丝数比稿件数明显重要，则设置𝑎14为5 • 反过来，稿件数相比粉丝数的重要性那就是1&#x2F;5， 𝑎41为1&#x2F;5</p>
+<p><img src="/photos/2022/1003/7.2.png"></p>
+<p>❑ 依次对变量进行两两比较，主观设定所有的元素，得到完整的判断矩阵，如下表所示</p>
+<p><img src="/photos/2022/1003/7.3.png"></p>
+<h4 id="❑-不一致现象"><a href="#❑-不一致现象" class="headerlink" title="❑ 不一致现象"></a>❑ 不一致现象</h4><p>​	• 设粉丝数为A，最高播放数为B，获赞数为C，稿件数为D </p>
+<p>​	• 𝑎23 &#x3D; 1&#x2F;2意味着在重要性上B&lt;C，a24&#x3D;2表明B&gt;D；因此D&lt;B&lt;C.</p>
+<p>​	而a34&#x3D;1&#x2F;3,表明C&lt;D.矛盾！</p>
+<p> ❑ 不一致的原因：每一次两两比较的过程中暂时忽略了其他因素，导致最后的结果可能出现矛盾 </p>
+<p>​	• 理想情况：满足𝑎𝑖𝑗 &#x3D; 𝑎𝑖𝑘 ∗ 𝑎𝑘𝑗且矩阵各行（列）成倍数关系</p>
+<p>​	 • 满足这两条的矩阵称为一致矩阵，不会出现矛盾的情况（证明略） </p>
+<p>❑ 一致性检验</p>
+<p>​	 • 因为权重的设定带有主观性，难以得到严格的一致矩阵 </p>
+<p>​	• 只需和一致矩阵的“差异”不大即可，求出并检验“差异”的过程称为一致性检验。</p>
+<p><img src="/photos/2022/1003/7.4.png"></p>
+<p><img src="/photos/2022/1003/7.5.png"></p>
+<p><img src="/photos/2022/1003/7.6.png"></p>
+<p><img src="/photos/2022/1003/7.7.png"></p>
+<p><img src="/photos/2022/1003/7.8.png"></p>
+<hr>
+<h3 id="8-蚁群算法"><a href="#8-蚁群算法" class="headerlink" title="8.蚁群算法"></a>8.蚁群算法</h3><hr>
+<p>❑ eg：现需要遍历全国共34个直辖市&#x2F;省会&#x2F;自治区首府，请设计遍历方案，访问每一座城市一 次，并最终回到起始城市，且总路径最短?</p>
+<p>❑ 问题分析 </p>
+<p>​	• 模型假设：遍历过程中，两两城市之间的直线距离视为遍历时的路径距离 </p>
+<p>​	• 将每个目的地看作节点，每条路径看作边，整个问题就是图论问题。 </p>
+<p>❑ 可行解：共34 个城市，则有34！种可行方案 </p>
+<p>​	• 从第34个城市里任选一个作为起点，下一站从剩余33个城市里选一个；…… </p>
+<p>​	• 列出所有可能的路径，再判断其中的最小值，需要求出所有顶点的全排列 </p>
+<p>​	• 计算次数的数量级在1038，如何降低复杂度？</p>
+<h4 id="❑-蚂蚁选择路径"><a href="#❑-蚂蚁选择路径" class="headerlink" title="❑ 蚂蚁选择路径"></a>❑ <em><strong>蚂蚁选择路径</strong></em></h4><p>​	• 蚁群在觅食时，每只蚂蚁在走过的路径上会留下一 种称为<strong>信息素</strong>的物质 </p>
+<p>​	• 在路径分叉口：走左边路径还是右边路径？ </p>
+<p>​	• 概率：蚂蚁在选择路径时总是倾向于<strong>信息素浓度高</strong> 的方向移动</p>
+<p>​	* ➢ 一只蚂蚁的信息素总量视为有限的常数，则蚂蚁走 过的路径越短、留在路径上的信息素浓度越高</p>
+<p>​	 ➢ 而信息素本身会随着时间不断挥发 </p>
+<p>​	➢ 距离长的路径走过的蚂蚁少、后期信息素浓度增加 量小于挥发量，总的变化是<strong>减少</strong>的 </p>
+<p>​	➢ 距离短的路径走过的蚂蚁多、后期信息素浓度增加 量大于挥发量，总的变化是<strong>增加</strong>的</p>
+<h4 id="❑-迭代"><a href="#❑-迭代" class="headerlink" title="❑ 迭代"></a>❑ 迭代</h4><p>• 距离短的路径信息素浓度高⇒后续蚂蚁选择该路径的概率更大⇒距离短的路径上信息素浓度进一步升高 </p>
+<p>• 如此正反馈，整个蚁群最终走在了最短的路径上 </p>
+<p>• 思考：蚁群能保证在所有情况下得到的一定是最短路径么？</p>
+<h4 id="❑算法步骤"><a href="#❑算法步骤" class="headerlink" title="❑算法步骤"></a><strong>❑算法步骤</strong></h4><p><img src="/photos/2022/1003/8.1.png"></p>
+<p><img src="/photos/2022/1003/8.2.png"></p>
+<p><img src="/photos/2022/1003/8.3.png"></p>
+<p>❑ 改进后的公式分析</p>
+<p><img src="/photos/2022/1003/8.4.png"></p>
+<p><img src="/photos/2022/1003/8.5.png"></p>
+<p><img src="/photos/2022/1003/8.6.png"></p>
+<p><img src="/photos/2022/1003/8.7.png"></p>
+<p><img src="/photos/2022/1003/8.8.png"></p>
+<p><img src="/photos/2022/1003/8.9.png"></p>
+<p><img src="/photos/2022/1003/8.10.png"></p>
+<p><img src="/photos/2022/1003/8.11.png"></p>
+<hr>
+<p><strong>参考：bilibili数学建模boom</strong></p>
+<p><strong>END</strong></p>
+<hr>
+<p><span style="color:orange;">享受生活，追寻人生美好，也是我们一生的使命。</span></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="toc-number">1.</span> <span class="toc-text">1.线性规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92%E9%80%82%E7%94%A8%E7%9A%84%E5%85%B8%E5%9E%8B%E8%B5%9B%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">线性规划适用的典型赛题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8BMATLAB%E6%B1%82%E8%A7%A3%EF%BC%9ALinprog%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">模型MATLAB求解：Linprog函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="toc-number">2.</span> <span class="toc-text">2.非线性规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%A2-%E5%87%BD%E6%95%B0%E6%B1%82%E8%A7%A3%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">• 函数求解：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A4%9A%E7%9B%AE%E6%A0%87%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">3.多目标规划</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E7%BB%9D%E5%AF%B9%E7%BA%A6%E6%9D%9F%E5%92%8C%E7%9B%AE%E6%A0%87%E7%BA%A6%E6%9D%9F"><span class="toc-number">3.1.</span> <span class="toc-text">❑ 绝对约束和目标约束</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">4.</span> <span class="toc-text">4.最短路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%81%B0%E8%89%B2%E9%A2%84%E6%B5%8B"><span class="toc-number">5.</span> <span class="toc-text">5.灰色预测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">6.</span> <span class="toc-text">6.神经网络感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E6%84%9F%E7%9F%A5%E6%9C%BA%E6%A8%A1%E5%9E%8B%EF%BC%9A%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.1.</span> <span class="toc-text">❑ 感知机模型：最简单的神经网络</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">7.层次分析法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E6%A8%A1%E5%9E%8B%E5%BB%BA%E7%AB%8B"><span class="toc-number">7.1.</span> <span class="toc-text">❑ 模型建立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E4%B8%8D%E4%B8%80%E8%87%B4%E7%8E%B0%E8%B1%A1"><span class="toc-number">7.2.</span> <span class="toc-text">❑ 不一致现象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%9A%81%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">8.蚁群算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E8%9A%82%E8%9A%81%E9%80%89%E6%8B%A9%E8%B7%AF%E5%BE%84"><span class="toc-number">8.1.</span> <span class="toc-text">❑ 蚂蚁选择路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91-%E8%BF%AD%E4%BB%A3"><span class="toc-number">8.2.</span> <span class="toc-text">❑ 迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%91%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4"><span class="toc-number">8.3.</span> <span class="toc-text">❑算法步骤</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2022/10/03/1003/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2022/10/03/1003/&text=数学建模模型算法(基础)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2022/10/03/1003/&is_video=false&description=数学建模模型算法(基础)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数学建模模型算法(基础)&body=Check out this article: http://example.com/2022/10/03/1003/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2022/10/03/1003/&title=数学建模模型算法(基础)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2022/10/03/1003/&name=数学建模模型算法(基础)&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2022/10/03/1003/&t=数学建模模型算法(基础)"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021-2022
+    qqning
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/qqning9">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
