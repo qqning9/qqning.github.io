@@ -309,10 +309,10 @@
     
     getIPs((ip) => {
       if(ip==''){
-      document.getElementById('app').innerHTML = Mobile;
+      document.getElementById('app').innerHTML = "From: Mobile phone";
       
       }else{
-      document.getElementById('app').innerHTML = "["+ip+"]";
+      document.getElementById('app').innerHTML = "From: ["+ip+"]";
       }
       //request.get(`https://whois.pconline.com.cn/ipJson.jsp?ip=${ip}`);
     });
