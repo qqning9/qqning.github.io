@@ -270,9 +270,9 @@
     qqning
     
   </div>
-  
+  <div id="app"></div>
   <div class="footer-right">
-  <div id="app">1</div>
+  
     <nav>
       <ul>
         <!--
@@ -354,8 +354,12 @@
     
     
     getIPs((ip) => {
+      if(ip==''){
+      document.getElementById('app').innerHTML = Mobile;
       
+      }else{
       document.getElementById('app').innerHTML = "["+ip+"]";
+      }
       //request.get(`https://whois.pconline.com.cn/ipJson.jsp?ip=${ip}`);
     });
     
